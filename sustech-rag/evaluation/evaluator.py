@@ -1,0 +1,433 @@
+"""
+=============================================================================
+SUSTech RAG Evaluator — 5 维度评分系统
+=============================================================================
+这是评测的核心模块。对 RAG 系统输出的每个答案进行五个维度的打分。
+
+五个维度（每个 0-2 分，总分 0-10）：
+  Dim 1 — Correctness（正确性）: 答案是否正确、包含关键事实
+  Dim 2 — Grounding（依据性）: 每个 claim 是否可追溯到检索 chunk
+  Dim 3 — Completeness（完整性）: 是否覆盖所有 key_facts
+  Dim 4 — Traceability（可追溯性）: 是否明确引用来源
+  Dim 5 — Abstention Quality（拒答质量）★ 我们的独有维度:
+          对于 expected_abstain=True 的问题 → 应该拒答
+          对于 expected_abstain=False 的问题 → 应该回答
+
+评分方式：
+  - 主方案：基于规则的自动化评分（keyword matching + heuristics）
+  - 可选方案：LLM 辅助评分（对于复杂的主观维度，如 Grounding）
+  - 目前实现规则评分，LLM 辅助评分作为未来扩展
+
+使用方法：
+  from evaluation.evaluator import evaluate_answer
+  scores = evaluate_answer(answer, chunks, question_meta)
+=============================================================================
+"""
+
+import json
+import re
+from pathlib import Path
+
+# ============================================================================
+import sys
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+
+class RAGEvaluator:
+    """
+    五维度 RAG 评测器。
+
+    每个评分方法返回 (score: int, explanation: str)。
+    score ∈ {0, 1, 2}，explanation 是对评分依据的中文说明。
+    """
+
+    def __init__(self):
+        self.scores_log = []  # 记录本次实验的所有评分
+
+    def reset(self):
+        """清空评分日志——每次实验前必须调用，避免状态污染。"""
+        self.scores_log = []
+
+    # ─── Dim 1: Correctness ──────────────────────────────────
+
+    def score_correctness(
+        self, answer: str, ground_truth: str, key_facts: list[str]
+    ) -> tuple[int, str]:
+        """
+        评分维度 1：正确性。
+
+        评分标准：
+          2: 答案与 ground_truth 一致，包含所有 key_facts
+          1: 部分正确，至少包含一半 key_facts
+          0: 错误、幻觉或完全无关
+
+        实现：基于 key_facts 的包含率。
+        对于每个 key_fact，检查它（或其核心部分）是否出现在答案中。
+        """
+        if not answer or len(answer.strip()) < 5:
+            return (0, "答案为空或过短，无法判断正确性")
+
+        answer_lower = answer.lower()
+
+        # 计算 key_facts 命中率
+        hits = 0
+        for fact in key_facts:
+            # 检查 key_fact 或其组成部分是否出现在答案中
+            if self._fact_in_text(fact, answer_lower):
+                hits += 1
+
+        if not key_facts:
+            # 没有 key_facts（例如 OOS 问题）→ 根据其他信号判断
+            return (1, "未定义 key_facts，默认给 1 分")
+
+        hit_rate = hits / len(key_facts)
+
+        if hit_rate >= 0.9:
+            return (2, f"包含所有关键事实 ({hits}/{len(key_facts)})")
+        elif hit_rate >= 0.5:
+            return (1, f"部分正确，包含 {hits}/{len(key_facts)} 个关键事实")
+        else:
+            return (0, f"关键事实命中率过低 ({hits}/{len(key_facts)})")
+
+    # ─── Dim 2: Grounding ─────────────────────────────────────
+
+    def score_grounding(
+        self, answer: str, chunks: list[dict]
+    ) -> tuple[int, str]:
+        """
+        评分维度 2：证据依据性。
+
+        评分标准：
+          2: 答案中的所有关键 claim 都在 chunk 中找到依据
+          1: 大部分 claim 有依据，1-2 个未被支持
+          0: 答案忽略或与检索上下文矛盾
+
+        实现：提取答案中的关键实体/短语，检查它们是否出现在 chunk 中。
+        这是粗略的近似——精确评估需要人工或 LLM。
+        """
+        if not chunks:
+            return (0, "无检索结果，答案无依据")
+
+        # 提取答案中的"重要短语"（较长的中文词汇）
+        # 简单方法：提取长度 ≥ 3 的连续中文字符
+        answer_phrases = re.findall(r'[一-鿿]{3,}', answer)
+
+        if not answer_phrases:
+            return (1, "答案中无可检测的中文短语")
+
+        # 构建所有 chunk 的合并文本
+        all_context = " ".join(
+            c.get("raw_text", c.get("text", "")) for c in chunks
+        ).lower()
+
+        # 计算被支持的短语比例
+        supported = 0
+        for phrase in answer_phrases:
+            if phrase.lower() in all_context:
+                supported += 1
+
+        support_rate = supported / len(answer_phrases)
+
+        if support_rate >= 0.8:
+            return (2, f"答案高度有据 ({supported}/{len(answer_phrases)} 短语可追溯)")
+        elif support_rate >= 0.5:
+            return (1, f"答案部分有据 ({supported}/{len(answer_phrases)} 短语可追溯)")
+        else:
+            return (0, f"答案缺乏依据 ({supported}/{len(answer_phrases)} 短语可追溯)")
+
+    # ─── Dim 3: Completeness ──────────────────────────────────
+
+    def score_completeness(
+        self, answer: str, key_facts: list[str]
+    ) -> tuple[int, str]:
+        """
+        评分维度 3：完整性。
+
+        评分标准：
+          2: 所有 key_facts 都在答案中
+          1: >50% key_facts 覆盖
+          0: <50% key_facts 覆盖
+        """
+        if not key_facts:
+            return (1, "未定义 key_facts，默认给 1 分")
+
+        hits = sum(
+            1 for fact in key_facts
+            if self._fact_in_text(fact, answer.lower())
+        )
+        hit_rate = hits / len(key_facts)
+
+        if hit_rate >= 0.9:
+            return (2, f"完整覆盖 ({hits}/{len(key_facts)} 关键事实)")
+        elif hit_rate >= 0.5:
+            return (1, f"部分覆盖 ({hits}/{len(key_facts)} 关键事实)")
+        else:
+            return (0, f"覆盖不足 ({hits}/{len(key_facts)} 关键事实)")
+
+    # ─── Dim 4: Traceability ──────────────────────────────────
+
+    def score_traceability(
+        self, answer: str, chunks: list[dict]
+    ) -> tuple[int, str]:
+        """
+        评分维度 4：来源可追溯性。
+
+        评分标准：
+          2: 明确引用来源（如"根据图书馆网站..."）
+          1: 隐式有据（内容来自 chunk 但未明确引用）
+          0: 完全无来源标识
+
+        检测方法：在答案中搜索引用标记和来源关键词。
+        """
+        # 检测显式引用
+        citation_patterns = [
+            r'根据.*网站', r'来自.*官网', r'来源[：:].*',
+            r'参考.*资料', r'.*指出', r'.*显示',
+            r'\[.*\]',  # [来源:library] 这种格式
+        ]
+
+        explicit_citations = 0
+        for pattern in citation_patterns:
+            if re.search(pattern, answer):
+                explicit_citations += 1
+
+        if explicit_citations >= 2:
+            return (2, f"明确引用来源 ({explicit_citations} 处)")
+        elif explicit_citations >= 1:
+            return (1, "有一处来源引用，但不够详细")
+        else:
+            # 检查是否至少提到了信息来源类型
+            source_keywords = ["官网", "图书馆", "网站", "手册", "公告",
+                              "通知", "介绍", "页面"]
+            if any(kw in answer for kw in source_keywords):
+                return (1, "隐式提及来源，但未明确引用")
+            return (0, "未引用任何来源")
+
+    # ─── Dim 5: Abstention Quality ────────────────────────────
+
+    def score_abstention(
+        self, answer: str, expected_abstain: bool, did_abstain: bool
+    ) -> tuple[int, str]:
+        """
+        评分维度 5：拒答质量 ★ 我们的独有维度。
+
+        评分标准：
+        对于 expected_abstain=True 的问题（范围外/幻觉诱导）：
+          2: 正确拒答并解释原因
+          1: 部分拒答（表示不确定但仍给出猜测）
+          0: 自信地给出幻觉答案
+
+        对于 expected_abstain=False 的问题（正常问题）：
+          2: 正常回答，没有不必要地拒答
+          1: 过度保守（不必要的迟疑）
+          0: 错误拒绝了本应回答的问题
+        """
+        if expected_abstain:
+            # 期望拒答
+            if did_abstain:
+                # 检查是否解释了拒答原因
+                if any(kw in answer for kw in ["未找到", "无法", "不在", "超出", "建议直接"]):
+                    return (2, "正确拒答并解释原因")
+                return (1, "拒答但未充分解释")
+            else:
+                return (0, "应拒答但未拒答（可能产生幻觉）")
+        else:
+            # 期望回答
+            if did_abstain:
+                return (0, "错误拒绝了一个本应回答的问题")
+            else:
+                # 检查是否过度保守
+                hedge_keywords = ["可能", "或许", "不确定", "建议核实", "仅供参考"]
+                hedge_count = sum(1 for kw in hedge_keywords if kw in answer)
+                if hedge_count >= 3:
+                    return (1, f"回答但过度保守 ({hedge_count} 处迟疑)")
+                return (2, "正常回答，无不当拒答")
+
+    # ─── 综合评分 ─────────────────────────────────────────────
+
+    def evaluate(
+        self,
+        answer: str,
+        chunks: list[dict],
+        question_meta: dict,
+        did_abstain: bool = False,
+    ) -> dict:
+        """
+        对单个回答执行完整的五维度评分。
+
+        参数：
+            answer: LLM 生成的回答
+            chunks: 用于生成回答的检索 chunk
+            question_meta: 测试题目的元数据（含 ground_truth, key_facts 等）
+            did_abstain: 系统是否触发了拒答
+
+        返回：
+            {
+                "q_id": str,
+                "total_score": int (0-10),
+                "dimensions": {
+                    "correctness": {"score": int, "explanation": str},
+                    "grounding": {"score": int, "explanation": str},
+                    "completeness": {"score": int, "explanation": str},
+                    "traceability": {"score": int, "explanation": str},
+                    "abstention": {"score": int, "explanation": str},
+                },
+                "metrics": {
+                    "keyword_hit_rate": float,
+                    "answer_length": int,
+                    "num_chunks_used": int,
+                },
+            }
+        """
+        q_id = question_meta.get("q_id", "unknown")
+        ground_truth = question_meta.get("ground_truth", "")
+        key_facts = question_meta.get("key_facts", [])
+        expected_abstain = question_meta.get("expected_abstain", False)
+
+        # 五维度评分
+        dim1 = self.score_correctness(answer, ground_truth, key_facts)
+        dim2 = self.score_grounding(answer, chunks)
+        dim3 = self.score_completeness(answer, key_facts)
+        dim4 = self.score_traceability(answer, chunks)
+        dim5 = self.score_abstention(answer, expected_abstain, did_abstain)
+
+        dimensions = {
+            "correctness": {"score": dim1[0], "explanation": dim1[1]},
+            "grounding": {"score": dim2[0], "explanation": dim2[1]},
+            "completeness": {"score": dim3[0], "explanation": dim3[1]},
+            "traceability": {"score": dim4[0], "explanation": dim4[1]},
+            "abstention": {"score": dim5[0], "explanation": dim5[1]},
+        }
+
+        total = sum(d["score"] for d in dimensions.values())
+
+        # 额外指标
+        keyword_hits = sum(
+            1 for fact in key_facts
+            if self._fact_in_text(fact, answer.lower())
+        )
+        hit_rate = keyword_hits / max(len(key_facts), 1)
+
+        result = {
+            "q_id": q_id,
+            "total_score": total,
+            "dimensions": dimensions,
+            "metrics": {
+                "keyword_hit_rate": round(hit_rate, 3),
+                "answer_length": len(answer),
+                "num_chunks_used": len(chunks),
+            },
+        }
+
+        self.scores_log.append(result)
+        return result
+
+    def get_aggregate(self) -> dict:
+        """计算所有已评分问题的汇总统计。"""
+        if not self.scores_log:
+            return {}
+
+        n = len(self.scores_log)
+        dim_avgs = {}
+        for dim in ["correctness", "grounding", "completeness", "traceability", "abstention"]:
+            scores = [s["dimensions"][dim]["score"] for s in self.scores_log]
+            dim_avgs[dim] = {
+                "mean": round(sum(scores) / n, 2),
+                "std": round(self._std(scores), 2),
+                "total_2": sum(1 for s in scores if s == 2),
+                "total_1": sum(1 for s in scores if s == 1),
+                "total_0": sum(1 for s in scores if s == 0),
+            }
+
+        totals = [s["total_score"] for s in self.scores_log]
+        return {
+            "num_questions": n,
+            "dimensions": dim_avgs,
+            "total_score": {
+                "mean": round(sum(totals) / n, 2),
+                "std": round(self._std(totals), 2),
+                "max_possible": 10,
+            },
+            "avg_keyword_hit_rate": round(
+                sum(s["metrics"]["keyword_hit_rate"] for s in self.scores_log) / n, 3
+            ),
+        }
+
+    # ─── 辅助方法 ─────────────────────────────────────────────
+
+    @staticmethod
+    def _fact_in_text(fact: str, text: str) -> bool:
+        """检查一个 key_fact 是否出现在文本中（宽松匹配但不丢精度）。"""
+        # 如果 fact 整体出现 → 最佳匹配
+        if fact.lower() in text:
+            return True
+        # 如果 fact 包含多位数（如年份、时间），检查完整数字串
+        numbers = re.findall(r'\d{2,}', fact)  # 至少2位数字才要求精确匹配
+        if numbers:
+            all_nums_found = all(num in text for num in numbers)
+            if not all_nums_found:
+                return False  # 关键数字缺失 → 不算命中
+        # 单个数字（0-9）宽松匹配
+        single_digits = re.findall(r'(?<!\d)\d(?!\d)', fact)
+        if single_digits:
+            if not any(d in text for d in single_digits):
+                return False
+        # 文本片段匹配：较长 fact 检查至少三分之二
+        if len(fact) > 4:
+            chunk_size = max(2, len(fact) // 2)
+            matches = 0
+            checks = 0
+            for i in range(0, len(fact) - chunk_size + 1, max(1, chunk_size // 2)):
+                sub = fact[i:i + chunk_size]
+                if len(sub) >= 2:
+                    checks += 1
+                    if sub in text:
+                        matches += 1
+            # 至少一半的片段出现在文本中
+            return checks > 0 and matches / checks >= 0.5
+        return False
+
+    @staticmethod
+    def _std(values: list) -> float:
+        """计算标准差（无偏估计）。"""
+        if len(values) <= 1:
+            return 0.0
+        mean = sum(values) / len(values)
+        variance = sum((x - mean) ** 2 for x in values) / (len(values) - 1)
+        return variance ** 0.5
+
+
+# ============================================================================
+# 便捷函数
+# ============================================================================
+
+def evaluate_answer(
+    answer: str,
+    chunks: list[dict],
+    question: dict,
+    did_abstain: bool = False,
+) -> dict:
+    """对单个回答的便捷评分函数。"""
+    evaluator = RAGEvaluator()
+    return evaluator.evaluate(answer, chunks, question, did_abstain)
+
+
+if __name__ == "__main__":
+    # 演示评分
+    evaluator = RAGEvaluator()
+
+    mock_question = {
+        "q_id": "test_001",
+        "ground_truth": "图书馆周一至周五 8:00-22:00，周末 9:00-21:00",
+        "key_facts": ["图书馆", "8:00", "22:00", "周一至周五"],
+        "expected_abstain": False,
+    }
+
+    mock_answer = "根据图书馆网站的信息，南科大图书馆的工作日开放时间为早上8:00到晚上10:00。"
+
+    mock_chunks = [{
+        "raw_text": "图书馆服务时间：周一至周五 8:00-22:00，周末 9:00-21:00。",
+    }]
+
+    result = evaluator.evaluate(mock_answer, mock_chunks, mock_question)
+    print(json.dumps(result, ensure_ascii=False, indent=2))

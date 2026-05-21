@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(brew list *)",
+      "Bash(python3 -c ' *)",
+      "Bash(python3 -m py_compile config.py)"
+    ]
+  }
+}

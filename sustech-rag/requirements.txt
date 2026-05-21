@@ -1,0 +1,44 @@
+# ============================================================================
+# SUSTech Campus RAG System — Python 依赖清单
+# ============================================================================
+# 安装方式：pip install -r requirements.txt
+# GPU 环境（AutoDL RTX 5090）需要额外安装 PyTorch CUDA 版本：
+#   pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
+# ============================================================================
+
+# --- 核心 ML 框架 ---
+torch>=2.4.0
+sentence-transformers>=3.0.0       # bge-m3 embedding 模型加载
+chromadb>=0.5.0                    # 向量数据库（持久化存储）
+rank-bm25>=0.2.2                   # BM25 稀疏检索实现
+jieba>=0.42.0                      # 中文分词（BM25 需要）
+
+# --- LangChain 生态 ---
+langchain>=0.3.0                   # 文档切分、RAG 抽象
+langchain-text-splitters>=0.3.0   # RecursiveCharacterTextSplitter
+
+# --- 爬虫与数据清洗 ---
+scrapy>=2.11.0                     # 网页爬虫框架
+beautifulsoup4>=4.12.0             # HTML 解析与清洗
+lxml>=5.0.0                        # 高性能 XML/HTML 解析器
+langdetect>=1.0.9                  # 语言检测（只保留中英文）
+
+# --- LLM API 调用 ---
+openai>=1.50.0                     # OpenAI 兼容客户端（SiliconFlow 兼容此接口）
+httpx>=0.27.0                      # 异步 HTTP（contextual enrichment 批量调用）
+
+# --- FlagEmbedding（备用 reranker 实现）---
+FlagEmbedding>=1.3.0               # BAAI 官方 embedding/reranker 库
+
+# --- Transformers（vLLM / 本地模型推理）---
+transformers>=4.45.0
+accelerate>=0.34.0
+bitsandbytes>=0.43.0              # 4-bit 量化（如果本地跑大模型）
+
+# --- Gradio 演示系统 ---
+gradio>=4.40.0
+
+# --- 工具库 ---
+tqdm>=4.66.0                      # 进度条
+rich>=13.0.0                      # 彩色终端输出、表格
+pyyaml>=6.0                       # YAML 配置文件支持（备用）
