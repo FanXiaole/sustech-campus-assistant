@@ -399,7 +399,10 @@ def run_markdown_chunking(md_text: str, source_family: str, url: str) -> list[di
 
     # 步骤 3: 按标题层级切分
     chunker = build_markdown_chunker()
-    chunks = chunker.split_text(text)
+    raw_chunks = chunker.split_text(text)
+    # LangChain 返回 Document 对象 → 转为 dict
+    chunks = [{"page_content": c.page_content, "metadata": dict(c.metadata)}
+              for c in raw_chunks]
 
     # 步骤 4: 调整长度
     chunks = adjust_chunk_lengths(chunks)

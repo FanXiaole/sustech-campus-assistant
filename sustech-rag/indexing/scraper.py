@@ -135,6 +135,9 @@ class SUSTechSpider(scrapy.Spider):
                 r"\.pdf$", r"\.zip$", r"\.docx?$", r"\.xlsx?$",
                 r"\.ppt$", r"\.jpg$", r"\.png$", r"\.gif$", r"\.mp4$",
                 r"\.css$", r"\.js$", r"\.ico$", r"\.svg$",
+                # 排除非校园信息的子域名（仅匹配 URL 中 :// 后的子域名）
+                r"://mirrors\.", r"://mail\.", r"://sso\.", r"://auth\.",
+                r"://idp\.", r"://portal\.", r"://vpn\.", r"://git\.",
             ],
             deny_extensions=[],
             unique=True,
@@ -142,24 +145,24 @@ class SUSTechSpider(scrapy.Spider):
         # 确保 raw 目录存在
         RAW_DIR.mkdir(parents=True, exist_ok=True)
 
+    # start_urls 是 Scrapy 标准方式——会自动生成初始请求
+    start_urls = SCRAPY_SEED_URLS
+
     def start_requests(self):
         """
-        生成初始请求。
-
-        Scrapy 框架在启动时会调用这个方法。
-        返回一个 generator，yield 每个初始 URL 的 Request 对象。
+        生成初始请求（覆盖默认行为以添加 errback 和 meta）。
+        返回列表而非 generator，兼容 Scrapy 2.16。
         """
-        for url in SCRAPY_SEED_URLS:
+        requests = []
+        for url in self.start_urls:
             self.logger.info(f"Starting crawl from seed: {url}")
-            yield scrapy.Request(
+            requests.append(scrapy.Request(
                 url=url,
                 callback=self.parse,
-                # ^ callback: 下载完成后调用哪个方法来处理响应
                 errback=self.handle_error,
-                # ^ errback: 如果下载失败（超时、404 等）调用哪个方法
                 meta={"depth": 0},
-                # ^ meta: 在请求和响应之间传递自定义数据
-            )
+            ))
+        return requests
 
     def parse(self, response):
         """

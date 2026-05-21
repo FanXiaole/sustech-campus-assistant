@@ -133,7 +133,7 @@ def build_bm25_index(
     print(f"\nSaved: {index_path} ({size_mb:.1f} MB)")
     print(f"       {meta_path}")
 
-    return {"bm25": bm25, "chunk_ids": chunk_ids, "chunks": chunks}
+    return {"index": bm25, "chunk_ids": chunk_ids, "chunks": chunks}
 
 
 # ============================================================================

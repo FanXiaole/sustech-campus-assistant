@@ -3,7 +3,22 @@
     "allow": [
       "Bash(brew list *)",
       "Bash(python3 -c ' *)",
-      "Bash(python3 -m py_compile config.py)"
+      "Bash(python3 -m py_compile config.py)",
+      "Bash(python3 -c \"import scrapy; print\\(f'Scrapy: {scrapy.__version__}'\\)\")",
+      "Bash(python3 -c \"import bs4; print\\(f'BeautifulSoup: OK'\\)\")",
+      "Bash(python3 -c \"import httpx; print\\(f'httpx: OK'\\)\")",
+      "Bash(python3 -c \"import jieba; print\\(f'jieba: OK'\\)\")",
+      "Bash(python3 -c \"import tqdm; print\\(f'tqdm: OK'\\)\")",
+      "Bash(python3 indexing/scraper.py)",
+      "Bash(python3 indexing/manual_fetcher.py)",
+      "Bash(python3 -c \"import sys,json; d=json.loads\\(sys.stdin.read\\(\\)\\); print\\(f'url: {d.get\\(\\\\\"url\\\\\",\\\\\"\\\\\"\\)[:100]}\\\\nstatus: {d.get\\(\\\\\"status_code\\\\\"\\)}\\\\nhtml_len: {len\\(d.get\\(\\\\\"html\\\\\",\\\\\"\\\\\"\\)\\)}'\\)\")",
+      "Bash(python3 -m py_compile indexing/cleaner.py)",
+      "Bash(python3 indexing/cleaner.py)",
+      "Bash(python3 indexing/chunker.py)",
+      "Bash(python3 indexing/bm25_builder.py)",
+      "Bash(python3 evaluation/test_set_builder.py)",
+      "Bash(python3 -m py_compile indexing/scraper.py indexing/cleaner.py indexing/chunker.py indexing/bm25_builder.py)",
+      "Bash(ssh -p 46097 -o StrictHostKeyChecking=no -o ConnectTimeout=10 root@connect.bjb1.seetacloud.com \"nvidia-smi && echo '---' && ls /root/ && echo '---' && which conda && echo '---' && df -h /root/ | tail -1\")"
     ]
   }
 }

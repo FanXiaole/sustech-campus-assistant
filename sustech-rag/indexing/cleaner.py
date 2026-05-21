@@ -72,12 +72,13 @@ NOISE_CLASS_PATTERNS = [
     "advertisement", "banner", "popup", "modal",
 ]
 # aria-hidden="true" 的元素通常用于 CSS 动画/图标，不是正文
-NOISE_ATTRS = {
-    "aria-hidden": "true",
-    "role": "navigation",
-    "role": "banner",
-    "role": "contentinfo",
-}
+# 注意：不能用 dict（重复 key 会相互覆盖）→ 用 list of tuples
+NOISE_ATTRS = [
+    ("aria-hidden", "true"),
+    ("role", "navigation"),
+    ("role", "banner"),
+    ("role", "contentinfo"),
+]
 
 
 def extract_text(html: str) -> str:
@@ -124,7 +125,7 @@ def extract_text(html: str) -> str:
     #    原因：<div class="sidebar-main"> 和 <div class="sidebar__inner">
     #    都应该被移除，但 class 名不完全相同。
     for element in soup.find_all(True):  # True = 匹配所有标签
-        if not hasattr(element, "attrs"):
+        if not hasattr(element, "attrs") or element.attrs is None:
             continue
         classes = element.get("class", [])
         if isinstance(classes, list):
@@ -139,7 +140,7 @@ def extract_text(html: str) -> str:
                 break
 
     # 3. 按 aria-* 属性移除
-    for attr, value in NOISE_ATTRS.items():
+    for attr, value in NOISE_ATTRS:  # list of tuples
         for element in soup.find_all(attrs={attr: value}):
             element.decompose()
 
@@ -244,24 +245,18 @@ def normalize_whitespace(text: str) -> str:
 # 第 4 步：短文本过滤
 # ============================================================================
 
-def filter_short(text: str, min_len: int = MIN_CHUNK_LEN) -> bool:
+def check_text_length(text: str, min_len: int = MIN_CHUNK_LEN, max_len: int = 50000) -> tuple[bool, str]:
     """
-    判断文本是否应该保留。
-
-    过短的页面通常是：
-    - SPA（Single Page App）的空壳：React/Vue 渲染的页面，但爬虫拿不到 JS 渲染后的内容
-    - 登录页面：只有几句话的登录表单
-    - 重定向页面：只有 "正在跳转..." 一行字
-    - 纯图片页面：<img> 被剥离后什么也不剩
-
-    参数：
-        text: 清洗后的文本
-        min_len: 最小字符数阈值（来自 config.MIN_CHUNK_LEN）
-
-    返回：
-        True 表示保留，False 表示丢弃。
+    过滤异常长度的文档。
+    - 过短 (< min_len): 空壳/SPA/登录页/纯图片页
+    - 过长 (> max_len): 数据 dump（如 PyPI 镜像列表、JSON 端点）
+    返回 (是否保留, 拒绝原因)。
     """
-    return len(text) >= min_len
+    if len(text) < min_len:
+        return (False, "too_short")
+    if len(text) > max_len:
+        return (False, "too_long")
+    return (True, "")
 
 
 # ============================================================================
@@ -498,7 +493,11 @@ def run_cleaning(input_path: Path = None, output_path: Path = None) -> dict:
         统计信息字典，包含每一步过滤掉的文档数量
     """
     if input_path is None:
-        input_path = RAW_DIR / "raw_pages.jsonl"
+        web_path = RAW_DIR / "raw_pages.jsonl"
+        manual_path = RAW_DIR / "manual_docs.jsonl"
+    else:
+        web_path = input_path
+        manual_path = None
     if output_path is None:
         PROC_DIR.mkdir(parents=True, exist_ok=True)
         output_path = PROC_DIR / "processed_docs.jsonl"
@@ -509,44 +508,77 @@ def run_cleaning(input_path: Path = None, output_path: Path = None) -> dict:
         "removed_empty_text": 0,
         "removed_wrong_lang": 0,
         "removed_too_short": 0,
+        "removed_too_long": 0,
         "removed_dup_url": 0,
         "removed_dup_hash": 0,
         "final_count": 0,
         "total_chars": 0,
     }
 
-    # ── 加载原始数据 ──
+    # ── 加载原始数据（网页 + 南科手册） ──
     raw_docs = []
-    with open(input_path, "r", encoding="utf-8") as f:
-        for line in f:
-            line = line.strip()
-            if not line:
-                continue
-            try:
-                doc = json.loads(line)
-                raw_docs.append(doc)
-                stats["total_input"] += 1
-            except json.JSONDecodeError:
-                continue
+
+    # 网页数据
+    web_count = 0
+    if web_path and web_path.exists():
+        with open(web_path, "r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    doc = json.loads(line)
+                    doc["_format"] = "html"  # 标记原始格式
+                    raw_docs.append(doc)
+                    web_count += 1
+                except json.JSONDecodeError:
+                    continue
+
+    # 南科手册 Markdown 数据
+    manual_count = 0
+    if manual_path and manual_path.exists():
+        with open(manual_path, "r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    doc = json.loads(line)
+                    doc["_format"] = "markdown"
+                    doc["source_type"] = "manual"
+                    raw_docs.append(doc)
+                    manual_count += 1
+                except json.JSONDecodeError:
+                    continue
+
+    stats["total_input"] = len(raw_docs)
 
     print(f"\n{'='*60}")
     print(f"SUSTech Document Cleaning Pipeline")
     print(f"{'='*60}")
-    print(f"Input: {stats['total_input']} raw documents from {input_path}")
+    print(f"Input: {web_count} web pages + {manual_count} manual docs "
+          f"= {stats['total_input']} total")
 
     # ── 逐步骤处理 ──
     processed_docs = []
 
     for i, raw in enumerate(raw_docs):
-        html = raw.get("html", "")
         url = raw.get("url", "")
         crawled_at = raw.get("crawled_at", "")
+        fmt = raw.get("_format", "html")
 
-        # ── 步骤 1: 提取文本 ──
-        text = extract_text(html)
-        if not text:
-            stats["removed_empty_text"] += 1
-            continue
+        # ── 步骤 1: 提取文本（HTML→纯文本 / Markdown→直接使用） ──
+        if fmt == "markdown":
+            text = raw.get("markdown", "")
+            if not text.strip():
+                stats["removed_empty_text"] += 1
+                continue
+        else:
+            html = raw.get("html", "")
+            text = extract_text(html)
+            if not text:
+                stats["removed_empty_text"] += 1
+                continue
 
         # ── 步骤 2: 语言检测 ──
         lang, keep = detect_language(text)
@@ -557,9 +589,13 @@ def run_cleaning(input_path: Path = None, output_path: Path = None) -> dict:
         # ── 步骤 3: 空白规范化 ──
         text = normalize_whitespace(text)
 
-        # ── 步骤 4: 短文本过滤 ──
-        if not filter_short(text):
-            stats["removed_too_short"] += 1
+        # ── 步骤 4: 长度过滤（太短 = 空壳，太长 = 数据 dump） ──
+        keep, reason = check_text_length(text)
+        if not keep:
+            if reason == "too_long":
+                stats["removed_too_long"] += 1
+            else:
+                stats["removed_too_short"] += 1
             continue
 
         # ── 步骤 5: URL 规范化 ──
@@ -569,7 +605,10 @@ def run_cleaning(input_path: Path = None, output_path: Path = None) -> dict:
         text_hash = hashlib.md5(text.encode("utf-8")).hexdigest()
 
         # ── 步骤 8: 来源分类 ──
-        source_family = classify_source(normalized_url)
+        if raw.get("source_type") == "manual":
+            source_family = "manual"
+        else:
+            source_family = classify_source(normalized_url)
 
         # 构建 doc_id：URL 的 SHA256 前 16 个字符
         # 为什么是前 16 位？→ 256 位 = 64 hex chars，太长了
@@ -598,6 +637,7 @@ def run_cleaning(input_path: Path = None, output_path: Path = None) -> dict:
     print(f"  - Empty/irrelevant HTML removed: {stats['removed_empty_text']}")
     print(f"  - Wrong language removed: {stats['removed_wrong_lang']}")
     print(f"  - Too short (< {MIN_CHUNK_LEN} chars): {stats['removed_too_short']}")
+    print(f"  - Too long (> 50000 chars): {stats['removed_too_long']}")
 
     # ── 步骤 6: URL 去重 ──
     before_url_dedup = len(processed_docs)
@@ -638,6 +678,7 @@ def run_cleaning(input_path: Path = None, output_path: Path = None) -> dict:
     print(f"Removed (empty text): {stats['removed_empty_text']}")
     print(f"Removed (wrong lang): {stats['removed_wrong_lang']}")
     print(f"Removed (too short): {stats['removed_too_short']}")
+    print(f"Removed (too long): {stats['removed_too_long']}")
     print(f"Removed (dup URL): {stats['removed_dup_url']}")
     print(f"Removed (dup hash): {stats['removed_dup_hash']}")
     print(f"\nSource distribution:")
