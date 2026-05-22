@@ -87,7 +87,7 @@ class PromptBuilder:
         参数：
             persona: 人格标识（"default", "unhinged", "sexy"）
         """
-        self.persona = persona or DEFAULT_PERSONA
+        self.persona = persona if persona in PERSONA_PRESETS else DEFAULT_PERSONA
 
     @property
     def persona_config(self) -> dict:

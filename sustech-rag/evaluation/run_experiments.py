@@ -320,54 +320,58 @@ class ExperimentRunner:
 
             retrieval_mode = config["retrieval"]
 
-            if retrieval_mode == "none":
-                # R0: No retrieval
-                chunks = []
-                trace = {"mode": "none"}
+            try:
+                if retrieval_mode == "none":
+                    # R0: No retrieval
+                    chunks = []
+                    trace = {"mode": "none"}
 
-            elif retrieval_mode == "dense":
-                # R1: Dense only
-                chunks = self.dense_retriever.search(query, top_k=config.get("dense_top_k", DENSE_TOP_K))
-                trace = {"mode": "dense", "top_k": len(chunks)}
+                elif retrieval_mode == "dense":
+                    # R1: Dense only
+                    chunks = self.dense_retriever.search(query, top_k=config.get("dense_top_k", DENSE_TOP_K))
+                    trace = {"mode": "dense", "top_k": len(chunks)}
 
-            elif retrieval_mode == "bm25":
-                # R2: BM25 only
-                chunks = self.sparse_retriever.search(
-                    query, top_k=config.get("bm25_top_k", BM25_TOP_K)
-                )
-                trace = {"mode": "bm25", "top_k": len(chunks)}
+                elif retrieval_mode == "bm25":
+                    # R2: BM25 only
+                    chunks = self.sparse_retriever.search(
+                        query, top_k=config.get("bm25_top_k", BM25_TOP_K)
+                    )
+                    trace = {"mode": "bm25", "top_k": len(chunks)}
 
-            elif retrieval_mode == "hybrid":
-                # R3/R4/E1-E4/A1-A2/E5: Full hybrid pipeline
+                elif retrieval_mode == "hybrid":
+                    # R3/R4/E1-E4/A1-A2/E5: Full hybrid pipeline
 
-                # 按需加载 dense retriever（按 collection 缓存）
-                collection_name = config.get("collection", "sustech_default")
-                if collection_name == "sustech_default":
-                    dense = self.dense_retriever
-                elif collection_name in self._dense_retrievers:
-                    dense = self._dense_retrievers[collection_name]
-                else:
-                    dense = get_dense_retriever(collection_name=collection_name)
-                    self._dense_retrievers[collection_name] = dense
+                    # 按需加载 dense retriever（按 collection 缓存）
+                    collection_name = config.get("collection", "sustech_default")
+                    if collection_name == "sustech_default":
+                        dense = self.dense_retriever
+                    elif collection_name in self._dense_retrievers:
+                        dense = self._dense_retrievers[collection_name]
+                    else:
+                        dense = get_dense_retriever(collection_name=collection_name)
+                        self._dense_retrievers[collection_name] = dense
 
-                # HyDE LLM function
-                hyde_fn = None
-                if config.get("hyde"):
-                    def hyde_fn(system, user):
-                        return self.llm_client.chat(system, user, max_tokens=256)
+                    # HyDE LLM function
+                    hyde_fn = None
+                    if config.get("hyde"):
+                        def hyde_fn(system, user):
+                            return self.llm_client.chat(system, user, max_tokens=256)
 
-                chunks, trace = hybrid_retrieve(
-                    query=query,
-                    dense_retriever=dense,
-                    sparse_retriever=self.sparse_retriever,
-                    use_hyde=config.get("hyde", False),
-                    hyde_llm_fn=hyde_fn,
-                    use_classifier=config.get("classifier", False),
-                    classifier=self.classifier if config.get("classifier") else None,
-                    reranker=self.reranker if config.get("reranker") else None,
-                    authority_scorer=self.authority_scorer if config.get("authority") else None,
-                    abstention_check=True,
-                )
+                    chunks, trace = hybrid_retrieve(
+                        query=query,
+                        dense_retriever=dense,
+                        sparse_retriever=self.sparse_retriever,
+                        use_hyde=config.get("hyde", False),
+                        hyde_llm_fn=hyde_fn,
+                        use_classifier=config.get("classifier", False),
+                        classifier=self.classifier if config.get("classifier") else None,
+                        reranker=self.reranker if config.get("reranker") else None,
+                        authority_scorer=self.authority_scorer if config.get("authority") else None,
+                        abstention_check=True,
+                    )
+            except Exception as e:
+                print(f"    [{exp_id}] RETRIEVAL ERROR on {q_id}: {e}")
+                chunks, trace = [], {"error": str(e)}
 
             t_retrieval = (time.time() - t_start) * 1000
 

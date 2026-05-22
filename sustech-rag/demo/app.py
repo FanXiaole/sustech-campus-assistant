@@ -129,7 +129,11 @@ def stream_answer(question: str, mode: str, use_hyde: bool, persona: str):
         yield "", "", "", ""
         return
 
-    chunks, timings = run_retrieval(question, mode, use_hyde)
+    try:
+        chunks, timings = run_retrieval(question, mode, use_hyde)
+    except Exception as e:
+        yield (f"检索失败: {e}", "", "error", "retrieval error")
+        return
 
     # 拒答
     if not chunks:
