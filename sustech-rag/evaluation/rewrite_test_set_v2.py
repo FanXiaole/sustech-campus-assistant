@@ -113,11 +113,12 @@ def main():
         )
 
         try:
-            resp = llm.chat("你是事实审核员。只输出JSON，不要加任何其他文字。",
-                          prompt, temperature=0.1, max_tokens=400)
             result = llm.chat_json(
                 "你是事实审核员。只输出JSON，不要加任何其他文字。",
                 prompt, temperature=0.1, max_tokens=400)
+
+            if "error" in result:
+                raise ValueError(f"chat_json returned error: {result.get('error')}")
 
             new_q = {**q, "verified": True}
             if result.get("answerable", True):
