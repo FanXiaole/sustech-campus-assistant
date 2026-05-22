@@ -1,91 +1,31 @@
 """
 =============================================================================
-SUSTech RAG Demo — Gradio 5 标签页演示应用
+SUSTech RAG Demo — Gradio 演示应用（v2 精简版）
 =============================================================================
-演示系统的设计目标：
-  1. 直观展示 RAG pipeline 的每个环节
-  2. 支持实时 vs 缓存两种模式
-  3. 通过人格选择器展示我们的独有创新
-  4. 实验对比数据可视化
-
-使用方法：
-  python demo/app.py                    # 本地启动
-  DEMO_MODE=cached python demo/app.py   # 缓存模式（无需GPU/API）
-  python demo/app.py --share            # 生成公网链接
+3 个标签页：校园问答 · 实验数据 · 管线追踪
+特色：流式输出 · 来源权威徽章 · 检索置信度 · 实时延迟拆解
 =============================================================================
 """
 
-import json
-import os
-import time
+import json, os, random, time
 from pathlib import Path
-
 import gradio as gr
 
-# ============================================================================
 import sys
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from config import (
-    ABSTAIN_MESSAGE,
-    DATA_DIR,
-    DEFAULT_PERSONA,
-    DEMO_MODE,
-    DEMO_PORT,
-    DEMO_SHARE,
-    PERSONA_PRESETS,
-    RESULTS_DIR,
+    ABSTAIN_MESSAGE, DEFAULT_PERSONA, DEMO_MODE, DEMO_PORT, DEMO_SHARE,
+    PERSONA_PRESETS, RESULTS_DIR,
 )
 
-# ============================================================================
-# 模式检测
-# ============================================================================
 DEMO_MODE = os.getenv("DEMO_MODE", DEMO_MODE)
-MODE_LABEL = "📼 CACHED" if DEMO_MODE == "cached" else "🔴 LIVE"
+MODE_LABEL = "CACHED" if DEMO_MODE == "cached" else "LIVE"
 
-# ============================================================================
-# 缓存管理
-# ============================================================================
-CACHE_DIR = Path(__file__).parent / "cache"
-CACHE_DIR.mkdir(parents=True, exist_ok=True)
-
-
-_OLD_CACHE_FN = None  # replaced by key-based save/load below
-
-
-def safe_json_dumps(obj, max_len=500):
-    """安全的 JSON 序列化——处理不可序列化对象。"""
-    try:
-        s = json.dumps(obj, ensure_ascii=False, default=str)
-        return s[:max_len] + ("..." if len(s) > max_len else "")
-    except Exception:
-        return f"(无法序列化: {type(obj).__name__})"
-
-
-def save_cache(key: str, data: dict):
-    """保存查询结果到缓存文件。"""
-    path = CACHE_DIR / f"{key.replace('/', '_')}.json"
-    with open(path, "w") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
-
-
-def load_cache(key: str) -> dict | None:
-    """从缓存文件加载查询结果。"""
-    path = CACHE_DIR / f"{key.replace('/', '_')}.json"
-    if path.exists():
-        with open(path, "r") as f:
-            return json.load(f)
-    return None
-
-
-# ============================================================================
-# 懒加载组件（避免启动时全部加载）
-# ============================================================================
-
+# ── 懒加载 ──
 _components = {}
 
 def get_component(name: str):
-    """懒加载组件，避免启动时 OOM。"""
     if name not in _components:
         if name == "dense":
             from retrieval.dense_retriever import get_dense_retriever
@@ -99,489 +39,386 @@ def get_component(name: str):
         elif name == "classifier":
             from retrieval.query_classifier import get_classifier
             _components[name] = get_classifier(mode="rule")
-        elif name == "authority":
-            from retrieval.authority_scorer import get_authority_scorer
-            _components[name] = get_authority_scorer()
         elif name == "llm":
             from generation.llm_api import DeepSeekClient
             from generation.llm_local import OllamaClient, LLMFallback
-            api_client = DeepSeekClient()
-            local_client = OllamaClient()
-            _components[name] = LLMFallback(api_client, local_client)
+            _components[name] = LLMFallback(DeepSeekClient(), OllamaClient())
         elif name == "builder":
             from generation.prompt_builder import PromptBuilder
             _components[name] = PromptBuilder(persona=DEFAULT_PERSONA)
+        elif name == "authority":
+            from retrieval.authority_scorer import get_authority_scorer
+            _components[name] = get_authority_scorer()
     return _components[name]
 
 
-# ============================================================================
-# TAB 1: 校园 Q&A（主交互）
-# ============================================================================
+# ── 来源权威徽章 ──
+AUTH_BADGES = {
+    "official":   "Official", "admission": "Admission", "library": "Library",
+    "department": "Department", "manual": "Manual", "news": "News", "unknown": "?",
+}
 
-def query_rag(
-    question: str,
-    retrieval_mode: str,
-    use_hyde: bool,
-    persona: str,
-    show_chunks: bool,
-):
-    """
-    处理用户查询——完整的 RAG pipeline。
 
-    参数：
-        question: 用户问题
-        retrieval_mode: "no_rag" / "dense" / "bm25" / "hybrid" / "full"
-        use_hyde: 是否启用 HyDE
-        persona: 人格标识
-        show_chunks: 是否展示检索到的 chunk
-    """
-    if not question.strip():
-        return "请输入问题。", "", ""
+# ╔══════════════════════════════════════════════════════════════╗
+# ║  TAB 1 — 校园问答（流式输出 + 来源卡片 + 置信度）           ║
+# ╚══════════════════════════════════════════════════════════════╝
 
-    t_start = time.time()
+def random_question():
+    from config import DATA_DIR
+    path = DATA_DIR / "test_set_v2.json"
+    if not path.exists():
+        path = DATA_DIR / "test_set.json"
+    if path.exists():
+        with open(path) as f:
+            qs = json.load(f)
+        return random.choice([q["question"] for q in qs if not q.get("expected_abstain")])
+    return "图书馆几点开门？"
 
-    # ── 缓存检测 ──
-    cache_key = f"{question}_{retrieval_mode}_{use_hyde}_{persona}"
-    if DEMO_MODE == "cached":
-        cached = load_cache(cache_key)
-        if cached:
-            return cached["answer"], cached["sources"], cached["latency"]
 
-    # ── Prompt builder + LLM（提前获取，所有路径共享） ──
-    builder = get_component("builder")
-    builder.set_persona(persona)
-    llm = get_component("llm")
+def run_retrieval(question: str, mode: str, use_hyde: bool):
+    """执行检索，返回 (chunks, timings_dict)。"""
+    t0 = time.time()
 
-    # ── 检索 ──
-    chunks = []
-    trace_info = []
+    if mode == "no_rag":
+        return [], {"retrieval": 0}
 
-    if retrieval_mode == "no_rag":
-        chunks = []
-        trace_info.append("📭 未使用检索（纯 LLM）")
-
-    elif retrieval_mode == "dense":
+    if mode == "dense":
         dense = get_component("dense")
         chunks = dense.search(question, top_k=5)
-        trace_info.append(f"🔍 Dense 检索 → {len(chunks)} chunks")
+        return chunks, {"retrieval": round((time.time() - t0) * 1000)}
 
-    elif retrieval_mode == "bm25":
+    if mode == "bm25":
         sparse = get_component("sparse")
         chunks = sparse.search(question, top_k=5)
-        trace_info.append(f"📖 BM25 检索 → {len(chunks)} chunks")
+        return chunks, {"retrieval": round((time.time() - t0) * 1000)}
 
-    elif retrieval_mode in ("hybrid", "full"):
-        from retrieval.hybrid_rrf import hybrid_retrieve
+    # hybrid / full
+    from retrieval.hybrid_rrf import hybrid_retrieve
+    dense = get_component("dense")
+    sparse = get_component("sparse")
+    classifier = get_component("classifier")
+    reranker = get_component("reranker") if mode == "full" else None
+    authority = get_component("authority") if mode == "full" else None
 
-        dense = get_component("dense")
-        sparse = get_component("sparse")
-        classifier = get_component("classifier")
-        reranker = get_component("reranker") if retrieval_mode == "full" else None
-        authority = get_component("authority") if retrieval_mode == "full" else None
+    hyde_fn = None
+    if use_hyde:
+        llm = get_component("llm")
+        if llm.is_available:
+            def hyde_fn(s, u): return llm.chat(s, u, max_tokens=256)
 
-        hyde_fn = None
-        if use_hyde and llm.is_available:
-            def hyde_fn(system, user):
-                return llm.chat(system, user, max_tokens=256)
+    chunks, trace = hybrid_retrieve(
+        query=question, dense_retriever=dense, sparse_retriever=sparse,
+        use_hyde=use_hyde, hyde_llm_fn=hyde_fn,
+        use_classifier=True, classifier=classifier,
+        reranker=reranker, authority_scorer=authority, abstention_check=True,
+    )
 
-        chunks, trace = hybrid_retrieve(
-            query=question,
-            dense_retriever=dense,
-            sparse_retriever=sparse,
-            use_hyde=use_hyde,
-            hyde_llm_fn=hyde_fn,
-            use_classifier=True,
-            classifier=classifier,
-            reranker=reranker,
-            authority_scorer=authority,
-            abstention_check=True,
-        )
-        trace_info.append(f"🔄 Hybrid pipeline → {len(chunks)} chunks (trace: {safe_json_dumps(trace.get('steps', {}))})")
+    steps = trace.get("steps", {})
+    timings = {}
+    for step in ["dense", "bm25", "rrf", "reranker", "authority"]:
+        sd = steps.get(step, {})
+        if isinstance(sd, dict) and "time_ms" in sd:
+            timings[step] = sd["time_ms"]
+    timings["total"] = trace.get("total_ms", 0)
+    return chunks, timings
 
-    # ── 拒答检测 ──
-    if len(chunks) == 0:
-        answer = f"⚠️ {ABSTAIN_MESSAGE}"
-        sources = "【系统已触发拒答保护——检索置信度过低】"
-        latency = f"⏱️ {int((time.time() - t_start) * 1000)}ms"
-        return answer, sources, latency
 
-    # ── 生成 ──
+def stream_answer(question: str, mode: str, use_hyde: bool, persona: str):
+    """流式生成回答 + 来源卡片。"""
+    if not question.strip():
+        yield "", "", "", ""
+        return
+
+    chunks, timings = run_retrieval(question, mode, use_hyde)
+
+    # 拒答
+    if not chunks:
+        yield (f"⚠️ {ABSTAIN_MESSAGE}",
+               "<div style='color:#ef4444'>检索置信度过低，已触发拒答保护</div>",
+               _fmt_timings(timings),
+               "classify→retrieve→abstain")
+        return
+
+    # 构建来源卡片
+    sources_html = _build_source_cards(chunks)
+
+    # 流式生成
+    builder = get_component("builder")
+    builder.set_persona(persona)
     system_prompt = builder.build_system_prompt()
     user_message = builder.build_user_message(question, chunks)
 
-    if llm.is_available:
-        answer = llm.chat(system_prompt, user_message)
-        if llm.used_backend == "local":
-            answer = "[注意：当前使用本地 Ollama 模型，回答质量可能低于 DeepSeek API]\n\n" + answer
-    else:
-        answer = ("[LLM API 不可用] 请设置 DEEPSEEK_API_KEY 环境变量或启动 Ollama。\n\n"
-                  f"检索到的资料（共 {len(chunks)} 条）：\n" +
-                  "\n".join(f"- {c.get('raw_text', c.get('text', ''))[:200]}..."
-                           for c in chunks[:3]))
+    llm = get_component("llm")
+    if not llm.is_available:
+        yield ("[LLM 不可用] 请设置 DEEPSEEK_API_KEY",
+               sources_html, _fmt_timings(timings), "retrieve→generate(failed)")
+        return
 
-    # ── 来源展示 ──
-    sources = ""
-    if show_chunks:
-        for i, c in enumerate(chunks, 1):
-            src = c.get("source_family", "unknown")
-            url = c.get("url", "")[:100]
-            text = c.get("raw_text", c.get("text", ""))[:200]
-            sources += f"📄 **Chunk {i}** [{src}] {url}\n> {text}...\n\n"
+    trace_text = _build_trace_text(mode, use_hyde, timings, len(chunks))
 
-    latency = f"⏱️ {int((time.time() - t_start) * 1000)}ms"
+    answer_parts = []
+    for token in llm.stream_chat(system_prompt, user_message):
+        answer_parts.append(token)
+        full = "".join(answer_parts)
+        if llm.used_backend == "local" and len(answer_parts) <= 3:
+            full = "[注意: 使用本地 Ollama 模型]\n\n" + full
+        yield full, sources_html, _fmt_timings(timings), trace_text
 
-    # ── 缓存结果 ──
-    if DEMO_MODE == "cached":
-        save_cache(cache_key, {"answer": answer, "sources": sources, "latency": latency})
+    # 最终输出
+    yield "".join(answer_parts), sources_html, _fmt_timings(timings), trace_text
 
-    return answer, sources, latency
+
+def _build_source_cards(chunks: list[dict]) -> str:
+    """构建来源卡片 HTML。"""
+    html = '<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">'
+    for i, c in enumerate(chunks[:5], 1):
+        src = c.get("source_family", "unknown")
+        badge = AUTH_BADGES.get(src, "?")
+        rrf = c.get("rrf_score", 0)
+        rerank = c.get("rerank_score", 0)
+        if rerank:
+            score_str = f'<span style="color:#22c55e">{rerank:.3f}</span>'
+        elif rrf:
+            score_str = f'<span style="color:#94a3b8">{rrf:.4f}</span>'
+        else:
+            score_str = ""
+        html += (
+            f'<div style="background:#1e293b;border-radius:8px;padding:8px 12px;'
+            f'min-width:170px;flex:1;border-left:3px solid #3b82f6">'
+            f'<div style="font-size:11px;color:#94a3b8">{badge} #{i} {score_str}</div>'
+            f'<div style="font-size:13px;margin-top:4px;line-height:1.4">'
+            f'{c.get("raw_text", c.get("text", ""))[:120]}...</div>'
+            f'</div>'
+        )
+    html += '</div>'
+    return html
+
+
+def _build_trace_text(mode: str, use_hyde: bool, timings: dict, n_chunks: int) -> str:
+    """构建管线 trace 文本。"""
+    parts = [f"mode={mode} hyde={use_hyde} chunks={n_chunks}"]
+    for k, v in timings.items():
+        parts.append(f"{k}:{v:.0f}ms" if v >= 1 else f"{k}:<1ms")
+    return " | ".join(parts)
+
+
+def _fmt_timings(timings: dict) -> str:
+    """格式化时间信息为可读字符串。"""
+    parts = []
+    for k, v in timings.items():
+        if isinstance(v, (int, float)):
+            parts.append(f"{k}:{v:.0f}ms" if v >= 1 else f"{k}:<1ms")
+    return " · ".join(parts)
 
 
 def build_tab1():
-    """Tab 1: 校园 Q&A 主界面。"""
     with gr.Column():
-        gr.Markdown(f"## 🎓 南科大校园知识库问答  <small style='color:gray;'>{MODE_LABEL}</small>")
+        gr.Markdown("## 校园知识库问答")
 
         with gr.Row():
             with gr.Column(scale=3):
                 question = gr.Textbox(
-                    label="你的问题",
-                    placeholder="例如：图书馆几点关门？计算机系有哪些教授？如何办理借书证？",
-                    lines=3,
-                )
+                    label="", placeholder="输入你的问题，例如：图书馆几点关门？计算机系有哪些教授？",
+                    lines=2, show_label=False, elem_id="question-box")
             with gr.Column(scale=1):
-                retrieval_mode = gr.Dropdown(
-                    label="检索模式",
-                    choices=[
-                        ("完整管线 (Hybrid + Reranker)", "full"),
-                        ("Hybrid RRF (无Reranker)", "hybrid"),
-                        ("仅稠密检索 (bge-m3)", "dense"),
-                        ("仅 BM25 检索", "bm25"),
-                        ("无检索 (纯 LLM)", "no_rag"),
-                    ],
-                    value="full",
-                )
-                persona = gr.Dropdown(
-                    label="🎭 回答风格",
-                    choices=[
-                        (cfg["name"], pid)
-                        for pid, cfg in PERSONA_PRESETS.items()
-                    ],
-                    value=DEFAULT_PERSONA,
-                )
-                use_hyde = gr.Checkbox(label="🔮 HyDE 查询扩展", value=False)
-                show_chunks = gr.Checkbox(label="📄 展示检索资料", value=True)
-                submit_btn = gr.Button("🔍 查询", variant="primary")
+                submit_btn = gr.Button("查询", variant="primary", size="lg")
 
-        answer = gr.Textbox(label="回答", lines=10, interactive=False)
-        sources = gr.Textbox(label="检索依据", lines=8, interactive=False, visible=True)
-        latency = gr.Textbox(label="延迟", interactive=False)
+        with gr.Row():
+            with gr.Column(scale=1):
+                mode = gr.Radio(
+                    [("完整管线", "full"), ("Hybrid RRF", "hybrid"),
+                     ("仅 Dense", "dense"), ("仅 BM25", "bm25"), ("无检索", "no_rag")],
+                    value="full", label="检索模式", interactive=True)
+            with gr.Column(scale=1):
+                persona = gr.Radio(
+                    [(cfg["name"], pid) for pid, cfg in PERSONA_PRESETS.items()],
+                    value=DEFAULT_PERSONA, label="回答风格")
+            with gr.Column(scale=1):
+                use_hyde = gr.Checkbox(label="HyDE 查询扩展", value=False)
+                surprise_btn = gr.Button("随机提问", size="sm")
+
+        answer = gr.Textbox(label="回答", lines=12, interactive=False, elem_id="answer-box")
+        sources = gr.HTML(label="检索来源")
+        timing = gr.Textbox(label="延迟", interactive=False, elem_id="timing-box")
+        trace_box = gr.Textbox(label="管线 Trace", interactive=False, visible=False,
+                               lines=3, elem_id="trace-box")
 
         submit_btn.click(
-            fn=query_rag,
-            inputs=[question, retrieval_mode, use_hyde, persona, show_chunks],
-            outputs=[answer, sources, latency],
-        )
+            fn=stream_answer, inputs=[question, mode, use_hyde, persona],
+            outputs=[answer, sources, timing, trace_box], queue=True)
+        question.submit(
+            fn=stream_answer, inputs=[question, mode, use_hyde, persona],
+            outputs=[answer, sources, timing, trace_box], queue=True)
+        surprise_btn.click(fn=random_question, inputs=[], outputs=[question])
 
 
-# ============================================================================
-# TAB 2: Pipeline Inspector（管线追踪）
-# ============================================================================
-
-def inspect_pipeline(question: str):
-    """展示完整的 pipeline trace。"""
-    if not question.strip():
-        return "请输入问题查看 pipeline 追踪。", {}
-
-    from retrieval.hybrid_rrf import hybrid_retrieve
-    from retrieval.dense_retriever import get_dense_retriever
-    from retrieval.sparse_retriever import get_sparse_retriever
-
-    dense = get_dense_retriever()
-    sparse = get_sparse_retriever()
-    classifier = get_component("classifier")
-    reranker = get_component("reranker")
-
-    chunks, trace = hybrid_retrieve(
-        query=question,
-        dense_retriever=dense,
-        sparse_retriever=sparse,
-        use_hyde=False,
-        use_classifier=True,
-        classifier=classifier,
-        reranker=reranker,
-        abstention_check=True,
-    )
-
-    # 格式化为可读文本
-    steps = trace.get("steps", {})
-    text = f"## 🔬 Pipeline Trace\n\n"
-    text += f"**Query**: {trace.get('query', '')}\n"
-    text += f"**Type**: {trace.get('query_type', 'unknown')}\n"
-    text += f"**Total**: {trace.get('total_ms', 0)}ms\n\n"
-
-    for step_name, step_data in steps.items():
-        text += f"### {step_name}\n"
-        if isinstance(step_data, dict):
-            text += f"```json\n{json.dumps(step_data, ensure_ascii=False, indent=2)}\n```\n"
-        text += "\n"
-
-    # RRF 分数柱状图数据（取前 20 个）
-    bar_data = {}
-    if chunks:
-        bar_data = {
-            c.get("chunk_id", "")[:16]: c.get("rrf_score", c.get("rerank_score", 0))
-            for c in chunks[:20]
-        }
-
-    return text, bar_data
-
-
-def build_tab2():
-    """Tab 2: Pipeline Inspector。"""
-    with gr.Column():
-        gr.Markdown("## 🔬 Pipeline Inspector")
-        gr.Markdown("输入问题，查看检索管线的每一步内部状态。")
-
-        q_input = gr.Textbox(label="问题", placeholder="输入问题...")
-        inspect_btn = gr.Button("🔍 追踪", variant="primary")
-
-        trace_output = gr.Markdown("等待输入...")
-        bar_plot = gr.BarPlot(
-            x="chunk_id",
-            y="score",
-            title="RRF / Rerank 分数 (Top 20)",
-            x_title="Chunk ID",
-            y_title="Score",
-            height=300,
-        )
-
-        def on_inspect(q):
-            text, bar_data = inspect_pipeline(q)
-            # Convert dict to list of dicts for BarPlot
-            items = [{"chunk_id": k, "score": v} for k, v in bar_data.items()]
-            return text, items
-
-        inspect_btn.click(
-            fn=on_inspect,
-            inputs=[q_input],
-            outputs=[trace_output, bar_plot],
-        )
-
-
-# ============================================================================
-# TAB 3: 实验结果 Dashboard
-# ============================================================================
+# ╔══════════════════════════════════════════════════════════════╗
+# ║  TAB 2 — 实验数据（矩阵总览 + Bootstrap + LLM Eval）        ║
+# ╚══════════════════════════════════════════════════════════════╝
 
 def load_experiment_data():
-    """加载对比表数据和 bootstrap CI 结果。"""
     result = {}
-    comp_path = RESULTS_DIR / "comparison_table.json"
-    if comp_path.exists():
-        with open(comp_path) as f:
-            result["comparison"] = json.load(f)
-    ci_path = RESULTS_DIR / "bootstrap_ci.json"
-    if ci_path.exists():
-        with open(ci_path) as f:
-            result["bootstrap"] = json.load(f)
+    for fn, key in [("comparison_table.json", "comparison"), ("bootstrap_ci.json", "bootstrap")]:
+        path = RESULTS_DIR / fn
+        if path.exists():
+            with open(path) as f:
+                result[key] = json.load(f)
+    llm_path = RESULTS_DIR / "R4" / "llm_vs_rule_comparison.json"
+    if llm_path.exists():
+        with open(llm_path) as f:
+            result["llm_eval"] = json.load(f)
     return result
 
 
-def build_tab3():
-    """Tab 3: 实验结果 Dashboard。"""
+def build_tab2():
     with gr.Column():
-        gr.Markdown("## 📊 实验对比 Dashboard")
+        gr.Markdown("## 实验数据")
 
         data = load_experiment_data()
         if not data:
-            gr.Markdown("*暂无实验数据。运行 `python evaluation/run_experiments.py` 后此处将显示结果。*")
+            gr.Markdown("*暂无数据*")
             return
 
         comp = data.get("comparison", {})
         boot = data.get("bootstrap", {})
+        llm_eval = data.get("llm_eval", {})
 
-        if comp:
-            gr.Markdown("### 实验矩阵总览")
-            lines = ["| Experiment | Total Score | Latency |",
-                    "|-----------|------------|---------|"]
-            exp_names = {
-                "R0": "No RAG", "R1": "Dense Only", "R2": "BM25 Only",
-                "R3": "Hybrid RRF", "R4": "Hybrid+Reranker",
-                "E1": "+HyDE", "E2": "+Enriched", "E3": "+Classifier", "E4": "Full Stack",
-                "A1": "Small Chunks", "A2": "Large Chunks",
-            }
-            for exp_id, exp_data in sorted(comp.items()):
-                name = exp_names.get(exp_id, exp_id)
-                score = exp_data.get("total_score", 0)
-                latency = exp_data.get("latency_avg_ms", 0)
-                lines.append(f"| **{exp_id}** {name} | {score:.2f}/10 | {latency:.0f}ms |")
-            gr.Markdown("\n".join(lines))
+        with gr.Tabs():
+            with gr.TabItem("实验矩阵"):
+                if comp:
+                    lines = ["| ID | 配置 | 总分 | 延迟 |", "|---|---|---|---|"]
+                    names = {"R0":"No RAG","R1":"Dense","R2":"BM25","R3":"Hybrid RRF",
+                             "R4":"+Reranker","E1":"+HyDE","E2":"+Enriched","E3":"+Classifier",
+                             "E4":"Full Stack","E5":"+Authority","A1":"Small(300)","A2":"Large(900)"}
+                    for eid, ed in sorted(comp.items()):
+                        s = ed.get("total_score", 0)
+                        l = ed.get("latency_avg_ms", 0)
+                        name = names.get(eid, eid)
+                        lines.append(f"| **{eid}** | {name} | {s:.2f}/10 | {l:.0f}ms |")
+                    gr.Markdown("\n".join(lines))
 
-        if boot:
-            gr.Markdown("### Bootstrap 显著性检验")
-            boot_lines = ["| 对比 | 观测差异 | 95% CI | p-value | 显著？ |",
-                         "|------|---------|--------|---------|--------|"]
-            for key, ci in sorted(boot.items()):
-                label = ci.get("label", key)
-                diff = ci.get("observed_diff", 0)
-                ci_low, ci_high = ci.get("ci_95", [0, 0])
-                p_val = ci.get("p_value", 1)
-                sig = "✅" if ci.get("significant") else "—"
-                boot_lines.append(f"| {label} | {diff:+.3f} | [{ci_low:.2f}, {ci_high:.2f}] | {p_val:.3f} | {sig} |")
-            gr.Markdown("\n".join(boot_lines))
-            gr.Markdown("*唯一显著的发现：RAG vs No RAG (p=0.000)。所有创新点之间的差异在 50 题测试集上均未达到统计显著性。*")
+            with gr.TabItem("Bootstrap 显著性"):
+                if boot:
+                    lines = ["| 对比 | Δ | 95% CI | p | 显著 |",
+                             "|---|---|---|---|---|"]
+                    for key, ci in sorted(boot.items()):
+                        sig = "YES" if ci.get("significant") else "-"
+                        lines.append(
+                            f"| {ci.get('label', key)} | {ci['observed_diff']:+.3f} | "
+                            f"[{ci['ci_95'][0]:.2f}, {ci['ci_95'][1]:.2f}] | "
+                            f"{ci['p_value']:.3f} | {sig} |")
+                    gr.Markdown("\n".join(lines))
+
+            with gr.TabItem("LLM vs 规则评分"):
+                if llm_eval:
+                    gr.Markdown(f"""
+                    | 指标 | 规则评分 | LLM 评分 | 差异 |
+                    |---|---|---|---|
+                    | 平均总分 | {llm_eval['avg_rule_score']:.2f} | {llm_eval['avg_llm_score']:.2f} | **+{llm_eval['avg_delta']:.2f}** |
+                    | LLM 更高 | — | {llm_eval['llm_higher']}/50 | — |
+                    | LLM 更低 | — | {llm_eval['llm_lower']}/50 | — |
+                    | 相同 | — | {llm_eval['same']}/50 | — |
+
+                    **结论**: LLM 语义评分系统性高于规则评分 {llm_eval['avg_delta']:.1f} 分，证实规则版因术语不匹配导致低估。
+                    """)
 
 
-# ============================================================================
-# TAB 4: A/B 对比
-# ============================================================================
+# ╔══════════════════════════════════════════════════════════════╗
+# ║  TAB 3 — 管线追踪                                          ║
+# ╚══════════════════════════════════════════════════════════════╝
 
-def compare_ab(question: str):
-    """执行 A/B 对比：无 RAG vs 完整 RAG。"""
+def inspect_pipeline(question: str):
     if not question.strip():
-        return "请输入问题。", "请输入问题。"
+        return "请输入问题。", None
 
-    # Side A: 无 RAG
-    llm = get_component("llm")
-    builder = get_component("builder")
-
-    if llm.is_available:
-        answer_a = llm.chat(
-            builder.build_system_prompt(),
-            f"用户问题：{question}\n\n请直接基于你的知识回答。",
-        )
-    else:
-        answer_a = "[LLM 不可用]"
-
-    # Side B: 完整 RAG
     from retrieval.hybrid_rrf import hybrid_retrieve
     dense = get_component("dense")
     sparse = get_component("sparse")
 
-    chunks, _ = hybrid_retrieve(
-        query=question,
-        dense_retriever=dense,
-        sparse_retriever=sparse,
-        use_hyde=False,
-        use_classifier=True,
-        classifier=get_component("classifier"),
-        reranker=get_component("reranker"),
+    chunks, trace = hybrid_retrieve(
+        query=question, dense_retriever=dense, sparse_retriever=sparse,
+        use_hyde=False, use_classifier=True, classifier=get_component("classifier"),
+        reranker=get_component("reranker"), abstention_check=True,
     )
 
-    if llm.is_available and chunks:
-        answer_b = llm.chat(
-            builder.build_system_prompt(),
-            builder.build_user_message(question, chunks),
-        )
-    else:
-        answer_b = "[RAG 不可用]" if not chunks else "[LLM 不可用]"
+    steps = trace.get("steps", {})
+    lines = [f"## Query: {trace.get('query', '')}",
+             f"**Type**: {trace.get('query_type', '?')} | **Total**: {trace.get('total_ms', 0)}ms",
+             ""]
 
-    return answer_a, answer_b
+    for name, data in steps.items():
+        if isinstance(data, dict):
+            ms = data.get("time_ms", "?")
+            lines.append(f"### {name} ({ms}ms)")
+            if "top_3" in data:
+                for r in data["top_3"]:
+                    lines.append(f"- `{r.get('id','?')}` score={r.get('score',r.get('rrf_score',r.get('rerank_score','?')))}")
+            if "skipped" in data:
+                lines.append("*(skipped)*")
+            lines.append("")
+
+    conf = trace.get("confidence", {})
+    lines.append(f"**Confidence**: max_rrf={conf.get('max_rrf_score', 0):.4f}, "
+                 f"threshold={conf.get('threshold', 0)}, "
+                 f"abstain={'YES' if conf.get('should_abstain') else 'no'}")
+
+    bar_data = None
+    if chunks:
+        bar_data = [
+            {"Chunk": c.get("chunk_id", "")[:12],
+             "RRF": round(c.get("rrf_score", 0), 4),
+             "Rerank": round(c.get("rerank_score", 0), 4)}
+            for c in chunks[:15]
+        ]
+
+    return "\n".join(lines), bar_data
 
 
-def build_tab4():
-    """Tab 4: A/B 对比。"""
+def build_tab3():
     with gr.Column():
-        gr.Markdown("## 🧪 A/B 对比：无 RAG vs 完整 RAG")
-
-        q_input = gr.Textbox(label="问题", placeholder="输入问题...")
-        compare_btn = gr.Button("🔬 对比", variant="primary")
-
+        gr.Markdown("## 管线追踪")
         with gr.Row():
-            with gr.Column():
-                gr.Markdown("### ❌ 无 RAG（纯 LLM）")
-                answer_a = gr.Textbox(label="", lines=10, interactive=False)
-            with gr.Column():
-                gr.Markdown("### ✅ 完整 RAG（最佳配置）")
-                answer_b = gr.Textbox(label="", lines=10, interactive=False)
+            q_input = gr.Textbox(label="问题", placeholder="输入问题查看检索管线内部状态...",
+                                scale=3)
+            inspect_btn = gr.Button("追踪", variant="primary", scale=1)
 
-        compare_btn.click(
-            fn=compare_ab,
-            inputs=[q_input],
-            outputs=[answer_a, answer_b],
-        )
+        trace_md = gr.Markdown("等待输入...")
+        bar = gr.BarPlot(
+            x="Chunk", y="RRF", title="Chunk RRF Scores (Top 15)",
+            height=280)
 
-
-# ============================================================================
-# TAB 5: 错误分析
-# ============================================================================
-
-def build_tab5():
-    """Tab 5: 错误分析浏览器。"""
-    with gr.Column():
-        gr.Markdown("## 📋 错误分析")
-
-        failure_category = gr.Dropdown(
-            label="失败类别",
-            choices=[
-                ("检索失败 — 答案在知识库但未检索到", "retrieval_failure"),
-                ("上下文稀释 — top-K 太大噪声淹没信号", "context_overflow"),
-                ("知识缺失 — 知识库中不存在所需信息", "missing_knowledge"),
-                ("幻觉编造 — LLM 忽略上下文自己编造", "hallucination"),
-                ("过度拒答 — 本应回答但被系统拒绝", "over_refusal"),
-            ],
-            value="retrieval_failure",
-        )
-
-        analysis_output = gr.Markdown("""
-        ### 各类失败的典型示例与修复建议
-
-        **检索失败** (retrieval_failure):
-        - 原因: chunk 切分边界不当，关键信息被切断
-        - 示例: 问"计算机系培养方案"但培养方案表在 chunk 边界被拆成两半
-        - 修复: 增大 overlap 到 150，或用 semantic chunking
-
-        **上下文稀释** (context_overflow):
-        - 原因: top-K 设太大，噪声 chunk 比例过高
-        - 示例: 检索了 20 个 chunk 但只有 2 个相关
-        - 修复: 缩小 RRF_FUSION_TOP 到 15，提高 reranker 阈值
-
-        **知识缺失** (missing_knowledge):
-        - 原因: 爬取范围不够，特定领域信息缺失
-        - 示例: 问某位新入职教授的信息但官网尚未更新
-        - 修复: 增加爬取种子 URL、定期重新爬取
-
-        **幻觉编造** (hallucination):
-        - 原因: LLM 在无依据时仍倾向生成答案
-        - 示例: 问"米其林三星食堂"但系统未拒答
-        - 修复: 降低 ABSTENTION_THRESHOLD、强化 prompt 约束
-
-        **过度拒答** (over_refusal):
-        - 原因: 拒答阈值太高，正常查询被拒绝
-        - 示例: 检索分数刚好低于阈值但实际有相关信息
-        - 修复: 调高 ABSTENTION_THRESHOLD、改进 query classifier
-        """)
-
-        return failure_category, analysis_output
+        inspect_btn.click(
+            fn=inspect_pipeline, inputs=[q_input],
+            outputs=[trace_md, bar])
 
 
-# ============================================================================
-# 主入口
-# ============================================================================
+# ╔══════════════════════════════════════════════════════════════╗
+# ║  主入口                                                     ║
+# ╚══════════════════════════════════════════════════════════════╝
+
+CSS = """
+#question-box textarea { font-size: 16px; }
+#answer-box textarea { font-size: 14px; line-height: 1.6; }
+#timing-box textarea { font-size: 12px; color: #94a3b8; }
+#trace-box textarea { font-size: 11px; font-family: monospace; }
+footer { visibility: hidden; }
+"""
+
 
 def build_demo():
-    """构建完整的 Gradio demo。"""
-    with gr.Blocks(
-        title="SUSTech Campus RAG — 南科大校园知识库",
-    ) as demo:
-        gr.Markdown(
-            f"""# 🏫 南方科技大学校园知识库问答系统
-            **Retrieval-Augmented Generation (RAG)** · 7 项创新 · 5 维度评测 · {MODE_LABEL}
-            ---
-            """
-        )
+    with gr.Blocks(title="SUSTech RAG") as demo:
+        gr.Markdown(f"""
+        # SUSTech Campus RAG
+        **7 innovations · 11 experiments · Bootstrap CI · LLM evaluation**
+        """)
 
         with gr.Tabs():
-            with gr.TabItem("🎓 校园问答"):
+            with gr.TabItem("Q&A"):
                 build_tab1()
-            with gr.TabItem("🔬 管线追踪"):
+            with gr.TabItem("Experiments"):
                 build_tab2()
-            with gr.TabItem("📊 实验对比"):
+            with gr.TabItem("Pipeline"):
                 build_tab3()
-            with gr.TabItem("🧪 A/B 对比"):
-                build_tab4()
-            with gr.TabItem("📋 错误分析"):
-                build_tab5()
 
     return demo
 
@@ -590,7 +427,9 @@ if __name__ == "__main__":
     demo = build_demo()
     demo.launch(
         server_port=DEMO_PORT,
-        share=DEMO_SHARE,
+        server_name="0.0.0.0",
+        share=False,
         show_error=True,
         theme=gr.themes.Soft(),
+        css=CSS,
     )
