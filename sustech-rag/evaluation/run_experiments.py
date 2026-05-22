@@ -298,17 +298,6 @@ class ExperimentRunner:
         print(f"Running: {exp_id} — {config['name']}")
         print(f"{'='*60}")
 
-        # 使用正确的集合（按 collection 缓存避免连接泄漏）
-        collection_name = config.get("collection", "sustech_default")
-        if collection_name == "sustech_default":
-            dense = self.dense_retriever
-        elif collection_name in self._dense_retrievers:
-            dense = self._dense_retrievers[collection_name]
-        else:
-            from retrieval.dense_retriever import get_dense_retriever
-            dense = get_dense_retriever(collection_name=collection_name)
-            self._dense_retrievers[collection_name] = dense
-
         eval_results = []
         latency_stats = []
         did_abstain_list = []
@@ -335,7 +324,11 @@ class ExperimentRunner:
                 trace = {"mode": "none"}
 
             elif retrieval_mode == "dense":
-                # R1: Dense only
+                # R1: Dense only — 按需加载
+                if self._dense_retriever is None:
+                    dense = self.dense_retriever
+                else:
+                    dense = self._dense_retriever
                 chunks = dense.search(query, top_k=config.get("dense_top_k", DENSE_TOP_K))
                 trace = {"mode": "dense", "top_k": len(chunks)}
 
@@ -347,8 +340,19 @@ class ExperimentRunner:
                 trace = {"mode": "bm25", "top_k": len(chunks)}
 
             elif retrieval_mode == "hybrid":
-                # R3/R4/E1-E4/A1-A2: Full hybrid pipeline
+                # R3/R4/E1-E4/A1-A2/E5: Full hybrid pipeline
                 from retrieval.hybrid_rrf import hybrid_retrieve
+
+                # 按需加载 dense retriever（按 collection 缓存）
+                collection_name = config.get("collection", "sustech_default")
+                if collection_name == "sustech_default":
+                    dense = self.dense_retriever
+                elif collection_name in self._dense_retrievers:
+                    dense = self._dense_retrievers[collection_name]
+                else:
+                    from retrieval.dense_retriever import get_dense_retriever
+                    dense = get_dense_retriever(collection_name=collection_name)
+                    self._dense_retrievers[collection_name] = dense
 
                 # HyDE LLM function
                 hyde_fn = None
