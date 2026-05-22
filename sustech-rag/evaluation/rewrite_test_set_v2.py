@@ -14,6 +14,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from config import DATA_DIR
+from indexing.tokenizer import load_stopwords, tokenize
 
 
 OOS_GROUND_TRUTH = "知识库无信息"
@@ -48,18 +49,14 @@ def load_bm25_and_chunks():
     return bm25_model, bm25_chunks
 
 
-def tokenize(text: str) -> list[str]:
-    """Jieba 分词。"""
-    import jieba
-    return [w.strip() for w in jieba.cut(text) if len(w.strip()) >= 1]
-
-
 def main():
     if not os.getenv("DEEPSEEK_API_KEY"):
         print("ERROR: DEEPSEEK_API_KEY not set")
         sys.exit(1)
 
     from generation.llm_api import DeepSeekClient
+
+    stopwords = load_stopwords()
 
     print("Loading BM25 index and chunks...")
     bm25, chunks = load_bm25_and_chunks()
@@ -83,7 +80,7 @@ def main():
         print(f"[{i+1}/{len(test_set)}] {q_id}: {q['question'][:60]}", end=" ", flush=True)
 
         # BM25 search: get scores for all docs, pick top-5
-        tokens = tokenize(q["question"])
+        tokens = tokenize(q["question"], stopwords)
         scores = bm25.get_scores(tokens)
         # 按分数降序排列，取 top-5 索引
         top_indices = sorted(range(len(scores)), key=lambda i: scores[i], reverse=True)[:5]

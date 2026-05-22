@@ -72,8 +72,7 @@ class ExperimentRunner:
     """
 
     def __init__(self):
-        self.results_dir = RESULTS_DIR
-        self.results_dir.mkdir(parents=True, exist_ok=True)
+        RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
         # 这些组件在需要时才加载（懒加载）
         self._test_set = None
@@ -420,7 +419,7 @@ class ExperimentRunner:
         aggregate = evaluator.get_aggregate()
 
         # 保存结果
-        exp_dir = self.results_dir / exp_id
+        exp_dir = RESULTS_DIR / exp_id
         exp_dir.mkdir(parents=True, exist_ok=True)
 
         with open(exp_dir / "scores_per_question.json", "w", encoding="utf-8") as f:
@@ -497,7 +496,7 @@ class ExperimentRunner:
                 "latency_avg_ms": result.get("latency_avg_ms", 0),
             }
 
-        path = self.results_dir / "comparison_table.json"
+        path = RESULTS_DIR / "comparison_table.json"
         with open(path, "w", encoding="utf-8") as f:
             json.dump(comparison, f, ensure_ascii=False, indent=2)
         print(f"\nComparison table saved to: {path}")
