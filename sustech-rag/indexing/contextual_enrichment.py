@@ -313,7 +313,7 @@ def run_enrichment(
         print("\n" + "!" * 60)
         print("ERROR: DEEPSEEK_API_KEY environment variable not set.")
         print("Set it with: export DEEPSEEK_API_KEY='your-key-here'")
-        print("Or get a free key at: https://cloud.siliconflow.cn")
+        print("Or get a key at: https://platform.deepseek.com")
         print("!" * 60 + "\n")
         return None
 

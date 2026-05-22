@@ -1,73 +1,41 @@
 #!/bin/bash
-# ============================================================================
-# AutoDL RTX 5090 — 环境一键初始化脚本
-# ============================================================================
-# 在 AutoDL 实例上运行此脚本以完成环境配置。
-#
-# 使用方法：
-#   1. 登录 AutoDL 实例 (ssh -p XXXXX root@connect.xxxx.gpuhub.com)
-#   2. bash scripts/autodl_setup.sh
-#   3. 等待安装完成（约 5-10 分钟）
-#
-# 前置条件：
-#   - AutoDL RTX 5090 实例已启动
-#   - 实例有 conda 环境
-# ============================================================================
-
+# =============================================================================
+# AutoDL GPU Setup — 一键配置 GPU 环境
+# Usage: bash scripts/autodl_setup.sh
+# =============================================================================
 set -e
+echo "=== SUSTech RAG — AutoDL Environment Setup ==="
 
-echo "=============================================="
-echo " AutoDL RTX 5090 — Environment Setup"
-echo "=============================================="
+# Conda environment
+if ! conda env list 2>/dev/null | grep -q "rag"; then
+    echo "[1/4] Creating conda environment..."
+    conda create -n rag python=3.11 -y
+fi
+source /root/miniconda3/etc/profile.d/conda.sh 2>/dev/null || true
+conda activate rag
 
-# ── GPU 确认 ──
-echo ""
-echo "Checking GPU..."
-nvidia-smi
-echo ""
+# PyTorch with CUDA
+echo "[2/4] Installing PyTorch..."
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128 2>/dev/null || \
+pip install torch torchvision torchaudio
 
-# ── Conda 环境 ──
-echo "Creating conda environment 'rag' (Python 3.11)..."
-conda create -n rag python=3.11 -y
-source activate rag || conda activate rag
-
-# ── PyTorch (CUDA 12.8) ──
-echo ""
-echo "Installing PyTorch with CUDA 12.8 support..."
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
-
-# ── RAG 核心依赖 ──
-echo ""
-echo "Installing RAG dependencies..."
+# Core packages
+echo "[3/4] Installing Python dependencies..."
 pip install sentence-transformers chromadb rank-bm25 jieba langchain \
     gradio openai httpx scrapy beautifulsoup4 lxml tqdm rich \
-    FlagEmbedding transformers accelerate bitsandbytes \
-    langchain-text-splitters langdetect
+    transformers accelerate bitsandbytes
 
-# ── 验证安装 ──
-echo ""
-echo "=============================================="
-echo " Verifying installation..."
-echo "=============================================="
+# HuggingFace mirror for China
+export HF_ENDPOINT=https://hf-mirror.com
+grep -q "HF_ENDPOINT" ~/.bashrc 2>/dev/null || echo "export HF_ENDPOINT=https://hf-mirror.com" >> ~/.bashrc
 
-python -c "
-import torch
-print(f'PyTorch: {torch.__version__}')
-print(f'CUDA available: {torch.cuda.is_available()}')
-print(f'GPU: {torch.cuda.get_device_name(0)}')
-print(f'VRAM: {torch.cuda.get_device_properties(0).total_mem / 1024**3:.1f} GB')
-"
+# Verify
+echo "[4/4] Verifying..."
+python -c "import torch; print(f'PyTorch {torch.__version__}, CUDA: {torch.cuda.is_available()}')"
+python -c "from sentence_transformers import SentenceTransformer; print('sentence-transformers OK')"
+python -c "import chromadb; print('ChromaDB OK')"
 
-python -c "
-import sentence_transformers
-import chromadb
-print(f'sentence-transformers: OK')
-print(f'chromadb: OK')
-"
-
-echo ""
-echo "=============================================="
-echo " Setup complete! Next steps:"
-echo "  1. export DEEPSEEK_API_KEY='your-key'"
-echo "  2. bash scripts/run_all.sh --gpu"
-echo "=============================================="
+echo "=== Setup complete ==="
+echo "Next steps:"
+echo "  export DEEPSEEK_API_KEY='sk-...'"
+echo "  python evaluation/run_experiments.py --all"

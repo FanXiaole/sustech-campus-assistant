@@ -69,7 +69,7 @@ RERANK_TOP_K = 5     # Cross-Encoder 重排序后保留的最终 chunk 数
 # ============================================================================
 # 我们的模型选型与队友的差异（学术区分度）：
 # - 队友：Qwen3 系列（Embed-4B / Reranker-4B / 27B-vLLM）
-# - 我们：bge-m3 系列（MTEB 中文榜单 leader）+ Qwen2.5-7B（更轻量，本地可跑）
+# - 我们：bge-m3 系列（MTEB 中文榜单 leader）+ DeepSeek-V4 API（中文能力强）
 
 # Embedding 模型：将文本转为向量表示
 EMBED_MODEL = "BAAI/bge-m3"
