@@ -136,34 +136,32 @@ TEMPORAL_KEYWORDS = [
 ]
 
 
+# 其他学校列表（防止分类器把"港科大图书馆"判为 SUSTech）
+OTHER_SCHOOLS = [
+    "清华", "北大", "浙大", "复旦", "上海交大", "中科大",
+    "港大", "港中文", "港科大", "麻省", "斯坦福", "哈佛",
+    "深大", "哈工大", "中山大学", "武汉大学", "南京大学",
+]
+
+
 def classify_by_rules(query: str) -> tuple[str, float]:
     """
     基于关键词规则的快速查询分类。
 
     分类逻辑（按优先级顺序）：
     1. 先检查是否 OUT_OF_SCOPE（范围外）
-    2. 再检查 TEMPORAL（时间敏感）—— 因为时间类查询可能是其他类型的子集
+    2. 再检查 TEMPORAL（时间敏感）
     3. 检查 PROCEDURAL（流程类）
     4. 检查 COMPARATIVE（对比类）
     5. 最后区分 FACTUAL_SIMPLE vs FACTUAL_COMPLEX
 
-    参数：
-        query: 用户查询文本
-
-    返回：
-        (查询类型, 置信度) — 规则分类器的置信度固定为 0.85
+    返回：(查询类型, 置信度)
     """
     query_lower = query.lower().strip()
 
     # ── 第 1 层：范围检测 ──
-    # 先定义其他学校列表（防止分类器把"港科大图书馆"判为 SUSTech）
-    other_schools = [
-        "清华", "北大", "浙大", "复旦", "上海交大", "中科大",
-        "港大", "港中文", "港科大", "麻省", "斯坦福", "哈佛",
-        "深大", "哈工大", "中山大学", "武汉大学", "南京大学",
-    ]
     # 优先检查是否在问其他学校（无论是否含 SUSTech 关键词都判为 OOS）
-    asks_other_school = any(school in query for school in other_schools)
+    asks_other_school = any(school in query for school in OTHER_SCHOOLS)
     if asks_other_school:
         return (QueryType.OUT_OF_SCOPE, 0.90)
 
@@ -299,6 +297,7 @@ class QueryClassifier:
         self.llm_fn = llm_fn
         self.cache_enabled = cache_enabled
         self._cache: dict[str, tuple[str, float]] = {}
+        self._max_cache_size = 500  # 防止无界增长
 
         if mode == "llm" and llm_fn is None:
             print("[QueryClassifier] Warning: LLM mode but no llm_fn provided, "
@@ -328,8 +327,10 @@ class QueryClassifier:
 
         elapsed_ms = int((time.time() - t_start) * 1000)
 
-        # 缓存结果
+        # 缓存结果（LRU：超过 max_size 时清空旧缓存）
         if self.cache_enabled:
+            if len(self._cache) >= self._max_cache_size:
+                self._cache.clear()
             self._cache[query] = (q_type, confidence)
 
         return (q_type, confidence)

@@ -16,6 +16,10 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from config import DATA_DIR
 
 
+OOS_GROUND_TRUTH = "知识库无信息"
+OOS_NOTE_BM25 = "BM25 无结果"
+OOS_NOTE_LLM = "LLM 判定知识库无答案"
+
 REWRITE_PROMPT = """你是校园知识库审核员。基于以下信息修正一道测试题的参考答案。
 
 题目：{question}
@@ -72,7 +76,7 @@ def main():
         q_id = q["q_id"]
 
         if q.get("expected_abstain"):
-            new_test_set.append({**q, "verified": True, "verification_note": "OOS"})
+            new_test_set.append({**q, "verified": True, "verification_note": "OOS (original)"})
             stats["oos"] += 1
             continue
 
@@ -86,9 +90,9 @@ def main():
         results = [chunks[idx] for idx in top_indices if scores[idx] > 0]
 
         if not results:
-            new_q = {**q, "ground_truth": "知识库无信息", "key_facts": [],
+            new_q = {**q, "ground_truth": OOS_GROUND_TRUTH, "key_facts": [],
                      "expected_abstain": True, "verified": True,
-                     "verification_note": "BM25 无结果"}
+                     "verification_note": OOS_NOTE_BM25}
             new_test_set.append(new_q)
             stats["not_answerable"] += 1
             print("-> no BM25 results -> OOS")
@@ -96,7 +100,7 @@ def main():
 
         # Build context for LLM
         ctx = ""
-        for j, c in enumerate(results[:5], 1):
+        for j, c in enumerate(results, 1):
             txt = c.get("raw_text", c.get("text", ""))[:350]
             src = c.get("source_family", "unknown")
             ctx += f"[{j}] src:{src}\n{txt}\n\n"
@@ -111,12 +115,9 @@ def main():
         try:
             resp = llm.chat("你是事实审核员。只输出JSON，不要加任何其他文字。",
                           prompt, temperature=0.1, max_tokens=400)
-            resp = resp.strip()
-            if resp.startswith("```"):
-                resp = resp.split("```")[1]
-                if resp.startswith("json"):
-                    resp = resp[4:]
-            result = json.loads(resp.strip())
+            result = llm.chat_json(
+                "你是事实审核员。只输出JSON，不要加任何其他文字。",
+                prompt, temperature=0.1, max_tokens=400)
 
             new_q = {**q, "verified": True}
             if result.get("answerable", True):
@@ -126,10 +127,10 @@ def main():
                 stats["answerable"] += 1
                 print(f"-> answerable | kf={new_q['key_facts']}")
             else:
-                new_q["ground_truth"] = "知识库无信息"
+                new_q["ground_truth"] = OOS_GROUND_TRUTH
                 new_q["key_facts"] = []
                 new_q["expected_abstain"] = True
-                new_q["verification_note"] = result.get("note", "")
+                new_q["verification_note"] = result.get("note", OOS_NOTE_LLM)
                 stats["not_answerable"] += 1
                 print("-> NOT answerable")
 
