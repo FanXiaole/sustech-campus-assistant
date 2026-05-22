@@ -27,6 +27,7 @@ import sys
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from config import (
+    ABSTAIN_MESSAGE,
     DATA_DIR,
     DEFAULT_PERSONA,
     DEMO_MODE,
@@ -102,8 +103,11 @@ def get_component(name: str):
             from retrieval.authority_scorer import get_authority_scorer
             _components[name] = get_authority_scorer()
         elif name == "llm":
-            from generation.llm_api import get_client
-            _components[name] = get_client()
+            from generation.llm_api import DeepSeekClient
+            from generation.llm_local import OllamaClient, LLMFallback
+            api_client = DeepSeekClient()
+            local_client = OllamaClient()
+            _components[name] = LLMFallback(api_client, local_client)
         elif name == "builder":
             from generation.prompt_builder import PromptBuilder
             _components[name] = PromptBuilder(persona=DEFAULT_PERSONA)
@@ -196,8 +200,7 @@ def query_rag(
 
     # ── 拒答检测 ──
     if len(chunks) == 0:
-        answer = ("⚠️ 根据现有校园资料，未找到与您问题相关的信息。\n\n"
-                  "建议直接访问 sustech.edu.cn 或联系相关部门。")
+        answer = f"⚠️ {ABSTAIN_MESSAGE}"
         sources = "【系统已触发拒答保护——检索置信度过低】"
         latency = f"⏱️ {int((time.time() - t_start) * 1000)}ms"
         return answer, sources, latency
@@ -208,8 +211,10 @@ def query_rag(
 
     if llm.is_available:
         answer = llm.chat(system_prompt, user_message)
+        if llm.used_backend == "local":
+            answer = "[注意：当前使用本地 Ollama 模型，回答质量可能低于 DeepSeek API]\n\n" + answer
     else:
-        answer = ("[LLM API 不可用] 请设置 DEEPSEEK_API_KEY 环境变量。\n\n"
+        answer = ("[LLM API 不可用] 请设置 DEEPSEEK_API_KEY 环境变量或启动 Ollama。\n\n"
                   f"检索到的资料（共 {len(chunks)} 条）：\n" +
                   "\n".join(f"- {c.get('raw_text', c.get('text', ''))[:200]}..."
                            for c in chunks[:3]))

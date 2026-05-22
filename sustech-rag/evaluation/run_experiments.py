@@ -3,7 +3,7 @@
 SUSTech Experiment Runner — 全实验矩阵执行器
 =============================================================================
 ⚠️ PARTIAL GPU REQUIRED — R3, R4, E1, E4 等配置需要 GPU。
-   运行前请确保 AutoDL RTX 5090 实例已启动。
+   运行前请确保 AutoDL RTX 6000 Blackwell 实例已启动。
 
 实验矩阵（10 个配置）：
   Baseline:
@@ -50,6 +50,7 @@ import sys
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from config import (
+    ABSTAIN_MESSAGE,
     CHUNK_DIR,
     DATA_DIR,
     RESULTS_DIR,
@@ -74,6 +75,7 @@ class ExperimentRunner:
         # 这些组件在需要时才加载（懒加载）
         self._test_set = None
         self._dense_retriever = None
+        self._dense_retrievers: dict[str, object] = {}  # 按 collection 缓存
         self._sparse_retriever = None
         self._reranker = None
         self._authority_scorer = None
@@ -278,13 +280,16 @@ class ExperimentRunner:
         print(f"Running: {exp_id} — {config['name']}")
         print(f"{'='*60}")
 
-        # 使用正确的集合（懒加载属性对默认集合做了缓存）
+        # 使用正确的集合（按 collection 缓存避免连接泄漏）
         collection_name = config.get("collection", "sustech_default")
         if collection_name == "sustech_default":
-            dense = self.dense_retriever  # 使用属性缓存
+            dense = self.dense_retriever
+        elif collection_name in self._dense_retrievers:
+            dense = self._dense_retrievers[collection_name]
         else:
             from retrieval.dense_retriever import get_dense_retriever
             dense = get_dense_retriever(collection_name=collection_name)
+            self._dense_retrievers[collection_name] = dense
 
         eval_results = []
         latency_stats = []
@@ -356,8 +361,7 @@ class ExperimentRunner:
             t_gen_start = time.time()
 
             if did_abstain:
-                answer = ("根据现有校园资料，未找到与您问题相关的信息。"
-                         "建议直接访问 sustech.edu.cn 或联系相关部门。")
+                answer = ABSTAIN_MESSAGE
             else:
                 system_prompt = self.prompt_builder.build_system_prompt()
                 user_message = self.prompt_builder.build_user_message(query, chunks)
@@ -408,6 +412,12 @@ class ExperimentRunner:
 
         with open(exp_dir / "latency_stats.json", "w", encoding="utf-8") as f:
             json.dump(latency_stats, f, ensure_ascii=False, indent=2)
+
+        # ── 错误分析 ──
+        from evaluation.error_analyzer import ErrorAnalyzer
+        analyzer = ErrorAnalyzer()
+        error_report = analyzer.analyze(eval_results, did_abstain_list)
+        analyzer.save_report(error_report, exp_dir / "error_analysis.json")
 
         print(f"\n  [{exp_id}] Results:")
         print(f"    Total:   {aggregate['total_score']['mean']:.2f}/10")

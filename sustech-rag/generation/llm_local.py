@@ -7,7 +7,7 @@ SUSTech Local LLM — Ollama 本地推理（Fallback）
 为什么用 Ollama？
   - 一键安装，自动管理模型下载和更新
   - 兼容 OpenAI API 格式（通过 Ollama 内置的 HTTP server）
-  - Qwen2.5:7B 在 RTX 5090 上运行流畅（~16GB VRAM）
+  - Qwen2.5:7B 在 RTX 6000 Blackwell 上运行流畅（~16GB VRAM）
   - 离线可用（不需要网络）
 
 Ollama 的安装和启动：
@@ -179,6 +179,14 @@ class LLMFallback:
         self.api_client = api_client
         self.local_client = local_client or OllamaClient()
         self.used_backend = None  # 记录上次使用的后端（供 debug）
+
+    @property
+    def is_available(self) -> bool:
+        """至少有一个后端可用。"""
+        return (
+            (self.api_client is not None and self.api_client.is_available)
+            or (self.local_client is not None and self.local_client.is_available)
+        )
 
     def chat(
         self,
