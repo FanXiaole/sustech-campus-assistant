@@ -20,7 +20,19 @@
       "Bash(exit 0)",
       "Bash(awk '{print \"CPU:\"$3\"% TIME:\"$10}')",
       "Bash(python3 -c ' *)",
-      "Bash(echo \"SSH tunnel started \\(PID: $!\\)\")"
+      "Bash(echo \"SSH tunnel started \\(PID: $!\\)\")",
+      "Bash(git stash *)",
+      "Bash(git reflog *)",
+      "Bash(git gc *)",
+      "Bash(git filter-branch *)",
+      "Bash(git clean *)",
+      "Bash(git ls-remote *)",
+      "Bash(tar tzf *)",
+      "Bash(grep -iE \"sk-[a-z0-9]{20,}|api_key.*[a-z0-9]{20,}\")",
+      "Bash(rm -f sustech-rag.tar.gz)",
+      "Bash(git commit *)",
+      "Bash(python3 -m py_compile evaluation/evaluator.py tests/test_smoke.py)",
+      "Bash(python3 tests/test_smoke.py)"
     ]
   }
 }

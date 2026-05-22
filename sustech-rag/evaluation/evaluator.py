@@ -249,6 +249,53 @@ class RAGEvaluator:
                     return (1, f"回答但过度保守 ({hedge_count} 处迟疑)")
                 return (2, "正常回答，无不当拒答")
 
+    # ─── LLM 辅助 Grounding (替代方案) ──────────────────────
+
+    def score_grounding_llm(
+        self, answer: str, chunks: list[dict], llm_fn=None
+    ) -> tuple[int, str]:
+        """
+        使用 LLM 进行更精确的 grounding 检查。
+
+        相比 2-gram 规则版，LLM 版能理解语义改写，不会因词汇差异而误判。
+        需要额外 API 调用。仅在 `llm_fn` 可用时启用。
+        """
+        if not chunks or llm_fn is None:
+            return self.score_grounding(answer, chunks)
+
+        chunks_text = ""
+        for i, c in enumerate(chunks, 1):
+            txt = c.get("raw_text", c.get("text", ""))
+            if txt.startswith("[来源:") or txt.startswith("[背景:"):
+                while txt.startswith("[") and "] " in txt[:30]:
+                    txt = txt[txt.find("] ") + 2:]
+            chunks_text += f"[{i}] {txt[:300]}\n"
+
+        prompt = f"""请检查以下回答中的每个关键论断是否在参考资料中有明确依据。
+
+回答：{answer}
+
+参考资料：
+{chunks_text}
+
+请回复JSON：
+{{"grounded": true/false, "unsupported": ["无依据的论断"], "score": 0/1/2}}
+
+评分标准：2=全部有据, 1=部分有据, 0=无依据。只输出JSON。"""
+
+        try:
+            response = llm_fn("你是事实核查员。只输出JSON。", prompt)
+            response = response.strip()
+            if response.startswith("```"):
+                response = response.split("```")[1]
+                if response.startswith("json"):
+                    response = response[4:]
+            result = json.loads(response.strip())
+            score = int(result.get("score", 1))
+            return (score, result.get("unsupported", []))
+        except Exception:
+            return self.score_grounding(answer, chunks)  # fallback
+
     # ─── 综合评分 ─────────────────────────────────────────────
 
     def evaluate(
@@ -357,6 +404,38 @@ class RAGEvaluator:
             "avg_keyword_hit_rate": round(
                 sum(s["metrics"]["keyword_hit_rate"] for s in self.scores_log) / n, 3
             ),
+        }
+
+    # ─── 统计显著性 ──────────────────────────────────────────
+
+    @staticmethod
+    def bootstrap_compare(scores_a: list[float], scores_b: list[float], n_bootstrap: int = 10000) -> dict:
+        """
+        Bootstrap 检验两组实验分数的差异是否显著。
+
+        返回 p-value 和 95% CI。p < 0.05 表示差异显著。
+        """
+        import random
+        random.seed(42)
+
+        diff = [a - b for a, b in zip(scores_a, scores_b)]
+        obs_mean = sum(diff) / len(diff)
+
+        bootstrap_means = []
+        for _ in range(n_bootstrap):
+            sample = [random.choice(diff) for _ in range(len(diff))]
+            bootstrap_means.append(sum(sample) / len(sample))
+
+        bootstrap_means.sort()
+        ci_low = bootstrap_means[int(n_bootstrap * 0.025)]
+        ci_high = bootstrap_means[int(n_bootstrap * 0.975)]
+        p_value = sum(1 for m in bootstrap_means if abs(m) >= abs(obs_mean)) / n_bootstrap
+
+        return {
+            "observed_diff": round(obs_mean, 3),
+            "ci_95": [round(ci_low, 3), round(ci_high, 3)],
+            "p_value": round(p_value, 3),
+            "significant": p_value < 0.05,
         }
 
     # ─── 辅助方法 ─────────────────────────────────────────────
