@@ -374,12 +374,17 @@ def build_tab2():
 # ============================================================================
 
 def load_experiment_data():
-    """加载对比表数据。"""
-    path = RESULTS_DIR / "comparison_table.json"
-    if path.exists():
-        with open(path) as f:
-            return json.load(f)
-    return {}
+    """加载对比表数据和 bootstrap CI 结果。"""
+    result = {}
+    comp_path = RESULTS_DIR / "comparison_table.json"
+    if comp_path.exists():
+        with open(comp_path) as f:
+            result["comparison"] = json.load(f)
+    ci_path = RESULTS_DIR / "bootstrap_ci.json"
+    if ci_path.exists():
+        with open(ci_path) as f:
+            result["bootstrap"] = json.load(f)
+    return result
 
 
 def build_tab3():
@@ -390,42 +395,41 @@ def build_tab3():
         data = load_experiment_data()
         if not data:
             gr.Markdown("*暂无实验数据。运行 `python evaluation/run_experiments.py` 后此处将显示结果。*")
+            return
 
-            # 展示示例数据格式
-            gr.Markdown("""
-            ### 预期展示内容
+        comp = data.get("comparison", {})
+        boot = data.get("bootstrap", {})
 
-            **雷达图**: R0 vs R3 vs R4 vs E4 五维度对比
-            - Correctness / Grounding / Completeness / Traceability / Abstention
-
-            **柱状图**: 各实验按难度层级（easy/medium/hard）的正确率
-
-            **延迟对比表**:
-            | 配置 | 总均分 | 检索延迟 | 生成延迟 |
-            |------|--------|---------|---------|
-            | R0 (no RAG) | x.x | 0ms | xxxms |
-            | R3 (hybrid RRF) | x.x | xxxms | xxxms |
-            | R4 (+ reranker) | x.x | xxxms | xxxms |
-            | E4 (full innovation) | x.x | xxxms | xxxms |
-
-            **3 个关键发现** (硬编码):
-            1. HyDE 在比较类问题上提升最显著（+0.5分）
-            2. Reranker 对 easy 问题提升不大，但对 hard 问题提升20%
-            3. 拒答机制防止了 5/5 个范围外问题的幻觉
-            """)
-        else:
-            # 真实数据展示
-            lines = ["| Experiment | Total Score | Dimensions | Latency |",
-                    "|-----------|------------|------------|---------|"]
-            for exp_id, exp_data in sorted(data.items()):
+        if comp:
+            gr.Markdown("### 实验矩阵总览")
+            lines = ["| Experiment | Total Score | Latency |",
+                    "|-----------|------------|---------|"]
+            exp_names = {
+                "R0": "No RAG", "R1": "Dense Only", "R2": "BM25 Only",
+                "R3": "Hybrid RRF", "R4": "Hybrid+Reranker",
+                "E1": "+HyDE", "E2": "+Enriched", "E3": "+Classifier", "E4": "Full Stack",
+                "A1": "Small Chunks", "A2": "Large Chunks",
+            }
+            for exp_id, exp_data in sorted(comp.items()):
+                name = exp_names.get(exp_id, exp_id)
                 score = exp_data.get("total_score", 0)
                 latency = exp_data.get("latency_avg_ms", 0)
-                dims = exp_data.get("dimensions", {})
-                dim_str = ", ".join(
-                    f"{k}: {v.get('mean', 0):.1f}" for k, v in dims.items()
-                )
-                lines.append(f"| {exp_id} | {score:.2f}/10 | {dim_str} | {latency:.0f}ms |")
+                lines.append(f"| **{exp_id}** {name} | {score:.2f}/10 | {latency:.0f}ms |")
             gr.Markdown("\n".join(lines))
+
+        if boot:
+            gr.Markdown("### Bootstrap 显著性检验")
+            boot_lines = ["| 对比 | 观测差异 | 95% CI | p-value | 显著？ |",
+                         "|------|---------|--------|---------|--------|"]
+            for key, ci in sorted(boot.items()):
+                label = ci.get("label", key)
+                diff = ci.get("observed_diff", 0)
+                ci_low, ci_high = ci.get("ci_95", [0, 0])
+                p_val = ci.get("p_value", 1)
+                sig = "✅" if ci.get("significant") else "—"
+                boot_lines.append(f"| {label} | {diff:+.3f} | [{ci_low:.2f}, {ci_high:.2f}] | {p_val:.3f} | {sig} |")
+            gr.Markdown("\n".join(boot_lines))
+            gr.Markdown("*唯一显著的发现：RAG vs No RAG (p=0.000)。所有创新点之间的差异在 50 题测试集上均未达到统计显著性。*")
 
 
 # ============================================================================

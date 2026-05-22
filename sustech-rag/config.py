@@ -186,5 +186,5 @@ DEFAULT_PERSONA = "default"
 # 第九部分：Demo 系统参数
 # ============================================================================
 DEMO_MODE = "live"  # "live" = 实时计算 / "cached" = 使用预缓存结果
-DEMO_SHARE = True   # 是否生成公网分享链接（Gradio share=True）
+DEMO_SHARE = False  # 是否生成公网分享链接（Gradio share=True）。默认关闭，避免公网暴露
 DEMO_PORT = 7860    # Gradio 默认端口

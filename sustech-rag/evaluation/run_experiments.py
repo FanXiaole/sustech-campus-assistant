@@ -144,8 +144,11 @@ class ExperimentRunner:
     @property
     def llm_client(self):
         if self._llm_client is None:
-            from generation.llm_api import get_client
-            self._llm_client = get_client()
+            from generation.llm_api import DeepSeekClient
+            from generation.llm_local import OllamaClient, LLMFallback
+            api = DeepSeekClient()
+            local = OllamaClient()
+            self._llm_client = LLMFallback(api, local)
         return self._llm_client
 
     # ─── 实验配置定义 ────────────────────────────────────
