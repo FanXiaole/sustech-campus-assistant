@@ -88,15 +88,19 @@ class ExperimentRunner:
     @property
     def test_set(self):
         if self._test_set is None:
+            # 优先使用 v2 验证版测试集
+            test_path_v2 = DATA_DIR / "test_set_v2.json"
             test_path = DATA_DIR / "test_set.json"
-            if not test_path.exists():
+            use_path = test_path_v2 if test_path_v2.exists() else test_path
+            if not use_path.exists():
                 raise FileNotFoundError(
-                    f"Test set not found at {test_path}. "
+                    f"Test set not found. "
                     f"Run evaluation/test_set_builder.py first."
                 )
-            with open(test_path, "r", encoding="utf-8") as f:
+            with open(use_path, "r", encoding="utf-8") as f:
                 self._test_set = json.load(f)
-            print(f"[Runner] Loaded {len(self._test_set)} test questions")
+            label = "v2 (verified)" if use_path == test_path_v2 else "v1 (original)"
+            print(f"[Runner] Loaded {len(self._test_set)} test questions ({label})")
         return self._test_set
 
     @property
@@ -241,6 +245,17 @@ class ExperimentRunner:
                 "reranker": True,
                 "hyde": True,
                 "classifier": True,
+                "authority": True,
+                "collection": "sustech_default",
+            },
+
+            # ── Authority standalone ablation ──
+            "E5": {
+                "name": "R4 + Authority Scorer",
+                "retrieval": "hybrid",
+                "reranker": True,
+                "hyde": False,
+                "classifier": False,
                 "authority": True,
                 "collection": "sustech_default",
             },

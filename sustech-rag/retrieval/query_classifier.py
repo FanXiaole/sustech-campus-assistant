@@ -62,27 +62,28 @@ class QueryType:
 
 # 各类型对应的最优检索权重配置
 # (dense_weight, sparse_weight)
-# 为什么这样分配权重？—— 见每种类型下方的注释
+# 经验教训：第一版权重差异过大（0.5 vs 1.5），导致分类错误时伤害显著
+# v2: 缩小权重范围（0.8-1.2），即使分类错误也不会严重偏离默认等权重
 STRATEGY_WEIGHTS = {
-    QueryType.FACTUAL_SIMPLE: (0.5, 1.5),
-    #   BM25 更重的权重 → 关键词精确匹配更重要
+    QueryType.FACTUAL_SIMPLE: (0.8, 1.2),
+    #   BM25 稍重 → 关键词精确匹配有帮助
     #   例如："校历" → "2025-2026学年校历" 这种精确词匹配 BM25 做得最好
 
-    QueryType.FACTUAL_COMPLEX: (1.5, 0.5),
-    #   Dense 更重的权重 → 语义理解更重要
+    QueryType.FACTUAL_COMPLEX: (1.2, 0.8),
+    #   Dense 稍重 → 语义理解更重要，但不过度偏离等权重
     #   例如："计算机系教师的科研方向" →
     #   文档中出现的是"研究方向"、"研究领域"等语义变体
 
-    QueryType.COMPARATIVE: (1.5, 0.5),
-    #   Dense 更重 → 对比类查询涉及理解两个概念的语义关系
+    QueryType.COMPARATIVE: (1.2, 0.8),
+    #   Dense 稍重 → 对比类查询涉及理解两个概念的语义关系
     #   例如："理工学院和医学院的区别" → 不太可能有文档直接写"区别"
 
-    QueryType.PROCEDURAL: (1.2, 0.8),
-    #   Dense 稍重 → 流程类查询需要用不同表达方式描述
-    #   例如："如何办理借书证" → "借书证办理流程"、"图书馆借阅权限申请"
+    QueryType.PROCEDURAL: (1.0, 1.0),
+    #   等权重 → 流程类查询既有语义变体也有关键词精确匹配
+    #   例如："如何办理借书证" → "借书证"可精确匹配，"办理流程"需语义理解
 
-    QueryType.TEMPORAL: (0.5, 1.5),
-    #   BM25 更重 → 时间敏感信息通常是关键词匹配
+    QueryType.TEMPORAL: (0.8, 1.2),
+    #   BM25 稍重 → 时间敏感信息通常是关键词匹配
     #   例如："2026年招生政策" → 年份是精确匹配的信号
 
     QueryType.OUT_OF_SCOPE: (0.0, 0.0),

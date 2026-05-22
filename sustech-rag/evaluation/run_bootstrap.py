@@ -52,6 +52,7 @@ def main():
         ("E2", "R3", "Enrichment vs Hybrid RRF"),
         ("E3", "R3", "Classifier vs Hybrid RRF"),
         ("E4", "R4", "Full Innovation vs Best"),
+        ("E5", "R4", "Authority Scorer vs R4"),
         ("A1", "R4", "Small Chunks vs Default"),
         ("A2", "R4", "Large Chunks vs Default"),
     ]
