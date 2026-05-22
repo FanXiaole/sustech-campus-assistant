@@ -27,8 +27,7 @@ HyDE — Hypothetical Document Embedding ★ 创新点 #1
     → 假设文档和真实文档都在"陈述句空间"→ 距离更近 → 检索更准
 
 延迟开销：
-  每次查询多一次 LLM 调用（~0.5-1s），但如果用 SiliconFlow API 的免费
-  Qwen2.5-7B，几乎没有成本。
+  每次查询多一次 LLM 调用（~0.5-1s），但需要额外一次 LLM 调用（~0.5-1s）。
 
 使用方法：
   from retrieval.hyde import hyde_retrieve

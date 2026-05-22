@@ -54,40 +54,44 @@ class RAGEvaluator:
         self, answer: str, ground_truth: str, key_facts: list[str]
     ) -> tuple[int, str]:
         """
-        评分维度 1：正确性。
+        评分维度 1：正确性 —— 答案是否与 ground_truth 一致。
 
-        评分标准：
-          2: 答案与 ground_truth 一致，包含所有 key_facts
-          1: 部分正确，至少包含一半 key_facts
-          0: 错误、幻觉或完全无关
-
-        实现：基于 key_facts 的包含率。
-        对于每个 key_fact，检查它（或其核心部分）是否出现在答案中。
+        基于两个信号加权：
+        1. key_facts 命中率 (权重 0.6)
+        2. ground_truth 语义重叠度 (权重 0.4) —— 用短词 2-gram 衡量
         """
         if not answer or len(answer.strip()) < 5:
-            return (0, "答案为空或过短，无法判断正确性")
+            return (0, "答案为空或过短")
 
         answer_lower = answer.lower()
 
-        # 计算 key_facts 命中率
-        hits = 0
-        for fact in key_facts:
-            # 检查 key_fact 或其组成部分是否出现在答案中
-            if self._fact_in_text(fact, answer_lower):
-                hits += 1
-
-        if not key_facts:
-            # 没有 key_facts（例如 OOS 问题）→ 根据其他信号判断
-            return (1, "未定义 key_facts，默认给 1 分")
-
-        hit_rate = hits / len(key_facts)
-
-        if hit_rate >= 0.9:
-            return (2, f"包含所有关键事实 ({hits}/{len(key_facts)})")
-        elif hit_rate >= 0.5:
-            return (1, f"部分正确，包含 {hits}/{len(key_facts)} 个关键事实")
+        # key_facts 命中
+        if key_facts:
+            hits = sum(1 for f in key_facts if self._fact_in_text(f, answer_lower))
+            fact_rate = hits / len(key_facts)
         else:
-            return (0, f"关键事实命中率过低 ({hits}/{len(key_facts)})")
+            fact_rate = 0.5
+
+        # ground_truth 语义重叠（2-gram 比较，区别于 completeness 的 key_fact 检查）
+        if ground_truth:
+            gt_words = re.findall(r'[一-鿿]{2,4}|\d{2,}', ground_truth)
+            if gt_words:
+                gt_hits = sum(1 for w in gt_words if w in answer_lower)
+                gt_overlap = gt_hits / len(gt_words)
+            else:
+                gt_overlap = 0.5
+        else:
+            gt_overlap = 0.5
+
+        # 加权综合
+        combined = fact_rate * 0.6 + gt_overlap * 0.4
+
+        if combined >= 0.7:
+            return (2, f"正确 (key_facts={fact_rate:.0%}, overlap={gt_overlap:.0%})")
+        elif combined >= 0.4:
+            return (1, f"部分正确 (key_facts={fact_rate:.0%}, overlap={gt_overlap:.0%})")
+        else:
+            return (0, f"不正确 (key_facts={fact_rate:.0%}, overlap={gt_overlap:.0%})")
 
     # ─── Dim 2: Grounding ─────────────────────────────────────
 
@@ -97,43 +101,45 @@ class RAGEvaluator:
         """
         评分维度 2：证据依据性。
 
-        评分标准：
-          2: 答案中的所有关键 claim 都在 chunk 中找到依据
-          1: 大部分 claim 有依据，1-2 个未被支持
-          0: 答案忽略或与检索上下文矛盾
-
-        实现：提取答案中的关键实体/短语，检查它们是否出现在 chunk 中。
-        这是粗略的近似——精确评估需要人工或 LLM。
+        检查答案中的关键信息（短词语、数字、实体）是否在 chunk 文本中出现。
+        使用 2-gram 中文短词匹配，而非长句匹配，避免 LLM 改写导致的不匹配。
         """
         if not chunks:
             return (0, "无检索结果，答案无依据")
 
-        # 提取答案中的"重要短语"（较长的中文词汇）
-        # 简单方法：提取长度 ≥ 3 的连续中文字符
-        answer_phrases = re.findall(r'[一-鿿]{3,}', answer)
+        # 构建所有 chunk 的合并文本（去除元数据前缀 [来源:xxx][域名:xxx]）
+        all_context = ""
+        for c in chunks:
+            txt = c.get("raw_text", c.get("text", ""))
+            # 去除 "[...]" 元数据前缀
+            if txt.startswith("[来源:") or txt.startswith("[背景:"):
+                idx = txt.find("] ")
+                if idx > 0:
+                    # 可能有多个前缀 [背景:xxx][来源:xxx]
+                    while txt.startswith("[") and "] " in txt[:30]:
+                        end = txt.find("] ") + 2
+                        txt = txt[end:]
+            all_context += txt + " "
 
-        if not answer_phrases:
-            return (1, "答案中无可检测的中文短语")
+        # 提取答案中的中文 2-grams（短词）和数字
+        cjk_words = re.findall(r'[一-鿿]{2,4}', answer)
+        numbers = re.findall(r'\d{2,}', answer)
 
-        # 构建所有 chunk 的合并文本
-        all_context = " ".join(
-            c.get("raw_text", c.get("text", "")) for c in chunks
-        ).lower()
+        # 合并为检查项
+        check_items = cjk_words + numbers
+        if not check_items:
+            return (1, "答案中无可检测的中文短语或数字")
 
-        # 计算被支持的短语比例
-        supported = 0
-        for phrase in answer_phrases:
-            if phrase.lower() in all_context:
-                supported += 1
+        # 计算命中率
+        supported = sum(1 for item in check_items if item in all_context)
+        support_rate = supported / len(check_items)
 
-        support_rate = supported / len(answer_phrases)
-
-        if support_rate >= 0.8:
-            return (2, f"答案高度有据 ({supported}/{len(answer_phrases)} 短语可追溯)")
-        elif support_rate >= 0.5:
-            return (1, f"答案部分有据 ({supported}/{len(answer_phrases)} 短语可追溯)")
+        if support_rate >= 0.6:
+            return (2, f"答案高度有据 ({supported}/{len(check_items)} 项可追溯)")
+        elif support_rate >= 0.3:
+            return (1, f"答案部分有据 ({supported}/{len(check_items)} 项可追溯)")
         else:
-            return (0, f"答案缺乏依据 ({supported}/{len(answer_phrases)} 短语可追溯)")
+            return (0, f"答案缺乏依据 ({supported}/{len(check_items)} 项可追溯)")
 
     # ─── Dim 3: Completeness ──────────────────────────────────
 

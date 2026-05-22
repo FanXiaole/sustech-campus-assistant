@@ -20,7 +20,14 @@
       "Bash(python3 -m py_compile indexing/scraper.py indexing/cleaner.py indexing/chunker.py indexing/bm25_builder.py)",
       "Bash(ssh -p 46097 -o StrictHostKeyChecking=no -o ConnectTimeout=10 root@connect.bjb1.seetacloud.com \"nvidia-smi && echo '---' && ls /root/ && echo '---' && which conda && echo '---' && df -h /root/ | tail -1\")",
       "Bash(sshpass -p '8RbjTojdHIeK' ssh -p 46097 -o StrictHostKeyChecking=no root@connect.bjb1.seetacloud.com \"nvidia-smi && echo '---DISK---' && df -h /root && echo '---CONDA---' && which conda && conda --version\")",
-      "Bash(sshpass -p '8RbjTojdHIeK' ssh -p 46097 -o StrictHostKeyChecking=no root@connect.bjb1.seetacloud.com \"ls /root/miniconda3/bin/conda 2>/dev/null || ls /opt/conda/bin/conda 2>/dev/null || which conda 2>/dev/null || echo 'conda not in PATH'; echo '---'; cat /etc/os-release 2>/dev/null | head -3; echo '---'; python3 --version 2>/dev/null\")"
+      "Bash(sshpass -p '8RbjTojdHIeK' ssh -p 46097 -o StrictHostKeyChecking=no root@connect.bjb1.seetacloud.com \"ls /root/miniconda3/bin/conda 2>/dev/null || ls /opt/conda/bin/conda 2>/dev/null || which conda 2>/dev/null || echo 'conda not in PATH'; echo '---'; cat /etc/os-release 2>/dev/null | head -3; echo '---'; python3 --version 2>/dev/null\")",
+      "Bash(sshpass -p '8RbjTojdHIeK' ssh -p 46097 -o StrictHostKeyChecking=no root@connect.bjb1.seetacloud.com \"/root/miniconda3/bin/conda create -n rag python=3.11 -y 2>&1 | tail -5\")",
+      "Bash(sshpass -p '8RbjTojdHIeK' ssh -p 46097 -o StrictHostKeyChecking=no root@connect.bjb1.seetacloud.com \"/root/miniconda3/envs/rag/bin/pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128 2>&1 | tail -5\")",
+      "Bash(tar czf *)",
+      "Bash(sshpass -p '8RbjTojdHIeK' scp -P 46097 -o StrictHostKeyChecking=no sustech-rag.tar.gz root@connect.bjb1.seetacloud.com:/root/)",
+      "Bash(sshpass -p '8RbjTojdHIeK' ssh -p 46097 -o StrictHostKeyChecking=no root@connect.bjb1.seetacloud.com \"cd /root && tar xzf sustech-rag.tar.gz && ls sustech-rag/ && echo '---' && ls sustech-rag/data/chunks/ && echo '---' && du -sh sustech-rag/\")",
+      "Bash(sshpass -p '8RbjTojdHIeK' ssh -p 46097 -o StrictHostKeyChecking=no root@connect.bjb1.seetacloud.com \"/root/miniconda3/envs/rag/bin/pip list 2>/dev/null | grep -i torch\")",
+      "Bash(sshpass -p '8RbjTojdHIeK' ssh -p 46097 -o StrictHostKeyChecking=no root@connect.bjb1.seetacloud.com \"/root/miniconda3/envs/rag/bin/pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128 2>&1 | tail -8\")"
     ]
   }
 }

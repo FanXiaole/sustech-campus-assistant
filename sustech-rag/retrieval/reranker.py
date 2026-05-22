@@ -85,23 +85,13 @@ class Reranker:
               f"(FP16={self.use_fp16})...")
         t_start = time.time()
 
-        # 使用 FlagEmbedding 的官方实现（BAAI 团队维护）
-        try:
-            from FlagEmbedding import FlagReranker
-            self._model = FlagReranker(
-                model_name,
-                use_fp16=self.use_fp16,
-                device=device,
-            )
-        except ImportError:
-            # Fallback: 使用 sentence_transformers 的 CrossEncoder
-            print("[Reranker] FlagEmbedding not available, "
-                  "using sentence_transformers CrossEncoder instead")
-            from sentence_transformers import CrossEncoder
-            self._model = CrossEncoder(
-                model_name,
-                device=device,
-            )
+        # 使用 sentence_transformers.CrossEncoder（API 稳定，兼容性好）
+        from sentence_transformers import CrossEncoder
+        self._model = CrossEncoder(
+            model_name,
+            device=device,
+            automodel_args={"torch_dtype": "float16"} if self.use_fp16 else {},
+        )
 
         t_elapsed = time.time() - t_start
         print(f"[Reranker] Model loaded in {t_elapsed:.1f}s")
@@ -142,13 +132,12 @@ class Reranker:
             text = c.get("text", "")
             pairs.append([query, text])
 
-        # 批量推理
-        scores = self._model.compute_score(
+        # 批量推理 (CrossEncoder.predict returns list of floats)
+        scores = self._model.predict(
             pairs,
-            normalize=True,
-            # ^ normalize=True → 输出 [0, 1] 范围内的分数
-            #   （对 reranker 的输出做 sigmoid）
-        )
+            show_progress_bar=False,
+            convert_to_tensor=True,
+        ).cpu().tolist()
 
         # 如果只有一个候选，compute_score 返回标量而非列表
         if not isinstance(scores, list):

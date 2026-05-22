@@ -554,7 +554,6 @@ def build_demo():
     """构建完整的 Gradio demo。"""
     with gr.Blocks(
         title="SUSTech Campus RAG — 南科大校园知识库",
-        theme=gr.themes.Soft(),
     ) as demo:
         gr.Markdown(
             f"""# 🏫 南方科技大学校园知识库问答系统
@@ -584,4 +583,5 @@ if __name__ == "__main__":
         server_port=DEMO_PORT,
         share=DEMO_SHARE,
         show_error=True,
+        theme=gr.themes.Soft(),
     )

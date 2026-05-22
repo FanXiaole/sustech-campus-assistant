@@ -66,7 +66,7 @@ class Embedder:
         self,
         model_name: str = EMBED_MODEL,
         device: str = None,
-        batch_size: int = 256,
+        batch_size: int = 32,
     ):
         """
         初始化 Embedder。
@@ -89,7 +89,7 @@ class Embedder:
 
         if device == "cuda":
             gpu_name = torch.cuda.get_device_name(0)
-            vram_gb = torch.cuda.get_device_properties(0).total_mem / (1024**3)
+            vram_gb = torch.cuda.get_device_properties(0).total_memory / (1024**3)
             print(f"[Embedder] GPU: {gpu_name} ({vram_gb:.1f} GB VRAM)")
         else:
             print("[Embedder] WARNING: Running on CPU — this will be VERY slow!")
@@ -101,7 +101,10 @@ class Embedder:
             model_name,
             device=device,
             trust_remote_code=True,
+            model_kwargs={"torch_dtype": "auto"},
         )
+        # 截断超长文本，防止 attention OOM（默认 8192 tokens）
+        self.model.max_seq_length = 2048
 
         t_elapsed = time.time() - t_start
         print(f"[Embedder] Model loaded in {t_elapsed:.1f}s")
