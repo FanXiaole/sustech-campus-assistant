@@ -5,8 +5,8 @@
   "by_category": {
     "retrieval_failure": {
       "name": "检索失败",
-      "count": 9,
-      "percentage": 0.18,
+      "count": 13,
+      "percentage": 0.26,
       "description": "正确答案存在于知识库中，但检索系统没有将其排在 top-K",
       "indicator": "grounding_score=0 且 关键词在其他 chunk 中存在",
       "fix": "调整 chunk 大小、改进 RRF 权重、增加 top-K、优化 HyDE prompt",
@@ -38,16 +38,16 @@
           }
         },
         {
-          "q_id": "easy_proc_002",
-          "total_score": 3,
+          "q_id": "easy_proc_001",
+          "total_score": 4,
           "dimensions": {
             "correctness": {
               "score": 1,
               "explanation": "部分正确 (key_facts=50%, overlap=50%)"
             },
             "grounding": {
-              "score": 0,
-              "explanation": "答案缺乏依据 (7/34 项可追溯)"
+              "score": 1,
+              "explanation": "答案部分有据 (42/103 项可追溯)"
             },
             "completeness": {
               "score": 1,
@@ -64,16 +64,16 @@
           }
         },
         {
-          "q_id": "medium_complex_002",
-          "total_score": 4,
+          "q_id": "easy_proc_002",
+          "total_score": 3,
           "dimensions": {
             "correctness": {
               "score": 1,
               "explanation": "部分正确 (key_facts=50%, overlap=50%)"
             },
             "grounding": {
-              "score": 1,
-              "explanation": "答案部分有据 (57/117 项可追溯)"
+              "score": 0,
+              "explanation": "答案缺乏依据 (8/32 项可追溯)"
             },
             "completeness": {
               "score": 1,
@@ -120,8 +120,8 @@
     },
     "over_refusal": {
       "name": "过度拒答",
-      "count": 10,
-      "percentage": 0.2,
+      "count": 9,
+      "percentage": 0.18,
       "description": "系统对本应回答的问题执行了拒答",
       "indicator": "abstention=0 且 expected_abstain=False 且 did_abstain=True",
       "fix": "调低 abstention 阈值、改进 query classifier 避免误判 OUT_OF_SCOPE",
@@ -136,7 +136,7 @@
             },
             "grounding": {
               "score": 1,
-              "explanation": "答案部分有据 (7/19 项可追溯)"
+              "explanation": "答案部分有据 (18/31 项可追溯)"
             },
             "completeness": {
               "score": 1,
@@ -144,7 +144,7 @@
             },
             "traceability": {
               "score": 2,
-              "explanation": "明确引用来源 (3 处)"
+              "explanation": "明确引用来源 (2 处)"
             },
             "abstention": {
               "score": 0,
@@ -161,8 +161,34 @@
               "explanation": "不正确 (key_facts=50%, overlap=0%)"
             },
             "grounding": {
+              "score": 2,
+              "explanation": "答案高度有据 (16/24 项可追溯)"
+            },
+            "completeness": {
               "score": 1,
-              "explanation": "答案部分有据 (12/23 项可追溯)"
+              "explanation": "未定义 key_facts，默认给 1 分"
+            },
+            "traceability": {
+              "score": 1,
+              "explanation": "有一处来源引用，但不够详细"
+            },
+            "abstention": {
+              "score": 0,
+              "explanation": "应拒答但未拒答（可能产生幻觉）"
+            }
+          }
+        },
+        {
+          "q_id": "medium_complex_007",
+          "total_score": 4,
+          "dimensions": {
+            "correctness": {
+              "score": 0,
+              "explanation": "不正确 (key_facts=50%, overlap=0%)"
+            },
+            "grounding": {
+              "score": 1,
+              "explanation": "答案部分有据 (24/50 项可追溯)"
             },
             "completeness": {
               "score": 1,
@@ -177,39 +203,13 @@
               "explanation": "应拒答但未拒答（可能产生幻觉）"
             }
           }
-        },
-        {
-          "q_id": "easy_proc_003",
-          "total_score": 4,
-          "dimensions": {
-            "correctness": {
-              "score": 0,
-              "explanation": "不正确 (key_facts=50%, overlap=0%)"
-            },
-            "grounding": {
-              "score": 1,
-              "explanation": "答案部分有据 (13/31 项可追溯)"
-            },
-            "completeness": {
-              "score": 1,
-              "explanation": "未定义 key_facts，默认给 1 分"
-            },
-            "traceability": {
-              "score": 2,
-              "explanation": "明确引用来源 (3 处)"
-            },
-            "abstention": {
-              "score": 0,
-              "explanation": "应拒答但未拒答（可能产生幻觉）"
-            }
-          }
         }
       ]
     },
     "partial": {
       "name": "部分缺陷",
-      "count": 16,
-      "percentage": 0.32,
+      "count": 13,
+      "percentage": 0.26,
       "description": "总分偏低但有部分正确信息",
       "fix": "综合优化：改进检索质量 + prompt 工程",
       "examples": [
@@ -223,7 +223,7 @@
             },
             "grounding": {
               "score": 2,
-              "explanation": "答案高度有据 (16/23 项可追溯)"
+              "explanation": "答案高度有据 (16/25 项可追溯)"
             },
             "completeness": {
               "score": 1,
@@ -240,32 +240,6 @@
           }
         },
         {
-          "q_id": "easy_factual_007",
-          "total_score": 5,
-          "dimensions": {
-            "correctness": {
-              "score": 0,
-              "explanation": "不正确 (key_facts=40%, overlap=29%)"
-            },
-            "grounding": {
-              "score": 2,
-              "explanation": "答案高度有据 (27/40 项可追溯)"
-            },
-            "completeness": {
-              "score": 0,
-              "explanation": "覆盖不足 (2/5 关键事实)"
-            },
-            "traceability": {
-              "score": 1,
-              "explanation": "有一处来源引用，但不够详细"
-            },
-            "abstention": {
-              "score": 2,
-              "explanation": "正常回答，无不当拒答"
-            }
-          }
-        },
-        {
           "q_id": "easy_time_002",
           "total_score": 6,
           "dimensions": {
@@ -275,7 +249,7 @@
             },
             "grounding": {
               "score": 1,
-              "explanation": "答案部分有据 (8/18 项可追溯)"
+              "explanation": "答案部分有据 (10/19 项可追溯)"
             },
             "completeness": {
               "score": 1,
@@ -288,6 +262,32 @@
             "abstention": {
               "score": 2,
               "explanation": "正常回答，无不当拒答"
+            }
+          }
+        },
+        {
+          "q_id": "easy_proc_003",
+          "total_score": 5,
+          "dimensions": {
+            "correctness": {
+              "score": 1,
+              "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+            },
+            "grounding": {
+              "score": 1,
+              "explanation": "答案部分有据 (14/31 项可追溯)"
+            },
+            "completeness": {
+              "score": 1,
+              "explanation": "未定义 key_facts，默认给 1 分"
+            },
+            "traceability": {
+              "score": 2,
+              "explanation": "明确引用来源 (3 处)"
+            },
+            "abstention": {
+              "score": 0,
+              "explanation": "应拒答但未拒答（可能产生幻觉）"
             }
           }
         }

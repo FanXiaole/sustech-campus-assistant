@@ -3,30 +3,30 @@
   "dimensions": {
     "correctness": {
       "mean": 1.02,
-      "std": 0.68,
-      "total_2": 12,
-      "total_1": 27,
-      "total_0": 11
+      "std": 0.71,
+      "total_2": 13,
+      "total_1": 25,
+      "total_0": 12
     },
     "grounding": {
-      "mean": 0.98,
-      "std": 0.62,
-      "total_2": 9,
-      "total_1": 31,
+      "mean": 1.0,
+      "std": 0.64,
+      "total_2": 10,
+      "total_1": 30,
       "total_0": 10
     },
     "completeness": {
       "mean": 1.16,
-      "std": 0.42,
-      "total_2": 9,
-      "total_1": 40,
-      "total_0": 1
+      "std": 0.47,
+      "total_2": 10,
+      "total_1": 38,
+      "total_0": 2
     },
     "traceability": {
-      "mean": 1.68,
-      "std": 0.47,
-      "total_2": 34,
-      "total_1": 16,
+      "mean": 1.6,
+      "std": 0.49,
+      "total_2": 30,
+      "total_1": 20,
       "total_0": 0
     },
     "abstention": {
@@ -38,9 +38,9 @@
     }
   },
   "total_score": {
-    "mean": 5.56,
-    "std": 2.25,
+    "mean": 5.5,
+    "std": 2.23,
     "max_possible": 10
   },
-  "avg_keyword_hit_rate": 0.301
+  "avg_keyword_hit_rate": 0.302
 }

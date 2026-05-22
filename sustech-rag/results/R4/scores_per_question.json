@@ -28,7 +28,8 @@
       "keyword_hit_rate": 1.0,
       "answer_length": 123,
       "num_chunks_used": 5
-    }
+    },
+    "answer": "根据参考资料，南方科技大学图书馆的开放时间为周一至周日：8:00 - 22:00，其中一丹一楼24小时开放。该信息在多个来源（如图书馆网站、考试周通知、暑假安排等）中一致显示，未区分工作日与周末，因此工作日开放时间同样为8:00 - 22:00。"
   },
   {
     "q_id": "easy_factual_002",
@@ -40,7 +41,7 @@
       },
       "grounding": {
         "score": 1,
-        "explanation": "答案部分有据 (10/21 项可追溯)"
+        "explanation": "答案部分有据 (7/19 项可追溯)"
       },
       "completeness": {
         "score": 1,
@@ -57,9 +58,10 @@
     },
     "metrics": {
       "keyword_hit_rate": 0.0,
-      "answer_length": 89,
+      "answer_length": 84,
       "num_chunks_used": 5
-    }
+    },
+    "answer": "根据现有资料无法确定南方科技大学计算机科学与工程系的具体成立年份。参考资料中仅提到该系校友会成立于2021年6月20日（来源：校友会网站），但未提供该系本身的成立时间。"
   },
   {
     "q_id": "easy_factual_003",
@@ -90,7 +92,8 @@
       "keyword_hit_rate": 0.0,
       "answer_length": 39,
       "num_chunks_used": 5
-    }
+    },
+    "answer": "根据现有资料无法确定南方科技大学的英文名称。参考资料中未包含相关英文名称信息。"
   },
   {
     "q_id": "easy_factual_004",
@@ -121,7 +124,8 @@
       "keyword_hit_rate": 0.0,
       "answer_length": 113,
       "num_chunks_used": 5
-    }
+    },
+    "answer": "根据参考资料，南方科技大学目前共有**6个书院**，分别是：致仁书院、树仁书院、致诚书院、树德书院、致新书院、树礼书院。\n\n（信息来源：参考资料1中“目前，南科大成立6个书院”及参考资料2中“目前，学校共有六大书院”的表述。）"
   },
   {
     "q_id": "easy_factual_005",
@@ -133,7 +137,7 @@
       },
       "grounding": {
         "score": 2,
-        "explanation": "答案高度有据 (23/38 项可追溯)"
+        "explanation": "答案高度有据 (26/41 项可追溯)"
       },
       "completeness": {
         "score": 2,
@@ -150,9 +154,10 @@
     },
     "metrics": {
       "keyword_hit_rate": 1.0,
-      "answer_length": 248,
+      "answer_length": 251,
       "num_chunks_used": 5
-    }
+    },
+    "answer": "根据参考资料，南方科技大学的校训是**“明德求是，日新自强”**（英文为：Virtue, Truth, Advance）。该校训于2021年9月1日经中共南方科技大学第一届委员会常务委员会第一百一十二次会议正式确立，并于2021年9月3日在开学典礼上正式公布（来源：南方科技大学官方网站，https://dangdaihui.sustech.edu.cn/evolution/41178.html）。校训的释义包括：明德树人、求是治学、日新立校、自强报国，体现了南科大作为新型研究型大学的核心精神内涵。"
   },
   {
     "q_id": "easy_factual_006",
@@ -164,7 +169,7 @@
       },
       "grounding": {
         "score": 1,
-        "explanation": "答案部分有据 (11/20 项可追溯)"
+        "explanation": "答案部分有据 (12/23 项可追溯)"
       },
       "completeness": {
         "score": 1,
@@ -181,25 +186,26 @@
     },
     "metrics": {
       "keyword_hit_rate": 0.0,
-      "answer_length": 95,
+      "answer_length": 102,
       "num_chunks_used": 5
-    }
+    },
+    "answer": "根据参考资料，南方科技大学位于深圳市南山区。具体地址在参考资料1和参考资料2中均有提及，例如参考资料1显示地址为“广东省深圳市南山区学苑大道1088号”，参考资料2也提到“南方科技大学位于深圳市南山区”。"
   },
   {
     "q_id": "easy_factual_007",
-    "total_score": 8,
+    "total_score": 5,
     "dimensions": {
       "correctness": {
-        "score": 2,
-        "explanation": "正确 (key_facts=80%, overlap=57%)"
+        "score": 0,
+        "explanation": "不正确 (key_facts=40%, overlap=29%)"
       },
       "grounding": {
         "score": 2,
-        "explanation": "答案高度有据 (46/59 项可追溯)"
+        "explanation": "答案高度有据 (27/40 项可追溯)"
       },
       "completeness": {
-        "score": 1,
-        "explanation": "部分覆盖 (4/5 关键事实)"
+        "score": 0,
+        "explanation": "覆盖不足 (2/5 关键事实)"
       },
       "traceability": {
         "score": 1,
@@ -211,22 +217,23 @@
       }
     },
     "metrics": {
-      "keyword_hit_rate": 0.8,
-      "answer_length": 267,
+      "keyword_hit_rate": 0.4,
+      "answer_length": 175,
       "num_chunks_used": 5
-    }
+    },
+    "answer": "根据参考资料，南方科技大学（简称南科大）是一所高起点、高定位的公办创新型大学（参考资料1），同时也被明确描述为“公办新型研究型大学”（参考资料5）。学校位于深圳，旨在为中国高等教育改革发挥先导和示范作用，并致力于服务创新型国家建设和深圳创新型城市建设（参考资料1）。此外，南科大在2022年入选了第二轮“双一流”建设高校及建设学科名单（参考资料5）。"
   },
   {
     "q_id": "easy_factual_008",
-    "total_score": 9,
+    "total_score": 10,
     "dimensions": {
       "correctness": {
         "score": 2,
         "explanation": "正确 (key_facts=100%, overlap=38%)"
       },
       "grounding": {
-        "score": 1,
-        "explanation": "答案部分有据 (24/46 项可追溯)"
+        "score": 2,
+        "explanation": "答案高度有据 (28/44 项可追溯)"
       },
       "completeness": {
         "score": 2,
@@ -243,9 +250,10 @@
     },
     "metrics": {
       "keyword_hit_rate": 1.0,
-      "answer_length": 194,
+      "answer_length": 180,
       "num_chunks_used": 5
-    }
+    },
+    "answer": "根据参考资料，致仁书院的院名由创校校长朱清时院士所提，典出《礼记·大学》中的“致知在格物，物格而后知至”。院训为“格物致知，格心致仁”，寓意通过探究事物原理（格物）获得知识（致知），同时修养内心（格心）达到仁爱境界（致仁）。书院文化强调“弘扬中华优秀传统文化”和“家文化”，旨在培养具有家国情怀、全球视野、综合素养、创新能力的致仁青年（来源：参考资料1、2）。"
   },
   {
     "q_id": "easy_time_001",
@@ -257,7 +265,7 @@
       },
       "grounding": {
         "score": 1,
-        "explanation": "答案部分有据 (22/43 项可追溯)"
+        "explanation": "答案部分有据 (13/26 项可追溯)"
       },
       "completeness": {
         "score": 2,
@@ -265,7 +273,7 @@
       },
       "traceability": {
         "score": 2,
-        "explanation": "明确引用来源 (2 处)"
+        "explanation": "明确引用来源 (4 处)"
       },
       "abstention": {
         "score": 2,
@@ -274,9 +282,10 @@
     },
     "metrics": {
       "keyword_hit_rate": 1.0,
-      "answer_length": 174,
+      "answer_length": 146,
       "num_chunks_used": 5
-    }
+    },
+    "answer": "根据参考资料，南科大图书馆（包括琳恩图书馆、一丹图书馆和涵泳图书馆）的开放时间为**周一至周日 8:00 - 22:00**。此外，一丹图书馆一楼为24小时开放区域。这些信息来源于图书馆官方网站（如[来源:library] [URL:https://lib.sustech.edu.cn]）。"
   },
   {
     "q_id": "easy_time_002",
@@ -307,7 +316,8 @@
       "keyword_hit_rate": 0.8,
       "answer_length": 87,
       "num_chunks_used": 5
-    }
+    },
+    "answer": "根据参考资料，南方科技大学的具体地址为：**广东省深圳市南山区学苑大道1088号**。\n\n该信息在参考资料1（生物医学工程系页面）和参考资料3（巡察整改公告）中均有明确记载。"
   },
   {
     "q_id": "easy_time_003",
@@ -319,42 +329,11 @@
       },
       "grounding": {
         "score": 0,
-        "explanation": "答案缺乏依据 (6/24 项可追溯)"
+        "explanation": "答案缺乏依据 (5/24 项可追溯)"
       },
       "completeness": {
         "score": 2,
         "explanation": "完整覆盖 (2/2 关键事实)"
-      },
-      "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (3 处)"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 1.0,
-      "answer_length": 129,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "easy_time_004",
-    "total_score": 9,
-    "dimensions": {
-      "correctness": {
-        "score": 2,
-        "explanation": "正确 (key_facts=100%, overlap=50%)"
-      },
-      "grounding": {
-        "score": 1,
-        "explanation": "答案部分有据 (18/52 项可追溯)"
-      },
-      "completeness": {
-        "score": 2,
-        "explanation": "完整覆盖 (1/1 关键事实)"
       },
       "traceability": {
         "score": 2,
@@ -367,9 +346,42 @@
     },
     "metrics": {
       "keyword_hit_rate": 1.0,
-      "answer_length": 238,
+      "answer_length": 125,
       "num_chunks_used": 5
-    }
+    },
+    "answer": "根据现有资料无法确定南科大春季学期的具体开学日期。参考资料中仅提到春季学期的时间范围为“2月至6月”（来源：global.sustech.edu.cn 国际交换生项目页面），但未明确说明开学具体日期。如需准确信息，建议查阅南科大官方校历或教务处通知。"
+  },
+  {
+    "q_id": "easy_time_004",
+    "total_score": 8,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "explanation": "正确 (key_facts=100%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 1,
+        "explanation": "答案部分有据 (13/40 项可追溯)"
+      },
+      "completeness": {
+        "score": 2,
+        "explanation": "完整覆盖 (1/1 关键事实)"
+      },
+      "traceability": {
+        "score": 1,
+        "explanation": "有一处来源引用，但不够详细"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正常回答，无不当拒答"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 1.0,
+      "answer_length": 179,
+      "num_chunks_used": 5
+    },
+    "answer": "根据参考资料，南科大体育场位于南方科技大学松禾体育场。具体信息如下：\n\n- 参考资料1提到“南科大松禾体育场”作为第四届运动会的举办地点。\n- 参考资料2和参考资料4也均提及“南科大松禾体育场”，其中参考资料4进一步说明办公地址为“南方科技大学松禾体育场二楼”。\n\n因此，南科大体育场即松禾体育场，位于南方科技大学校园内。如需更详细地址，可参考学校官方信息。"
   },
   {
     "q_id": "easy_proc_001",
@@ -381,7 +393,7 @@
       },
       "grounding": {
         "score": 1,
-        "explanation": "答案部分有据 (19/58 项可追溯)"
+        "explanation": "答案部分有据 (13/38 项可追溯)"
       },
       "completeness": {
         "score": 1,
@@ -398,21 +410,22 @@
     },
     "metrics": {
       "keyword_hit_rate": 0.0,
-      "answer_length": 332,
+      "answer_length": 164,
       "num_chunks_used": 5
-    }
+    },
+    "answer": "根据现有资料，南方科技大学为项目学生（如国际交换生）提供校园卡，充值后可在校内食堂就餐和使用校内设施（来源：参考资料1）。但关于新生如何办理校园卡的具体流程、所需材料或办理地点，参考资料中未提供详细信息。建议您联系学校相关部门（如学生工作部或迎新办公室）获取准确指引，或参考随录取通知书寄送的《入学指南》中的说明（参考资料4）。"
   },
   {
     "q_id": "easy_proc_002",
     "total_score": 3,
     "dimensions": {
       "correctness": {
-        "score": 0,
-        "explanation": "不正确 (key_facts=50%, overlap=0%)"
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
       },
       "grounding": {
-        "score": 1,
-        "explanation": "答案部分有据 (15/47 项可追溯)"
+        "score": 0,
+        "explanation": "答案缺乏依据 (7/34 项可追溯)"
       },
       "completeness": {
         "score": 1,
@@ -429,21 +442,22 @@
     },
     "metrics": {
       "keyword_hit_rate": 0.0,
-      "answer_length": 283,
+      "answer_length": 235,
       "num_chunks_used": 5
-    }
+    },
+    "answer": "根据现有资料，无法确定南科大图书馆的具体借书流程。参考资料中主要提供了图书馆的开放时间、楼层功能、学习资源等信息，但未涉及借书的具体步骤、借阅规则或所需证件（如校卡的使用说明仅提到进馆需刷卡）。建议您访问南科大图书馆官网的“读者服务”页面（https://lib.sustech.edu.cn/page/rdr-card.html）或下载新生专栏中的读者手册（https://lib.sustech.edu.cn/page/freshmen.html）获取详细借书指南。"
   },
   {
     "q_id": "easy_proc_003",
     "total_score": 4,
     "dimensions": {
       "correctness": {
-        "score": 1,
-        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+        "score": 0,
+        "explanation": "不正确 (key_facts=50%, overlap=0%)"
       },
       "grounding": {
-        "score": 0,
-        "explanation": "答案缺乏依据 (10/40 项可追溯)"
+        "score": 1,
+        "explanation": "答案部分有据 (13/31 项可追溯)"
       },
       "completeness": {
         "score": 1,
@@ -451,7 +465,7 @@
       },
       "traceability": {
         "score": 2,
-        "explanation": "明确引用来源 (2 处)"
+        "explanation": "明确引用来源 (3 处)"
       },
       "abstention": {
         "score": 0,
@@ -460,9 +474,10 @@
     },
     "metrics": {
       "keyword_hit_rate": 0.0,
-      "answer_length": 201,
+      "answer_length": 156,
       "num_chunks_used": 5
-    }
+    },
+    "answer": "根据现有资料，关于如何连接校园网络，南科手册建议新生到校后查看[如何连接校园网络](/service/network/)的详细指南（来源：南科手册，章节“如果你是新生... > 到校之后，你可以...”）。但参考资料中未提供具体的连接步骤或配置方法。如需进一步了解，建议访问该链接或参考南科手册中的其他实用技巧。"
   },
   {
     "q_id": "medium_complex_001",
@@ -474,7 +489,7 @@
       },
       "grounding": {
         "score": 1,
-        "explanation": "答案部分有据 (21/51 项可追溯)"
+        "explanation": "答案部分有据 (29/56 项可追溯)"
       },
       "completeness": {
         "score": 1,
@@ -491,136 +506,13 @@
     },
     "metrics": {
       "keyword_hit_rate": 0.0,
-      "answer_length": 251,
+      "answer_length": 276,
       "num_chunks_used": 5
-    }
+    },
+    "answer": "根据现有资料，南方科技大学计算机科学与工程系的主要研究方向包括：\n\n1. **演化计算**：参考资料1中提到，计算机系在演化计算研究领域具有很高的学术声望。\n2. **信息技术相关领域**：参考资料1指出，信息技术是深圳市的重点产业，也是创新创业的关键核心领域，计算机系依托深圳市产业背景，具有丰富的创新潜力和发展空间。\n3. **密码学与信息安全**：参考资料2和3显示，计算机系陈杉团队在EUROCRYPT 2026（密码学领域顶级会议）获得了最佳论文奖，表明该系在密码学方向有突出研究。\n\n以上信息来源于南科大工学院官方网站的招生宣传和新闻资讯。"
   },
   {
     "q_id": "medium_complex_002",
-    "total_score": 5,
-    "dimensions": {
-      "correctness": {
-        "score": 1,
-        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
-      },
-      "grounding": {
-        "score": 1,
-        "explanation": "答案部分有据 (57/116 项可追溯)"
-      },
-      "completeness": {
-        "score": 1,
-        "explanation": "未定义 key_facts，默认给 1 分"
-      },
-      "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (2 处)"
-      },
-      "abstention": {
-        "score": 0,
-        "explanation": "应拒答但未拒答（可能产生幻觉）"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 0.0,
-      "answer_length": 528,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "medium_complex_003",
-    "total_score": 5,
-    "dimensions": {
-      "correctness": {
-        "score": 1,
-        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
-      },
-      "grounding": {
-        "score": 1,
-        "explanation": "答案部分有据 (88/151 项可追溯)"
-      },
-      "completeness": {
-        "score": 1,
-        "explanation": "未定义 key_facts，默认给 1 分"
-      },
-      "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (3 处)"
-      },
-      "abstention": {
-        "score": 0,
-        "explanation": "应拒答但未拒答（可能产生幻觉）"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 0.0,
-      "answer_length": 774,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "medium_complex_004",
-    "total_score": 6,
-    "dimensions": {
-      "correctness": {
-        "score": 0,
-        "explanation": "不正确 (key_facts=0%, overlap=19%)"
-      },
-      "grounding": {
-        "score": 2,
-        "explanation": "答案高度有据 (113/185 项可追溯)"
-      },
-      "completeness": {
-        "score": 0,
-        "explanation": "覆盖不足 (0/5 关键事实)"
-      },
-      "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (2 处)"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 0.0,
-      "answer_length": 846,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "medium_complex_005",
-    "total_score": 8,
-    "dimensions": {
-      "correctness": {
-        "score": 1,
-        "explanation": "部分正确 (key_facts=75%, overlap=50%)"
-      },
-      "grounding": {
-        "score": 2,
-        "explanation": "答案高度有据 (126/182 项可追溯)"
-      },
-      "completeness": {
-        "score": 1,
-        "explanation": "部分覆盖 (6/8 关键事实)"
-      },
-      "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (2 处)"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 0.75,
-      "answer_length": 1108,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "medium_complex_006",
     "total_score": 4,
     "dimensions": {
       "correctness": {
@@ -629,441 +521,7 @@
       },
       "grounding": {
         "score": 1,
-        "explanation": "答案部分有据 (25/69 项可追溯)"
-      },
-      "completeness": {
-        "score": 1,
-        "explanation": "未定义 key_facts，默认给 1 分"
-      },
-      "traceability": {
-        "score": 1,
-        "explanation": "有一处来源引用，但不够详细"
-      },
-      "abstention": {
-        "score": 0,
-        "explanation": "应拒答但未拒答（可能产生幻觉）"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 0.0,
-      "answer_length": 309,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "medium_complex_007",
-    "total_score": 4,
-    "dimensions": {
-      "correctness": {
-        "score": 0,
-        "explanation": "不正确 (key_facts=50%, overlap=0%)"
-      },
-      "grounding": {
-        "score": 1,
-        "explanation": "答案部分有据 (22/50 项可追溯)"
-      },
-      "completeness": {
-        "score": 1,
-        "explanation": "未定义 key_facts，默认给 1 分"
-      },
-      "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (2 处)"
-      },
-      "abstention": {
-        "score": 0,
-        "explanation": "应拒答但未拒答（可能产生幻觉）"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 0.0,
-      "answer_length": 368,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "medium_complex_008",
-    "total_score": 10,
-    "dimensions": {
-      "correctness": {
-        "score": 2,
-        "explanation": "正确 (key_facts=100%, overlap=64%)"
-      },
-      "grounding": {
-        "score": 2,
-        "explanation": "答案高度有据 (61/97 项可追溯)"
-      },
-      "completeness": {
-        "score": 2,
-        "explanation": "完整覆盖 (7/7 关键事实)"
-      },
-      "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (2 处)"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 1.0,
-      "answer_length": 439,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "medium_dept_001",
-    "total_score": 6,
-    "dimensions": {
-      "correctness": {
-        "score": 1,
-        "explanation": "部分正确 (key_facts=70%, overlap=60%)"
-      },
-      "grounding": {
-        "score": 1,
-        "explanation": "答案部分有据 (40/79 项可追溯)"
-      },
-      "completeness": {
-        "score": 1,
-        "explanation": "部分覆盖 (7/10 关键事实)"
-      },
-      "traceability": {
-        "score": 1,
-        "explanation": "有一处来源引用，但不够详细"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 0.7,
-      "answer_length": 463,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "medium_dept_002",
-    "total_score": 5,
-    "dimensions": {
-      "correctness": {
-        "score": 1,
-        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
-      },
-      "grounding": {
-        "score": 1,
-        "explanation": "答案部分有据 (13/35 项可追溯)"
-      },
-      "completeness": {
-        "score": 1,
-        "explanation": "未定义 key_facts，默认给 1 分"
-      },
-      "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (3 处)"
-      },
-      "abstention": {
-        "score": 0,
-        "explanation": "应拒答但未拒答（可能产生幻觉）"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 0.0,
-      "answer_length": 175,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "medium_dept_003",
-    "total_score": 5,
-    "dimensions": {
-      "correctness": {
-        "score": 1,
-        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
-      },
-      "grounding": {
-        "score": 1,
-        "explanation": "答案部分有据 (20/47 项可追溯)"
-      },
-      "completeness": {
-        "score": 1,
-        "explanation": "未定义 key_facts，默认给 1 分"
-      },
-      "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (3 处)"
-      },
-      "abstention": {
-        "score": 0,
-        "explanation": "应拒答但未拒答（可能产生幻觉）"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 0.0,
-      "answer_length": 205,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "medium_dept_004",
-    "total_score": 5,
-    "dimensions": {
-      "correctness": {
-        "score": 1,
-        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
-      },
-      "grounding": {
-        "score": 1,
-        "explanation": "答案部分有据 (54/115 项可追溯)"
-      },
-      "completeness": {
-        "score": 1,
-        "explanation": "未定义 key_facts，默认给 1 分"
-      },
-      "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (2 处)"
-      },
-      "abstention": {
-        "score": 0,
-        "explanation": "应拒答但未拒答（可能产生幻觉）"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 0.0,
-      "answer_length": 700,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "medium_dept_005",
-    "total_score": 7,
-    "dimensions": {
-      "correctness": {
-        "score": 1,
-        "explanation": "部分正确 (key_facts=56%, overlap=38%)"
-      },
-      "grounding": {
-        "score": 1,
-        "explanation": "答案部分有据 (75/149 项可追溯)"
-      },
-      "completeness": {
-        "score": 1,
-        "explanation": "部分覆盖 (5/9 关键事实)"
-      },
-      "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (2 处)"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 0.556,
-      "answer_length": 782,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "medium_dept_006",
-    "total_score": 9,
-    "dimensions": {
-      "correctness": {
-        "score": 2,
-        "explanation": "正确 (key_facts=100%, overlap=93%)"
-      },
-      "grounding": {
-        "score": 2,
-        "explanation": "答案高度有据 (80/118 项可追溯)"
-      },
-      "completeness": {
-        "score": 2,
-        "explanation": "完整覆盖 (10/10 关键事实)"
-      },
-      "traceability": {
-        "score": 1,
-        "explanation": "有一处来源引用，但不够详细"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 1.0,
-      "answer_length": 601,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "medium_dept_007",
-    "total_score": 5,
-    "dimensions": {
-      "correctness": {
-        "score": 1,
-        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
-      },
-      "grounding": {
-        "score": 1,
-        "explanation": "答案部分有据 (60/133 项可追溯)"
-      },
-      "completeness": {
-        "score": 1,
-        "explanation": "未定义 key_facts，默认给 1 分"
-      },
-      "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (3 处)"
-      },
-      "abstention": {
-        "score": 0,
-        "explanation": "应拒答但未拒答（可能产生幻觉）"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 0.0,
-      "answer_length": 595,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "medium_policy_001",
-    "total_score": 3,
-    "dimensions": {
-      "correctness": {
-        "score": 0,
-        "explanation": "不正确 (key_facts=50%, overlap=0%)"
-      },
-      "grounding": {
-        "score": 0,
-        "explanation": "答案缺乏依据 (22/84 项可追溯)"
-      },
-      "completeness": {
-        "score": 1,
-        "explanation": "未定义 key_facts，默认给 1 分"
-      },
-      "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (2 处)"
-      },
-      "abstention": {
-        "score": 0,
-        "explanation": "应拒答但未拒答（可能产生幻觉）"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 0.0,
-      "answer_length": 389,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "medium_policy_002",
-    "total_score": 5,
-    "dimensions": {
-      "correctness": {
-        "score": 1,
-        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
-      },
-      "grounding": {
-        "score": 1,
-        "explanation": "答案部分有据 (28/93 项可追溯)"
-      },
-      "completeness": {
-        "score": 1,
-        "explanation": "未定义 key_facts，默认给 1 分"
-      },
-      "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (2 处)"
-      },
-      "abstention": {
-        "score": 0,
-        "explanation": "应拒答但未拒答（可能产生幻觉）"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 0.0,
-      "answer_length": 417,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "medium_policy_003",
-    "total_score": 6,
-    "dimensions": {
-      "correctness": {
-        "score": 1,
-        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
-      },
-      "grounding": {
-        "score": 2,
-        "explanation": "答案高度有据 (181/290 项可追溯)"
-      },
-      "completeness": {
-        "score": 1,
-        "explanation": "未定义 key_facts，默认给 1 分"
-      },
-      "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (2 处)"
-      },
-      "abstention": {
-        "score": 0,
-        "explanation": "应拒答但未拒答（可能产生幻觉）"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 0.0,
-      "answer_length": 1559,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "medium_policy_004",
-    "total_score": 4,
-    "dimensions": {
-      "correctness": {
-        "score": 1,
-        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
-      },
-      "grounding": {
-        "score": 0,
-        "explanation": "答案缺乏依据 (12/41 项可追溯)"
-      },
-      "completeness": {
-        "score": 1,
-        "explanation": "未定义 key_facts，默认给 1 分"
-      },
-      "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (3 处)"
-      },
-      "abstention": {
-        "score": 0,
-        "explanation": "应拒答但未拒答（可能产生幻觉）"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 0.0,
-      "answer_length": 185,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "medium_policy_005",
-    "total_score": 4,
-    "dimensions": {
-      "correctness": {
-        "score": 1,
-        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
-      },
-      "grounding": {
-        "score": 1,
-        "explanation": "答案部分有据 (45/118 项可追溯)"
+        "explanation": "答案部分有据 (57/117 项可追溯)"
       },
       "completeness": {
         "score": 1,
@@ -1082,10 +540,299 @@
       "keyword_hit_rate": 0.0,
       "answer_length": 537,
       "num_chunks_used": 5
-    }
+    },
+    "answer": "根据现有参考资料，南方科技大学的本科生培养模式具有以下特点：\n\n1. **“院、书院、课题组”三位一体的培养模式**：根据参考资料5，材料科学与工程系程春副教授主持的项目提出，通过书院的价值引领与全人教育、院系的专业知识与课程体系、课题组的科研实践与创新能力训练，系统支撑学生“家国情怀、全球视野、综合素养、创新能力”的培养目标。该模式强调三个关键主体的协同运行。\n\n2. **注重创新实践能力培养**：参考资料5中，机械与能源工程系路冬教学教授的项目专门研究本科生创新实践能力的培养与评价，包括搭建专业实践平台、层次化实践内容，并构建评价体系。\n\n3. **依托书院与院系协同**：参考资料5提到，书院负责全人教育和价值引领，院系提供专业课程，课题组提供科研实践机会，形成协同育人机制。\n\n4. **探索创新人才培养**：参考资料1和2提到，南科大作为国家高等教育综合改革试验校，被赋予探索创新人才培养模式的使命。参考资料4也强调学校面向国家和粤港澳大湾区需求，培养具有“家国情怀、全球视野、综合素养、创新能力”的高素质拔尖创新人才。\n\n需要注意的是，参考资料中未详细说明本科生培养的其他具体细节（如课程设置、学分要求等），以上信息主要来自参考资料5中关于特定项目的描述。"
   },
   {
-    "q_id": "hard_comp_001",
+    "q_id": "medium_complex_003",
+    "total_score": 5,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 1,
+        "explanation": "答案部分有据 (97/163 项可追溯)"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 2,
+        "explanation": "明确引用来源 (2 处)"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "应拒答但未拒答（可能产生幻觉）"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 893,
+      "num_chunks_used": 5
+    },
+    "answer": "根据现有资料，南方科技大学（SUSTech）的奖学金类型和申请条件主要涉及研究生奖学金，具体信息如下：\n\n### 奖学金类型\n1. **学校奖学金**：适用于研究生，具体金额和条件需通过申请系统选择相应种类。\n2. **中国政府奖学金“高水平研究生项目”**：仅限第一轮申请（截止日期为2025年2月12日），适用于研究生。\n3. **研究生奖学金**：根据生物医学工程系（BME）的资料，硕士研究生奖学金为4-5万元/年，博士研究生为6-10万元/年（来源：参考资料4）。另一份资料提到硕士约5万/年，博士约10万/年（来源：参考资料5）。\n4. **境外联培项目奖学金**：针对与国外知名大学（如新加坡国立大学、香港科技大学、澳门大学等）的联合培养项目，按照境外奖学金额度资助（来源：参考资料4、5）。\n\n### 申请条件\n- **语言要求**：托福90分以上或雅思总分6.5分及以上，各单科不低于6分。硕士学位为英语授课的，可提供学校官方出具的英语授课证明，学校将视情况认定是否可豁免语言要求（来源：参考资料1、2、3）。\n- **申请材料**：需通过南方科技大学网上申请系统（https://sustech.at0086.cn/StuApplication/Login.aspx）提交，包括有效护照、学历学位证书、成绩单等（来源：参考资料1、2、3）。\n- **申请截止日期**：第一轮为即日起至2025年2月12日，第二轮为2025年3月1日至4月1日。中国政府奖学金“高水平研究生项目”只能在第一轮申请（来源：参考资料1、2、3）。\n- **其他**：部分岗位（如研究副教授、博士后）需提交个人简历和研究计划，长期有效直到招满为止（来源：参考资料4）。\n\n### 注意事项\n- 资料中未明确说明本科生奖学金类型或具体申请条件。\n- 不同院系（如计算机科学与工程系、生物医学工程系）的奖学金细节可能略有差异，建议直接联系相关院系或访问官网获取最新信息。\n\n如需更详细的信息，建议访问南方科技大学研究生院官网（https://gs.sustech.edu.cn）或相关院系页面。"
+  },
+  {
+    "q_id": "medium_complex_004",
+    "total_score": 6,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "explanation": "不正确 (key_facts=0%, overlap=19%)"
+      },
+      "grounding": {
+        "score": 2,
+        "explanation": "答案高度有据 (127/182 项可追溯)"
+      },
+      "completeness": {
+        "score": 0,
+        "explanation": "覆盖不足 (0/5 关键事实)"
+      },
+      "traceability": {
+        "score": 2,
+        "explanation": "明确引用来源 (2 处)"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正常回答，无不当拒答"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 843,
+      "num_chunks_used": 5
+    },
+    "answer": "根据现有资料，南方科技大学本科生参与科研的途径主要包括以下几个方面：\n\n1. **走进实验室，全面参与科研实践**：南科大本科教育的一个重要特色是推动本科生走进实验室，全面参与科研实践。学校鼓励教师将科研与教学融合，把最新科研成果转化为教学资源，在共同的教、研、学中提高学生的科研创新能力（来源：参考资料1，南科大官方网站）。\n\n2. **导师制下的研究性学习和科研创新训练**：学校加强学生在导师指导下的研究性学习和科研创新训练，引导学生通过深度自主学习，建构知识体系、锻炼理论联系实践的能力，培育创新精神和科研能力。例如，有校友提到，在导师唐博的指导下，他深入参与科研，发挥课堂所学知识去做有挑战的事情，并合作发表了CCF-A级别的论文（来源：参考资料2，工学院招生页面）。\n\n3. **本研贯通课程与荣誉课程**：学校打通本、研贯通课程体系，设置荣誉课程，让志存高远、热爱科研的拔尖学生有持续成长空间（来源：参考资料1）。\n\n4. **校企协同育人平台**：南科大充分利用深圳市高科技企业集中的优势，推进校企协同育人平台建设，以产业和技术发展的最新需求推动人才培养改革，探索产学合作育人机制（来源：参考资料1）。\n\n5. **跨学科科研项目**：学生有机会参与多个跨学科的科研项目，这些经历不仅锻炼科研能力，也帮助学会在团队中发挥作用。例如，生物医学工程系的校友孙瑷蕙在博士求学期间参与了多个跨学科科研项目（来源：参考资料3，工学院招生页面）。\n\n6. **联合项目与国际化科研平台**：南科大与伦敦国王学院等国际高校合作，学生从入学起即可参与两校前沿科研，直接链接顶尖医疗企业与医院。核心课程由国际顶尖学者亲授，省部级重点实验室与国际联合科研平台实现无缝衔接（来源：参考资料5，联合医学院宣传页面）。\n\n此外，南科大还整合校内科研、实验教学资源，拓展校外优秀实习实践基地，构建资源共享、管理规范、运作高效的实验实践教学体系，有效支撑科教、产教融合的教育体系（来源：参考资料1）。"
+  },
+  {
+    "q_id": "medium_complex_005",
+    "total_score": 8,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=75%, overlap=42%)"
+      },
+      "grounding": {
+        "score": 2,
+        "explanation": "答案高度有据 (146/213 项可追溯)"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "部分覆盖 (6/8 关键事实)"
+      },
+      "traceability": {
+        "score": 2,
+        "explanation": "明确引用来源 (2 处)"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正常回答，无不当拒答"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.75,
+      "answer_length": 1032,
+      "num_chunks_used": 5
+    },
+    "answer": "根据现有资料，南方科技大学（SUSTech）的国际合作交流项目主要包括以下几种类型：\n\n1. **国际学期项目（交流/交换项目）**：分为交流项目和交换项目两种形式，均为学期制课程项目。交换项目免交学费，学生可与南科大本校学生同堂上课。该项目仅面向南科大境外合作院校招生。申请条件包括：南科大境外合作院校注册在籍学生、中文或英文流利、认同南科大教育理念、身心健康。项目时长分为秋季学期（9月至次年1月）和春季学期（2月至6月）。申请流程为：学生向所在高校提出申请，派出院校选拔并提名至南科大，被提名学生完成南科大国际学生服务平台报名，南科大审核并决定录取名单。具体申请日期为：秋季学期提名截止3月15日、报名截止3月31日；春季学期提名截止10月15日、报名截止10月31日。（来源：参考资料1）\n\n2. **科研项目**：面向派出院校在籍学生，要求GPA 3.0/4.0以上、具有一定科研能力、能用英语或中文沟通、身心健康、无违法违纪情况。申请材料包括官方成绩单、导师推荐信、个人简历。申请流程为：合作高校学生向所在高校咨询报名，个人报名学生可发送邮件至visiting@sustech.edu.cn索要报名表；派出高校于2025年11月30日前发送提名名单至南科大国际合作部；学生于2025年12月15日前完成系统申请。科研项目不涉及教学课程，学生无需承担学费，但个人旅费、住宿费等需自行承担。（来源：参考资料4）\n\n3. **其他短期项目**：包括“达·芬奇挑战营”（新工科教育夏令营）、2024“韶音杯”全球本科生工程研究与实践夏校、科技与未来设计、生物医学工程夏令营、暑期夏令营项目等。这些项目有各自的项目联系人和国际合作部联系人，具体申请方式需参考项目详情。（来源：参考资料5）\n\n**学生如何申请：**\n- 对于学期项目和科研项目，合作院校的学生需先向所在高校提出申请，由派出院校选拔并提名至南科大。个人报名学生（如科研项目）可直接联系南科大国际合作部。\n- 被提名学生需通过南科大国际学生服务平台完成报名或系统申请。\n- 具体申请截止日期和材料要求因项目而异，建议参考南科大国际合作部官网（global.sustech.edu.cn）或联系相关项目联系人获取详细信息。\n\n根据现有资料，无法确定所有项目的完整申请流程，建议学生根据自身情况选择项目并咨询南科大国际合作部（联系人如杨老师，yangsn@sustech.edu.cn）或项目具体联系人。"
+  },
+  {
+    "q_id": "medium_complex_006",
+    "total_score": 5,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 1,
+        "explanation": "答案部分有据 (26/77 项可追溯)"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 2,
+        "explanation": "明确引用来源 (2 处)"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "应拒答但未拒答（可能产生幻觉）"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 342,
+      "num_chunks_used": 5
+    },
+    "answer": "根据现有参考资料，关于南科大的校园交通工具和校车路线，信息如下：\n\n1. **校园巴士**：参考资料2（校园地图）提到，校园地图中包含了“校园巴士线路”等实用信息，并提供了交互式校园地图的链接（可实时定位）。这表明南科大校园内设有巴士服务，但具体路线和时刻表未在参考资料中详细说明。\n\n2. **外部公共交通**：参考资料1（学校官网）提供了到达南科大的公交方案，指出“南方科技大学站”（正对1号门）途经线路包括M369路、B818路、81路、122路、37路、49路等。此外，从深圳北站可乘坐出租车至学校1号门或2号门。\n\n关于校车（校园巴士）的具体路线，参考资料中未提供详细描述，建议参考校园地图或交互式地图以获取更准确的信息。根据现有资料，无法确定校车的具体停靠站点和运行时间。"
+  },
+  {
+    "q_id": "medium_complex_007",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "explanation": "不正确 (key_facts=50%, overlap=0%)"
+      },
+      "grounding": {
+        "score": 1,
+        "explanation": "答案部分有据 (24/51 项可追溯)"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 2,
+        "explanation": "明确引用来源 (2 处)"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "应拒答但未拒答（可能产生幻觉）"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 361,
+      "num_chunks_used": 5
+    },
+    "answer": "根据现有资料，南科大图书馆提供了丰富的电子资源数据库，具体包括：\n\n1. **万方AI系列数据库**（试用开通，来源：图书馆网站2025年通知）\n2. **美国肝病研究学会（AASLD）数据库**（开通通知，来源：图书馆网站2025年通知）\n3. **人民邮电出版社电子书**（开通通知，来源：图书馆网站2025年通知）\n\n此外，参考资料1和2提到，图书馆官网设有**数据库导航**页面（链接：https://lib.sustech.edu.cn/dataBank/index.html）和**网络资源导航**页面（链接：https://lib.sustech.edu.cn/download/network.html?locale=zh_CN），其中包含更多数据库、网络公开课、工具等资源。建议访问这些页面获取完整列表。"
+  },
+  {
+    "q_id": "medium_complex_008",
+    "total_score": 9,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "explanation": "正确 (key_facts=100%, overlap=59%)"
+      },
+      "grounding": {
+        "score": 1,
+        "explanation": "答案部分有据 (48/84 项可追溯)"
+      },
+      "completeness": {
+        "score": 2,
+        "explanation": "完整覆盖 (7/7 关键事实)"
+      },
+      "traceability": {
+        "score": 2,
+        "explanation": "明确引用来源 (3 处)"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正常回答，无不当拒答"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 1.0,
+      "answer_length": 389,
+      "num_chunks_used": 5
+    },
+    "answer": "根据现有资料，南科大的社团活动主要分为五大类型：思想政治、学术科技、创新创业、文化体育、志愿公益（来源：新生攻略之社团篇）。此外，学校还设有如Penbeat社等具体社团，其活动包括日常学习交流、文艺汇演（如迎新晚会、动漫音乐节）、团建聚餐等（来源：学生工作部网站）。\n\n关于如何加入社团，资料显示主要有以下途径：\n1. **参加“百团大战”**：南科大社团联合会每年初秋举办“百团大战”活动，各社团会设置摊位展示风采，同学们可以现场了解并加入（来源：新生攻略之社团篇）。\n2. **关注线上宣传**：部分社团会通过QQ空间或微信公众号进行招新宣传，也可以加入感兴趣的社团招新群进一步了解（来源：新生攻略之社团篇）。\n3. **面向全校开放**：所有社团均面向全校同学开放，即使社团名称带有特定书院前缀（如“致诚咏春社”），其他书院的同学也可以报名参加（来源：新生攻略之社团篇）。"
+  },
+  {
+    "q_id": "medium_dept_001",
+    "total_score": 9,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "explanation": "正确 (key_facts=100%, overlap=92%)"
+      },
+      "grounding": {
+        "score": 2,
+        "explanation": "答案高度有据 (96/160 项可追溯)"
+      },
+      "completeness": {
+        "score": 2,
+        "explanation": "完整覆盖 (10/10 关键事实)"
+      },
+      "traceability": {
+        "score": 1,
+        "explanation": "有一处来源引用，但不够详细"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正常回答，无不当拒答"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 1.0,
+      "answer_length": 939,
+      "num_chunks_used": 5
+    },
+    "answer": "根据参考资料，南方科技大学数学系的部分教授及其研究方向如下：\n\n- **Stavros Garoufalidis（讲席教授）**：研究方向为低维拓扑、几何与数学物理（参考资料1、4）。他于2019年全职加入南科大，曾获得斯隆青年学者论文奖、约翰·西蒙·古根海姆奖等荣誉（参考资料1）。\n- **Jana Hertz（教授）**：研究方向为动力系统，重点是双曲线动力学（参考资料2、3、4）。她于2016年加入南科大数学系（参考资料2、3）。\n- **Alexander Kurganov（讲席教授）**：研究方向为计算与应用数学（参考资料4）。\n- **李才恒（讲席教授）**：研究方向为代数组合数学和置换群论（参考资料4）。\n- **向青（讲席教授、系主任）**：研究方向为组合数学、有限几何、代数编码理论（参考资料4）。\n- **熊捷（讲席教授、科研事务负责人）**：研究方向为随机微分方程、马氏过程、极限理论、随机分析、随机控制与滤波、数理金融（参考资料4）。\n- **Efim Zelmanov（讲席教授）**：研究方向未在参考资料中明确列出（参考资料4仅标注“教授”）。\n- **Ilya Kossovskiy（教授）**：研究方向为复分析、全纯动力系统、Cartan几何（参考资料4）。\n- **李景治（教授、数学系副主任）**：研究方向为计算与应用数学（参考资料4）。\n- **Pedro Salomao（教授）**：研究方向未在参考资料中明确列出（参考资料4）。\n- **Raul Ures（教授）**：研究方向为动力系统与遍历理论（参考资料4、5）。\n- **杨将（教授）**：研究方向为计算与应用数学（参考资料4、5）。\n- **张进（教授）**：研究方向为最优化理论，包括变分分析、非光滑分析、扰动分析、双层规划、一阶优化算法、随机规划/鲁棒优化（参考资料4、5）。\n\n此外，参考资料5还列出了多位副教授及其研究方向，例如古嘉雯（金融数学与运筹管理）、高辉（代数数论）、胡勇（数论与算术几何）、刘博辰（调和分析、几何测度论、组合数学）等。\n\n请注意，以上信息仅基于提供的参考资料，可能未涵盖数学系所有教授。如需完整名单，建议查阅南方科技大学数学系官方网站。"
+  },
+  {
+    "q_id": "medium_dept_002",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "explanation": "不正确 (key_facts=50%, overlap=0%)"
+      },
+      "grounding": {
+        "score": 1,
+        "explanation": "答案部分有据 (14/37 项可追溯)"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 2,
+        "explanation": "明确引用来源 (3 处)"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "应拒答但未拒答（可能产生幻觉）"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 182,
+      "num_chunks_used": 5
+    },
+    "answer": "根据现有资料，无法确定南方科技大学物理系本科的具体专业方向。参考资料中提到了物理系毕业生在《物理评论快报》发表论文（来源：参考资料4），以及物理系2025年秋季学期研究生相关通知（来源：参考资料5），但均未涉及本科专业方向的详细列表。如需了解物理系本科专业设置，建议查阅南方科技大学官方网站或物理系招生主页（https://phy.sustech.edu.cn）。"
+  },
+  {
+    "q_id": "medium_dept_003",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "答案缺乏依据 (10/34 项可追溯)"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 2,
+        "explanation": "明确引用来源 (2 处)"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "应拒答但未拒答（可能产生幻觉）"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 142,
+      "num_chunks_used": 5
+    },
+    "answer": "根据现有资料，无法确定南方科技大学（SUSTech）生物系具体有哪些实验室和科研平台。参考资料中主要介绍了学校整体科研机构（如七大校级实体科研机构）、医学院及公共卫生学院的科研平台，但未专门提及生物系的实验室或平台信息。如需了解生物系的具体情况，建议查阅生物系官方网站或相关招生资料。"
+  },
+  {
+    "q_id": "medium_dept_004",
     "total_score": 4,
     "dimensions": {
       "correctness": {
@@ -1094,7 +841,7 @@
       },
       "grounding": {
         "score": 1,
-        "explanation": "答案部分有据 (40/102 项可追溯)"
+        "explanation": "答案部分有据 (53/103 项可追溯)"
       },
       "completeness": {
         "score": 1,
@@ -1111,9 +858,298 @@
     },
     "metrics": {
       "keyword_hit_rate": 0.0,
-      "answer_length": 459,
+      "answer_length": 505,
       "num_chunks_used": 5
-    }
+    },
+    "answer": "根据现有资料，南科大金融系的课程和培养方案包含以下信息：\n\n1. **课程设置**：根据商学院本科项目介绍，每学年共开设70门专业课供学生选择（参考资料1）。金融系课程已涵盖到国民经济生活中的方方面面，且最初的专业是金融数学，与数学学科紧密相关（参考资料3）。\n\n2. **培养方案内容**：金融学辅修专业面向全校非金融学类本科生开放，旨在培养“科技+商业”的复合型人才（参考资料1）。具体培养方案包括：\n   - 2024级、2023级、2022级金融学辅修培养方案（参考资料1）。\n   - 学校推行以“金融学”专业为试点的辅修专业制度，并打造本硕博贯通培养模式（参考资料2）。\n   - 成绩优秀的学生可参与“学术之星计划”（从大二暑假进入教授课题组）和“未来企业家计划”（推荐进入深圳头部企业实习，支持CFA、FRM等考试及创业创新大赛）（参考资料1）。\n\n3. **转专业要求**：若希望从其他院系转入商学院内任一专业，总GPA须达到3.3及以上（参考资料1）。\n\n请注意，参考资料中未提供金融学主修专业的完整课程列表或所有年级的培养方案细节。如需更详细的信息，建议查阅商学院官网或相关培养方案文件。"
+  },
+  {
+    "q_id": "medium_dept_005",
+    "total_score": 7,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=56%, overlap=38%)"
+      },
+      "grounding": {
+        "score": 1,
+        "explanation": "答案部分有据 (80/155 项可追溯)"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "部分覆盖 (5/9 关键事实)"
+      },
+      "traceability": {
+        "score": 2,
+        "explanation": "明确引用来源 (2 处)"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正常回答，无不当拒答"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.556,
+      "answer_length": 819,
+      "num_chunks_used": 5
+    },
+    "answer": "根据现有参考资料，南方科技大学材料科学与工程系在多个前沿领域展现出较强的科研实力，并取得了一系列代表性成果。具体信息如下：\n\n1. **科研方向与成果**：\n   - 刘玮书课题组在室温热电材料研究方面取得进展，相关成果发表在《Research》和《Journal of Materiomics》上（来源：参考资料3）。\n   - 任富增课题组开发了新型超高耐磨性能合金，相关成果发表在金属材料领域顶级期刊《Acta Materialia》上（来源：参考资料3）。\n   - 谷猛合作团队借助原位环境电镜揭示了金属催化剂真实活性表面，相关成果发表在《自然-催化》（Nature Catalysis）上（来源：参考资料3）。\n   - 郭传飞教授团队专注于高性能电子皮肤和人体柔性电子技术，其博士生王宇涛作为共同第一作者在《美国化学会志》（JACS）上发表论文（来源：参考资料2、4、5）。\n   - 材料基因组大科学装置平台高通量中子表征平台等重大科技基础设施项目也在推进中（来源：参考资料5）。\n\n2. **科研平台与支持**：\n   - 研究得到了量子功能材料全国重点实验室、南科大光明高等研究院、新材料重大科技设施研究院等平台的支持（来源：参考资料2）。\n   - 科研经费来自国家自然科学基金、广东省科学基金、深圳市科学基金等（来源：参考资料2）。\n\n3. **人才培养与学术氛围**：\n   - 材料系教授冯军在招生说明会上介绍了南科大的人才培养成果，强调通过详实数据和校友案例展示成效（来源：参考资料1）。\n   - 博士生王宇涛的分享中提到，南科大先进的科研平台、浓厚的学术氛围和优秀的师资队伍为科研提供了良好环境（来源：参考资料4）。\n\n综上，材料科学与工程系在热电材料、耐磨合金、催化、电子皮肤等领域均有高水平成果，并依托国家级平台和基金支持，展现出较强的科研实力。如需更全面的信息，建议查阅该系官网的“科研聚焦”栏目。"
+  },
+  {
+    "q_id": "medium_dept_006",
+    "total_score": 10,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "explanation": "正确 (key_facts=100%, overlap=93%)"
+      },
+      "grounding": {
+        "score": 2,
+        "explanation": "答案高度有据 (74/94 项可追溯)"
+      },
+      "completeness": {
+        "score": 2,
+        "explanation": "完整覆盖 (10/10 关键事实)"
+      },
+      "traceability": {
+        "score": 2,
+        "explanation": "明确引用来源 (2 处)"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正常回答，无不当拒答"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 1.0,
+      "answer_length": 474,
+      "num_chunks_used": 5
+    },
+    "answer": "根据参考资料，南方科技大学医学院的附属医院体系较为完善，具体包括以下医院：\n\n1. **南方科技大学附属医院**（校本部，已获立项批复，预计2026年完成施工）\n2. **南方科技大学第一附属医院**（深圳市人民医院）\n3. **南方科技大学第二附属医院**（深圳市第三人民医院）\n4. **南方科技大学口腔医院**（筹）\n5. **南方科技大学附属肿瘤医院**（中国医学科学院肿瘤医院深圳医院）\n6. **南方科技大学附属心血管病中心**（中国医学科学院阜外医院深圳医院）\n7. **南方科技大学附属妇女儿童医院**（广东省妇产医院广东省儿童医院）\n8. **南方科技大学附属精神卫生中心**（深圳市康宁医院）\n9. **南方科技大学附属佛山医院**（佛山市第一人民医院）\n10. **南方科技大学附属龙华医院**（深圳市龙华区人民医院）\n\n此外，参考资料还提到有教学医院（如深圳市儿童医院、深圳市妇幼保健院等）和科研合作基地（如深圳市疾病预防控制中心等），但严格来说，这些不属于附属医院范畴。\n\n（信息来源：医学院官网及附属医院筹建办相关页面）"
+  },
+  {
+    "q_id": "medium_dept_007",
+    "total_score": 5,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 1,
+        "explanation": "答案部分有据 (59/116 项可追溯)"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 2,
+        "explanation": "明确引用来源 (3 处)"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "应拒答但未拒答（可能产生幻觉）"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 559,
+      "num_chunks_used": 5
+    },
+    "answer": "根据现有资料，南方科技大学环境科学与工程学院的研究重点主要体现在以下几个方面：\n\n1. **土壤与地下水污染防治**：参考资料2和5均提到学院在“土壤与地下水污染防治”领域具有技术优势，并联合共建了相关深圳市重点实验室。参考资料5还提及学院曾开设《土壤与地下水污染防治的美国经验》暑期课程，表明该领域是学院的教学与研究重点。\n\n2. **固废处置与资源化利用**：参考资料2指出学院联合共建了“固废处置与资源化利用”深圳市重点实验室，说明这是学院的核心研究方向之一。\n\n3. **流域环境规划与综合治理**：参考资料2提到学院在“流域环境规划和综合治理”领域处于国内先进水平。\n\n4. **基于物联网和互联网的环境综合监测管理（智慧平台）**：参考资料2显示学院在“基于物联网和互联网的环境综合监测管理的‘智慧平台’”方面具有技术能力。\n\n5. **关键环保技术研发与产业化**：参考资料3提到学院依托的工程技术创新中心致力于“研发关键环保技术，推动其工程化开发和系统集成”，并推进示范推广和产业化。\n\n此外，参考资料1中提到的学生活动（如美国地球物理联合会年会展示、可持续发展研究）也反映了学院在环境科学前沿研究方面的活跃度。\n\n以上信息主要来源于环境学院官方网站（ese.sustech.edu.cn）的相关页面。"
+  },
+  {
+    "q_id": "medium_policy_001",
+    "total_score": 3,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "答案缺乏依据 (24/90 项可追溯)"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 1,
+        "explanation": "有一处来源引用，但不够详细"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "应拒答但未拒答（可能产生幻觉）"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 394,
+      "num_chunks_used": 5
+    },
+    "answer": "根据现有资料，无法确定南方科技大学统一的学术诚信政策以及抄袭的具体处罚规定。\n\n参考资料中提到了与诚信相关的内容，但均不涉及全校性的学术诚信政策或抄袭处罚：\n- 参考资料1（科研部网站）列出了《广东省科学技术厅科技计划项目科研诚信管理办法》等省级科研诚信文件，但未说明南科大自身的具体规定。\n- 参考资料2（商学院MBA复试通知）提到考生需遵守《国家教育考试违规处理办法》等规定，并说明在复试中违规（如作弊）会取消录取资格、记入诚信档案，入学后复查不合格可取消学籍。但这仅针对研究生招生考试环节，并非全校通用的学术诚信政策。\n- 其他参考资料（如生物医学工程系招聘、信息公开页面、高等教育研究中心介绍）均未涉及学术诚信或抄袭处罚内容。\n\n如需了解南科大具体的学术诚信政策（如抄袭、剽窃等行为的认定和处罚），建议直接查阅学校官方网站的“规章制度”或“学生手册”相关栏目，或联系教务部门咨询。"
+  },
+  {
+    "q_id": "medium_policy_002",
+    "total_score": 5,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 1,
+        "explanation": "答案部分有据 (33/90 项可追溯)"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 2,
+        "explanation": "明确引用来源 (2 处)"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "应拒答但未拒答（可能产生幻觉）"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 401,
+      "num_chunks_used": 5
+    },
+    "answer": "根据现有资料，南科大本科生转专业的条件和流程如下：\n\n**关于本科生转专业**：参考资料中并未直接说明本科生转专业的具体条件和流程。不过，参考资料1（新生攻略之学习篇）提到，南科大实行“自由选择专业”制度，学生可以在入学后根据兴趣和先修课程选择专业，并有一年的探索时间。这意味着本科生在入学初期有较大的专业选择灵活性，而非传统的“转专业”流程。\n\n**关于研究生转学科**：参考资料3和5提供了研究生（博士、硕士研究生）转学科的信息，但明确说明这是针对“学籍研究生”的转学科申请，不适用于本科生。例如，参考资料3显示，研究生转学科需根据《南方科技大学学籍管理规定》（南科大〔2022〕90号）第十五条，经学生本人申请、培养单位考核，并公示结果。\n\n**结论**：根据现有资料，无法确定南科大本科生转专业的具体条件和流程。建议咨询学校教务部门或查阅最新的《南方科技大学本科生学籍管理规定》以获取准确信息。"
+  },
+  {
+    "q_id": "medium_policy_003",
+    "total_score": 6,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 2,
+        "explanation": "答案高度有据 (162/242 项可追溯)"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 2,
+        "explanation": "明确引用来源 (2 处)"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "应拒答但未拒答（可能产生幻觉）"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 1163,
+      "num_chunks_used": 5
+    },
+    "answer": "根据现有参考资料，南方科技大学（SUSTech）的研究生招生要求因招生类型（博士、硕士、港澳台地区）和合作项目（如与哈尔滨工业大学联合培养）而有所不同。以下是基于参考资料整理的基本要求：\n\n### 博士研究生招生基本要求（南科大独立培养）\n根据参考资料1（来源：南方科技大学创新创业学院官网），申请南科大独立培养博士研究生需满足以下条件：\n- 中华人民共和国公民。\n- 拥护中国共产党的领导，具有正确的政治方向，热爱祖国，愿意为社会主义现代化建设服务，遵纪守法，品行端正。\n- 已获得硕士学位人员或应届硕士毕业生（最迟须在入学前取得硕士学位）。在境外留学人员须取得硕士学位证书，并提供教育部留学服务中心的学历认证。\n- 有至少两名所报考学科专业领域内的副教授及以上职称（或相当专业技术职称）的专家书面推荐意见。\n- 身体健康状况符合规定的体检标准。\n- 招生类别为全日制非定向博士研究生，须全脱产学习，在校期间人事档案须按规定转入我校。\n\n### 博士研究生招生基本要求（与哈尔滨工业大学联合培养工程博士）\n根据参考资料1和参考资料2（来源：南方科技大学工学院官网），联合培养工程博士可采取全日制或非全日制学习方式，全程在南科大培养，授予哈工大学历学位证书和南科大学习证明。具体申请条件未在参考资料中详细列出，但可参考南科大独立培养博士的申请条件，并需关注后续招生通知。\n\n### 硕士研究生招生基本要求\n根据参考资料5（来源：南方科技大学创新创业学院官网），2020年硕士研究生招生采用推荐免试和普通招考两种方式：\n- **推荐免试**：须符合“南方科技大学2020年接收推荐免试研究生（含直博生）报名通知”相关规定。\n- **普通招考**：未在参考资料中详细列出具体条件，但一般需满足国家统考要求。\n\n### 面向港澳台地区研究生招生基本要求\n根据参考资料4（来源：南方科技大学计算机科学与工程系官网），2025年面向港澳台地区研究生招生需满足以下条件：\n- **身份证件**：\n  - 港澳地区考生：持①香港或澳门永久性居民身份证和②《港澳居民来往内地通行证》或《港澳居民居住证》。\n  - 台湾地区考生：持①在台湾居住的有效身份证明和②《台湾居民来往大陆通行证》或《台湾居民居住证》。\n- **学业水平**：\n  - 报考硕士学位研究生：须具有与内地（祖国大陆）学士学位相当的学位或同等学历。\n\n### 注意事项\n- 参考资料中未提供硕士研究生的完整普通招考条件，建议查阅南科大研究生院官网（https://gs.sustech.edu.cn）获取最新信息。\n- 联合培养工程博士的具体申请条件需参考后续招生通知（参考资料1提及）。\n- 所有招生信息以官方发布为准，如有矛盾（如不同年份的招生简章），请以最新版本为准。"
+  },
+  {
+    "q_id": "medium_policy_004",
+    "total_score": 5,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 1,
+        "explanation": "答案部分有据 (52/123 项可追溯)"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 2,
+        "explanation": "明确引用来源 (2 处)"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "应拒答但未拒答（可能产生幻觉）"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 568,
+      "num_chunks_used": 5
+    },
+    "answer": "根据现有资料，南科大宿舍管理规定主要包括以下内容：\n\n1. **住宿申请与变更**：学校发布了《南方科技大学书院宿舍住宿申请表》和《南方科技大学书院宿舍住宿申请表（适用于复学、延毕学生）》，用于规范宿舍住宿申请流程。此外，还有《南方科技大学本科生公寓管理细则》和《树礼书院学生宿舍管理处理意见》等文件，但具体细则内容未在参考资料中详细列出（来源：学生工作部网站，osa.sustech.edu.cn）。\n\n2. **宿舍用电规定**：每人每年有120度免费用电额度，超出额度会断电。宿舍内电器功率不得超过1500W。电控系统在每年2月末和8月末按宿舍人数充值，不足时可通过企业微信进行水电充值（来源：新生攻略之宿舍生活篇）。\n\n3. **宿舍设施与维修**：宿舍物资维修可通过深圳市东道建设集团或中航物业提交维修单（来源：学生工作部网站）。\n\n4. **疫情防控与访客管理**：参考资料中提到，学校有严格的疫情防控规定，例如2021年国际交换生入学教育期间，有学生因自我健康监测无法到场参加活动（来源：国际合作部网站）。但关于访客是否可以进入宿舍，参考资料中未提供明确信息。根据现有资料无法确定访客进入宿舍的具体规定。\n\n建议您查阅学校官方发布的《南方科技大学本科生公寓管理细则》或联系学生工作部、书院宿管老师获取更详细的访客管理规定。"
+  },
+  {
+    "q_id": "medium_policy_005",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 1,
+        "explanation": "答案部分有据 (34/109 项可追溯)"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 1,
+        "explanation": "有一处来源引用，但不够详细"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "应拒答但未拒答（可能产生幻觉）"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 506,
+      "num_chunks_used": 5
+    },
+    "answer": "根据现有资料，南科大关于休学和复学的具体规定信息有限，但可以找到以下相关内容：\n\n1. **休学与复学的支持案例**：参考资料2中提到，一名2012年入学的本科生曾因创业休学，后成功复学。学校提供了弹性时间毕业政策，并在常规6年学制基础上特别延期一年，支持学生创业。这表明南科大允许学生因创业等原因休学，并支持复学。\n\n2. **复学学生宿舍申请**：参考资料1中列出了“关于辅导员、复学学生宿舍住宿申请的通知”和“南方科技大学书院宿舍住宿申请表（适用于复学、延毕学生）”，说明复学学生需要申请宿舍，并有专门的申请表格。\n\n3. **退学规定**：参考资料3提到，根据《南方科技大学研究生学籍管理规定》（南科大〔2022〕90号）第二十一条，研究生若在规定期限内未注册且未履行暂缓注册手续，或未经批准连续两周未参加教学活动，可被予以退学处理。这间接涉及学籍管理，但未直接说明休学或复学的具体流程。\n\n**总结**：根据现有资料，南科大支持学生因创业等原因休学，并提供弹性毕业政策；复学学生需申请宿舍。但关于休学申请条件、期限、复学流程等具体规定，资料中未详细说明，建议咨询学校学生事务中心或查阅官方学籍管理规定。"
+  },
+  {
+    "q_id": "hard_comp_001",
+    "total_score": 5,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 1,
+        "explanation": "答案部分有据 (34/92 项可追溯)"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 2,
+        "explanation": "明确引用来源 (2 处)"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "应拒答但未拒答（可能产生幻觉）"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 417,
+      "num_chunks_used": 5
+    },
+    "answer": "根据现有参考资料，无法直接比较南科大计算机系和电子系在课程设置和科研方向上的主要区别。参考资料中仅提供了电子系的部分信息，而计算机系的相关信息非常有限。\n\n具体来说：\n- **电子系**：根据电子系官网（参考资料1），该系设有光电信息科学与工程、通信工程、信息工程三个本科专业，以及“电子科学与技术”一级学科学硕点和“电子信息”专硕点，覆盖物理电子学与光电子学、电磁场与微波技术、智能信号与信息处理等研究领域。师资方面包括多位院士和IEEE Fellow。\n- **计算机系**：参考资料3提到计算机系“课程设置很有难度和深度，有很多经典的project”，但未提供具体的专业设置或科研方向细节。参考资料2和4中虽有计算机系相关新闻或校友信息，但未涉及课程或科研方向的系统介绍。\n\n因此，关于两个院系在课程设置和科研方向上的具体区别，根据现有资料无法确定。建议查阅南科大计算机科学与工程系和电子与电气工程系的官方网站获取更详细的信息。"
   },
   {
     "q_id": "hard_comp_002",
@@ -1121,11 +1157,11 @@
     "dimensions": {
       "correctness": {
         "score": 2,
-        "explanation": "正确 (key_facts=100%, overlap=48%)"
+        "explanation": "正确 (key_facts=100%, overlap=59%)"
       },
       "grounding": {
         "score": 1,
-        "explanation": "答案部分有据 (49/146 项可追溯)"
+        "explanation": "答案部分有据 (80/219 项可追溯)"
       },
       "completeness": {
         "score": 2,
@@ -1142,29 +1178,30 @@
     },
     "metrics": {
       "keyword_hit_rate": 1.0,
-      "answer_length": 676,
+      "answer_length": 983,
       "num_chunks_used": 5
-    }
+    },
+    "answer": "根据现有参考资料，南科大书院制与传统大学的学院制在本科生管理上存在以下差异：\n\n1. **管理核心与组织架构**：南科大书院制以“书院”为核心，实行院长负责制，下设书院办公室负责日常事务（参考资料1）。书院以学生公寓为核心，由若干栋公寓楼及配套设施组成，每个书院有自己的名字、文化、传统和活动（参考资料1）。传统大学的学院制通常以学科专业为基础，由学院负责教学和学术管理，学生按专业归属学院，住宿和生活管理相对独立。\n\n2. **学生管理方式**：南科大实行“学生工作部、团委、书院‘三位一体’的学生管理体制”，对本科生实行全员书院制和导师制（参考资料1）。每位学生入学后会被分配一位全职教授作为导师，为大学学习、生活提供咨询意见（参考资料1）。传统学院制下，学生管理主要由学院辅导员或班主任负责，导师制可能仅针对研究生或高年级本科生，且导师通常不直接参与日常住宿生活。\n\n3. **教育功能与培养目标**：书院是南科大全面教育的核心组成部分，致力于促进学生在认知、情感、社会性等多维度成长，提供课堂外的全方位学习和兴趣活动（参考资料1）。书院强调“家文化”和传统文化培养，如致仁书院以“弘扬中华优秀传统文化”和“家文化”为特色（参考资料5）。传统学院制更侧重于专业学术教育和课程教学，课外活动和综合素质培养通常由学生社团或学校统一组织，而非以学院为单位。\n\n4. **社区与互动模式**：书院制为不同年级、不同专业的学生及导师营造关系密切、互动交流的师生社区（参考资料1）。例如，致仁书院是南科大规模最大的书院，其校友会也是本科生最大规模、最完整校友分会，强调书院生活是“最难忘、最温暖的回忆”（参考资料5）。传统学院制下，学生通常按专业和年级分班，跨年级、跨专业的互动较少，师生交流多限于课堂或学术指导。\n\n5. **选课与学业指导**：南科大选课流程包括“了解培养方案与课程→新生课程初选→导师指导→课程退补选→书院确认”，其中导师指导和书院确认是重要环节（参考资料3）。传统学院制下，选课通常由学院教务部门或学术顾问指导，书院不直接参与学业规划。\n\n综上，南科大书院制以住宿社区为基础，通过导师制、书院活动和跨专业融合，强化学生综合素质和社区归属感；而传统学院制更侧重专业学术管理和教学组织，学生生活与学术管理相对分离。以上信息来源于学校官方网站和校园手册。"
   },
   {
     "q_id": "hard_comp_003",
     "total_score": 7,
     "dimensions": {
       "correctness": {
-        "score": 1,
-        "explanation": "部分正确 (key_facts=71%, overlap=33%)"
+        "score": 2,
+        "explanation": "正确 (key_facts=86%, overlap=67%)"
       },
       "grounding": {
         "score": 1,
-        "explanation": "答案部分有据 (44/125 项可追溯)"
+        "explanation": "答案部分有据 (49/146 项可追溯)"
       },
       "completeness": {
         "score": 1,
-        "explanation": "部分覆盖 (5/7 关键事实)"
+        "explanation": "部分覆盖 (6/7 关键事实)"
       },
       "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (2 处)"
+        "score": 1,
+        "explanation": "有一处来源引用，但不够详细"
       },
       "abstention": {
         "score": 2,
@@ -1172,10 +1209,11 @@
       }
     },
     "metrics": {
-      "keyword_hit_rate": 0.714,
-      "answer_length": 556,
+      "keyword_hit_rate": 0.857,
+      "answer_length": 724,
       "num_chunks_used": 5
-    }
+    },
+    "answer": "根据现有参考资料，我无法直接比较南方科技大学数学系与统计与数据科学系的区别，因为参考资料中未提供数学系的相关信息。不过，我可以基于统计与数据科学系的资料，分析其与AI相关的特点，供您参考。\n\n**统计与数据科学系的特点（与AI相关）：**\n1. **师资与研究方向**：该系拥有22位教研序列教师和4位双聘教师，其中包括多名国际知名学者（如IMS会士、ASA会士等）。系内设有“Data+AI”数据智能实验室（与滴普科技共建），并举办过关于“AGI中基础模型与专用模型的协同演化”的讲座（由世界知名AI专家杨红霞教授主讲），表明该系在人工智能与数据科学交叉领域有活跃的研究（参考资料1、2、3）。\n2. **课程与培养**：该系强调“统计与数据科学”是智能时代的核心基石，并举办过以“人工智能时代统计与数据科学人才培养创新”为主题的教学研讨会，探讨课程改革与校企协同育人（参考资料5）。此外，该系提供国际化教育培养计划，包括国内外交换机会（参考资料1）。\n3. **科研进展**：该系王超团队在X射线光谱断层扫描成像算法上取得突破，涉及隐式神经网络等AI技术（参考资料4）。\n\n**建议：**\n- 如果您对AI感兴趣，统计与数据科学系显然在数据科学、机器学习、AI应用（如成像算法、大模型协同）方面有直接关联，且设有校企联合实验室和AI相关讲座。\n- 数学系通常更侧重纯数学或应用数学的理论基础，但参考资料中未提供其课程、师资或AI相关活动，因此无法判断其与AI的关联程度。\n\n**结论**：根据现有资料，统计与数据科学系更适合想做AI的学生，因为它明确涉及数据智能、AI模型研究及校企合作。如需进一步比较，建议查阅数学系的官方介绍或联系相关院系。"
   },
   {
     "q_id": "hard_comp_004",
@@ -1187,7 +1225,7 @@
       },
       "grounding": {
         "score": 0,
-        "explanation": "答案缺乏依据 (27/150 项可追溯)"
+        "explanation": "答案缺乏依据 (29/128 项可追溯)"
       },
       "completeness": {
         "score": 1,
@@ -1204,9 +1242,10 @@
     },
     "metrics": {
       "keyword_hit_rate": 0.0,
-      "answer_length": 855,
+      "answer_length": 594,
       "num_chunks_used": 5
-    }
+    },
+    "answer": "根据现有资料，南科大图书馆提供了丰富的纸质资源和电子资源，但参考资料中并未直接对比两者在使用方式上的优劣。以下是根据资料中可获取的信息进行的整理：\n\n**纸质资源**：\n- 根据图书馆网站，纸质资源（如图书、报刊）主要分布在琳恩图书馆的各个楼层，例如一楼有休闲区、报刊区、阅览室，二楼有阅览区，三楼有自习区等（参考资料1）。\n- 使用纸质资源需要携带校卡刷卡进入图书馆，服务时间为周一至周日8:00-22:00，疫情期间可能有变化，需留意邮件通知（参考资料1）。\n- 纸质资源可能更适合需要实体阅读或小组讨论的场景，例如一楼的讨论室可通过官网预约用于小组展示（参考资料1）。\n\n**电子资源**：\n- 图书馆官网提供海量电子资源，包括数据库、网络公开课、工具等，可通过“数据库导航”和“网络资源导航”访问（参考资料1、2）。\n- 电子资源的使用不受图书馆开放时间限制，例如一丹图书馆一楼24小时开放（参考资料5），但具体电子资源的访问方式（如是否需要校内网络或认证）资料未明确说明。\n- 电子资源可能更便于快速检索和远程访问，但参考资料未提及具体优劣。\n\n**优劣对比**：现有资料未直接比较两者优劣。例如，纸质资源可能提供更沉浸的阅读体验，但受限于开放时间和物理位置；电子资源可能更便捷，但依赖设备和网络。如需更详细对比，建议参考南科大图书馆官网的“读者手册”或新生专栏（参考资料1）。"
   },
   {
     "q_id": "hard_cross_001",
@@ -1218,7 +1257,7 @@
       },
       "grounding": {
         "score": 1,
-        "explanation": "答案部分有据 (51/133 项可追溯)"
+        "explanation": "答案部分有据 (58/134 项可追溯)"
       },
       "completeness": {
         "score": 1,
@@ -1235,29 +1274,30 @@
     },
     "metrics": {
       "keyword_hit_rate": 0.0,
-      "answer_length": 628,
+      "answer_length": 772,
       "num_chunks_used": 5
-    }
+    },
+    "answer": "根据现有参考资料，新生入学后需要办理的手续及办理地点如下：\n\n1. **档案交接**：  \n   - 自带档案的新生需在书院报到时统一上交档案。  \n   - 档案寄送地址：广东省深圳市南山区学苑大道1088号南方科技大学书院收发室（学生工作部王老师收，电话：0755-88010512）。  \n   - 来源：参考资料1、2（南科大迎新网）。\n\n2. **身份核验**：  \n   - 报到当天需凭录取通知书和身份证进行身份核验。  \n   - 办理地点：书院报到现场。  \n   - 来源：参考资料1（南科大迎新网）。\n\n3. **户籍迁移（如需办理）**：  \n   - 广东省内户籍：无需“户口迁移证”，需提供户口页复印件等材料。  \n   - 户籍地址：广东省深圳市南山区学苑大道1088号；所属派出所：塘朗派出所。  \n   - 办理地点：学校统一集中办理，具体地点未明确说明，但需注意入户周期较长。  \n   - 来源：参考资料2（南科大迎新网）。\n\n4. **行李与材料准备**：  \n   - 需携带录取通知书、身份证等材料，以及适合深圳气候的衣物。  \n   - 办理地点：报到当天在书院现场核验。  \n   - 来源：参考资料1（南科大迎新网）。\n\n5. **研究生/博士生额外手续（如适用）**：  \n   - 已婚者需提供结婚证复印件；未婚者需提供未婚证明。  \n   - 办理地点：户籍迁移相关材料提交至学校，具体地点未明确。  \n   - 来源：参考资料2（南科大迎新网）。\n\n**注意**：参考资料中未明确列出所有手续的具体办理地点（如户籍迁移的现场办理点），仅提及“书院报到”和“学校集中办理”。如需更详细的地点信息，建议参考随录取通知书寄送的《入学指南》或联系学生工作部（电话：0755-88010512）。"
   },
   {
     "q_id": "hard_cross_002",
-    "total_score": 9,
+    "total_score": 7,
     "dimensions": {
       "correctness": {
         "score": 2,
-        "explanation": "正确 (key_facts=89%, overlap=59%)"
+        "explanation": "正确 (key_facts=89%, overlap=65%)"
       },
       "grounding": {
-        "score": 2,
-        "explanation": "答案高度有据 (129/183 项可追溯)"
+        "score": 1,
+        "explanation": "答案部分有据 (65/135 项可追溯)"
       },
       "completeness": {
         "score": 1,
         "explanation": "部分覆盖 (8/9 关键事实)"
       },
       "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (2 处)"
+        "score": 1,
+        "explanation": "隐式提及来源，但未明确引用"
       },
       "abstention": {
         "score": 2,
@@ -1266,29 +1306,30 @@
     },
     "metrics": {
       "keyword_hit_rate": 0.889,
-      "answer_length": 893,
+      "answer_length": 683,
       "num_chunks_used": 5
-    }
+    },
+    "answer": "根据现有资料，南科大的校园餐饮选择较为丰富，包括多个学生食堂和“非常规”餐厅。以下是具体信息：\n\n### 学生食堂\n- **10栋第二学生食堂（新生食堂）**：位于10栋，靠近11栋宿舍，周内有时供应夜宵。\n- **荔园食堂**：位于荔园区域。\n- **一教食堂**：位于第一教学楼附近。\n- **中心食堂**：位于南科大中心（该建筑功能涵盖餐厅、图书馆及综合服务楼）。\n- **欣园食堂**：位于欣园，但学生较少在此就餐。\n\n### “非常规”餐厅\n- **赛百味食堂**：位于第一科研楼与第一教学楼之间，售卖美式三明治、小块披萨、鸡肉卷等，均价20-30元。\n- **星巴克食堂**：位于琳恩图书馆附近，提供饮品、三明治、千层面、蛋糕等，均价30-40元。\n- **超市食堂**：包括湖畔超市、荔园超市、天虹微喔三家，提供车仔面、关东煮、熟食与面包，其中天虹提供加热和煮面服务。这些是唯一全天候营业的餐饮点。\n- **学者咖啡**：位于第二科研楼一楼，提供咖啡、饺子、牛肉面和冰淇淋。\n- **湖畔一栋致仁咖啡社**：位于湖畔一栋，环境氛围好。\n- **其他**：还有肯德基、南科麦香屋（面包坊）等选择。\n\n### 特色\n- 各食堂和餐厅分布在校园不同区域，方便师生就近就餐。\n- 超市食堂是唯一全天候营业的，适合错过正常饭点的学生。\n- 赛百味和星巴克提供西式快餐和饮品，适合休闲或学习间隙用餐。\n- 学者咖啡和咖啡社提供咖啡及特色食品，环境适合社交或放松。\n\n以上信息主要来源于新生攻略和学校官方介绍。如需更详细的位置或营业时间，建议参考学校食堂的实时通知。"
   },
   {
     "q_id": "hard_cross_003",
-    "total_score": 8,
+    "total_score": 7,
     "dimensions": {
       "correctness": {
         "score": 2,
-        "explanation": "正确 (key_facts=83%, overlap=65%)"
+        "explanation": "正确 (key_facts=83%, overlap=59%)"
       },
       "grounding": {
         "score": 1,
-        "explanation": "答案部分有据 (46/104 项可追溯)"
+        "explanation": "答案部分有据 (36/92 项可追溯)"
       },
       "completeness": {
         "score": 1,
         "explanation": "部分覆盖 (5/6 关键事实)"
       },
       "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (2 处)"
+        "score": 1,
+        "explanation": "有一处来源引用，但不够详细"
       },
       "abstention": {
         "score": 2,
@@ -1297,9 +1338,10 @@
     },
     "metrics": {
       "keyword_hit_rate": 0.833,
-      "answer_length": 462,
+      "answer_length": 415,
       "num_chunks_used": 5
-    }
+    },
+    "answer": "根据现有资料，南方科技大学的校内外交通方式主要包括地铁和出租车。具体信息如下：\n\n**校内外交通方式：**\n- **地铁**：深圳地铁5号线（环中线）塘朗站可到达学校，建议从C出口或D口出站（参考资料1、3）。乘坐地铁可使用微信“乘车码”小程序或自动售票机购票（参考资料5）。\n- **出租车/网约车**：从宝安机场乘坐红色出租车到学校约30公里，车费约100元（含附加费）；从深圳北站乘坐出租车约4公里，车费约15元（参考资料3）。网约车也可使用，目的地设为“南方科技大学，1号门或2号门”（参考资料1）。\n\n**从学校到深圳北站最方便的路线：**\n根据参考资料1和3，最方便的方式是乘坐地铁5号线（环中线）。从塘朗站（学校附近）出发，乘坐5号线（往黄贝岭方向或赤湾方向，具体视线路方向而定）至深圳北站，车程约20分钟，费用约5元。出租车也是可选方案，距离约4公里，车费约15元，但地铁因准时且避免堵车，更受推荐（参考资料5）。"
   },
   {
     "q_id": "hard_cross_004",
@@ -1311,7 +1353,7 @@
       },
       "grounding": {
         "score": 1,
-        "explanation": "答案部分有据 (66/132 项可追溯)"
+        "explanation": "答案部分有据 (69/133 项可追溯)"
       },
       "completeness": {
         "score": 1,
@@ -1328,21 +1370,22 @@
     },
     "metrics": {
       "keyword_hit_rate": 0.0,
-      "answer_length": 833,
+      "answer_length": 857,
       "num_chunks_used": 5
-    }
+    },
+    "answer": "根据现有参考资料，南方科技大学在疫情期间主要采取了以下特殊政策：\n\n1. **疫情防控政策研究与建议**：由顾东风院士领衔的公共卫生及应急管理学院专项研究团队，基于实地调研和科学分析，向中共中央办公厅、国务院办公厅及深圳市相关部门提交了多份疫情防控策略建议报告，包括《关于适度强制新冠疫苗第三针接种以及尽快开展第四针接种的建议》等（来源：南方科技大学公共卫生学院网站，https://sph.sustech.edu.cn/news/detail/347.html?lang=zh-cn）。\n\n2. **科技抗疫攻关**：学校发挥科技创新和学科交叉优势，在病毒入侵机制、防疫产品、疫情监测预警、防控政策研究等方面取得突破，为抗击疫情提供科技支持（来源：南方科技大学官方网站，https://dangdaihui.sustech.edu.cn/evolution/42775.html）。\n\n3. **校友募捐行动**：有校友以个人名义募集资金为湖北孝感市中心医院购买医用外科手套，并协助南科大美国校友会联系物流运输和医院对接（来源：南方科技大学校友会网站，https://aa.sustech.edu.cn/mien/index/cid/111.html?page=10）。\n\n关于获取最新信息的渠道，参考资料中未明确说明疫情期间特殊政策的统一发布平台。但根据学校常规信息发布渠道，建议关注以下官方平台：\n- 南方科技大学官方网站（https://www.sustech.edu.cn）\n- 研究生招生办公室（https://gs.sustech.edu.cn/#/admission/index，电话：+86 755-88010473，邮箱：pgadmissions@sustech.edu.cn）\n- 学生工作部或相关职能部门网站（如osa.sustech.edu.cn）\n\n请注意，以上渠道为常规信息获取方式，疫情期间的具体政策更新可能需结合学校当时的通知公告。如需更精确的实时信息，建议直接联系学校相关部门。"
   },
   {
     "q_id": "hard_temp_001",
-    "total_score": 5,
+    "total_score": 6,
     "dimensions": {
       "correctness": {
         "score": 1,
         "explanation": "部分正确 (key_facts=50%, overlap=50%)"
       },
       "grounding": {
-        "score": 1,
-        "explanation": "答案部分有据 (52/98 项可追溯)"
+        "score": 2,
+        "explanation": "答案高度有据 (61/99 项可追溯)"
       },
       "completeness": {
         "score": 1,
@@ -1359,9 +1402,10 @@
     },
     "metrics": {
       "keyword_hit_rate": 0.0,
-      "answer_length": 471,
+      "answer_length": 472,
       "num_chunks_used": 5
-    }
+    },
+    "answer": "根据现有参考资料，南方科技大学2026年本科招生政策中，联合医学院的招生信息较为明确，但未提供与往年政策的直接对比。具体内容如下：\n\n根据联合医学院官网发布的招生通知（来源：https://skmed.sustech.edu.cn/news/detail/375.html），2026年联合医学院面向参加2026年普通高考的优秀高中毕业生开展本科招生，要求选考科目为物理和化学，高中学业水平考试各科成绩合格。综合评价招生办法参见《南方科技大学2026年综合评价招生简章》，报名截止时间为2026年4月30日，考生须通过南科大招生网（http://zs.sustech.edu.cn/）注册报名，经初审通过后参加南科大统一组织的能力测试，按高考成绩占60%、能力测试成绩占30%、高中平时成绩占10%的综合成绩择优录取。普通本科批次招生计划以各省级招生考试主管机构公布为准。\n\n参考资料中未包含往年（如2025年及以前）的本科招生政策细节，因此无法对比2026年政策的具体变化。如需了解往年政策，建议查阅南科大招生网历史公告或直接联系招生办公室。"
   },
   {
     "q_id": "hard_temp_002",
@@ -1373,7 +1417,7 @@
       },
       "grounding": {
         "score": 0,
-        "explanation": "答案缺乏依据 (6/35 项可追溯)"
+        "explanation": "答案缺乏依据 (2/33 项可追溯)"
       },
       "completeness": {
         "score": 1,
@@ -1390,9 +1434,10 @@
     },
     "metrics": {
       "keyword_hit_rate": 0.0,
-      "answer_length": 151,
+      "answer_length": 144,
       "num_chunks_used": 5
-    }
+    },
+    "answer": "根据现有资料，无法确定最近一个学期南科大有哪些新增的课程或专业。参考资料中提到了部分课程信息，如病理学课程（参考资料4）和夏季学期项目（参考资料3），但这些并非新增课程或专业，而是已有课程或常规安排。其他资料（如参考资料1、2、5）也未涉及新增课程或专业的具体信息。因此，无法回答此问题。"
   },
   {
     "q_id": "oos_ext_001",
@@ -1423,7 +1468,8 @@
       "keyword_hit_rate": 0.0,
       "answer_length": 72,
       "num_chunks_used": 5
-    }
+    },
+    "answer": "根据现有资料无法确定。参考资料中仅包含南方科技大学计算机科学与工程系（SUSTech CSE）的相关信息，未涉及清华大学计算机系的培养方案内容。"
   },
   {
     "q_id": "oos_ext_002",
@@ -1454,7 +1500,8 @@
       "keyword_hit_rate": 0.0,
       "answer_length": 93,
       "num_chunks_used": 5
-    }
+    },
+    "answer": "根据现有资料无法确定北京大学的图书馆开放时间。参考资料中仅包含南方科技大学（SUSTech）图书馆的相关信息，如琳恩图书馆、一丹图书馆和涵泳图书馆的开放安排，未涉及其他高校的图书馆信息。"
   },
   {
     "q_id": "oos_ext_003",
@@ -1466,7 +1513,7 @@
       },
       "grounding": {
         "score": 1,
-        "explanation": "答案部分有据 (18/43 项可追溯)"
+        "explanation": "答案部分有据 (20/40 项可追溯)"
       },
       "completeness": {
         "score": 1,
@@ -1483,9 +1530,10 @@
     },
     "metrics": {
       "keyword_hit_rate": 0.0,
-      "answer_length": 187,
+      "answer_length": 170,
       "num_chunks_used": 5
-    }
+    },
+    "answer": "根据现有资料无法确定麻省理工学院的申请截止日期。参考资料中提到的截止日期分别涉及南方科技大学不同院系的夏令营申请（如公共卫生及应急管理学院截止日期为2025年6月30日晚上23:55，商学院金融专硕夏令营截止日期为6月10日下午6点）和调剂申请（商学院MBA调剂截止日期为4月9日上午9:00），但未提供麻省理工学院相关项目的申请截止日期。"
   },
   {
     "q_id": "oos_hall_001",
@@ -1497,7 +1545,7 @@
       },
       "grounding": {
         "score": 1,
-        "explanation": "答案部分有据 (10/29 项可追溯)"
+        "explanation": "答案部分有据 (10/30 项可追溯)"
       },
       "completeness": {
         "score": 1,
@@ -1514,9 +1562,10 @@
     },
     "metrics": {
       "keyword_hit_rate": 0.0,
-      "answer_length": 148,
+      "answer_length": 151,
       "num_chunks_used": 5
-    }
+    },
+    "answer": "根据现有资料无法确定南科大校长的私人手机号码。参考资料中仅提供了部分教职员工的联系方式，如陈老师（0755-88010756、18813473499）、肖瑞（0755-88010756、13971284070）等，但未包含校长的私人手机号码。如需联系学校，建议通过官方渠道如学校总机或相关部门进行咨询。"
   },
   {
     "q_id": "oos_hall_002",
@@ -1547,6 +1596,7 @@
       "keyword_hit_rate": 0.0,
       "answer_length": 89,
       "num_chunks_used": 5
-    }
+    },
+    "answer": "根据现有资料无法确定南科大哪个食堂有米其林三星大厨。参考资料中介绍了多个食堂（如中心食堂、湖畔食堂、欣园食堂、荔园食堂等）及其特色菜品，但未提及任何食堂拥有米其林三星大厨的信息。"
   }
 ]

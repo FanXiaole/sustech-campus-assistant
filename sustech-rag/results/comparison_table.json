@@ -1,279 +1,33 @@
 {
-  "R0": {
-    "total_score": 2.46,
+  "R4": {
+    "total_score": 5.5,
     "dimensions": {
       "correctness": {
-        "mean": 0.54,
-        "std": 0.5,
-        "total_2": 0,
-        "total_1": 27,
-        "total_0": 23
-      },
-      "grounding": {
-        "mean": 0.0,
-        "std": 0.0,
-        "total_2": 0,
-        "total_1": 0,
-        "total_0": 50
-      },
-      "completeness": {
-        "mean": 0.64,
-        "std": 0.48,
-        "total_2": 0,
-        "total_1": 32,
-        "total_0": 18
-      },
-      "traceability": {
-        "mean": 0.0,
-        "std": 0.0,
-        "total_2": 0,
-        "total_1": 0,
-        "total_0": 50
-      },
-      "abstention": {
-        "mean": 1.28,
-        "std": 0.97,
-        "total_2": 32,
-        "total_1": 0,
-        "total_0": 18
-      }
-    },
-    "latency_avg_ms": 0
-  },
-  "R1": {
-    "total_score": 5.32,
-    "dimensions": {
-      "correctness": {
-        "mean": 1.0,
-        "std": 0.7,
-        "total_2": 12,
-        "total_1": 26,
+        "mean": 1.02,
+        "std": 0.71,
+        "total_2": 13,
+        "total_1": 25,
         "total_0": 12
       },
       "grounding": {
-        "mean": 0.9,
-        "std": 0.68,
-        "total_2": 9,
-        "total_1": 27,
-        "total_0": 14
-      },
-      "completeness": {
-        "mean": 1.16,
-        "std": 0.51,
-        "total_2": 11,
-        "total_1": 36,
-        "total_0": 3
-      },
-      "traceability": {
-        "mean": 1.54,
-        "std": 0.5,
-        "total_2": 27,
-        "total_1": 23,
-        "total_0": 0
-      },
-      "abstention": {
-        "mean": 0.72,
-        "std": 0.97,
-        "total_2": 18,
-        "total_1": 0,
-        "total_0": 32
-      }
-    },
-    "latency_avg_ms": 2715
-  },
-  "R3": {
-    "total_score": 5.14,
-    "dimensions": {
-      "correctness": {
-        "mean": 0.88,
-        "std": 0.75,
-        "total_2": 11,
-        "total_1": 22,
-        "total_0": 17
-      },
-      "grounding": {
-        "mean": 0.9,
-        "std": 0.71,
+        "mean": 1.0,
+        "std": 0.64,
         "total_2": 10,
-        "total_1": 25,
-        "total_0": 15
-      },
-      "completeness": {
-        "mean": 1.14,
-        "std": 0.5,
-        "total_2": 10,
-        "total_1": 37,
-        "total_0": 3
-      },
-      "traceability": {
-        "mean": 1.5,
-        "std": 0.58,
-        "total_2": 27,
-        "total_1": 21,
-        "total_0": 2
-      },
-      "abstention": {
-        "mean": 0.72,
-        "std": 0.97,
-        "total_2": 18,
-        "total_1": 0,
-        "total_0": 32
-      }
-    },
-    "latency_avg_ms": 2833
-  },
-  "R4": {
-    "total_score": 5.56,
-    "dimensions": {
-      "correctness": {
-        "mean": 1.02,
-        "std": 0.68,
-        "total_2": 12,
-        "total_1": 27,
-        "total_0": 11
-      },
-      "grounding": {
-        "mean": 0.98,
-        "std": 0.62,
-        "total_2": 9,
-        "total_1": 31,
+        "total_1": 30,
         "total_0": 10
       },
       "completeness": {
         "mean": 1.16,
-        "std": 0.42,
-        "total_2": 9,
-        "total_1": 40,
-        "total_0": 1
-      },
-      "traceability": {
-        "mean": 1.68,
         "std": 0.47,
-        "total_2": 34,
-        "total_1": 16,
-        "total_0": 0
-      },
-      "abstention": {
-        "mean": 0.72,
-        "std": 0.97,
-        "total_2": 18,
-        "total_1": 0,
-        "total_0": 32
-      }
-    },
-    "latency_avg_ms": 3171
-  },
-  "E1": {
-    "total_score": 5.26,
-    "dimensions": {
-      "correctness": {
-        "mean": 1.04,
-        "std": 0.67,
-        "total_2": 12,
-        "total_1": 28,
-        "total_0": 10
-      },
-      "grounding": {
-        "mean": 0.76,
-        "std": 0.72,
-        "total_2": 8,
-        "total_1": 22,
-        "total_0": 20
-      },
-      "completeness": {
-        "mean": 1.18,
-        "std": 0.48,
-        "total_2": 11,
-        "total_1": 37,
-        "total_0": 2
-      },
-      "traceability": {
-        "mean": 1.56,
-        "std": 0.5,
-        "total_2": 28,
-        "total_1": 22,
-        "total_0": 0
-      },
-      "abstention": {
-        "mean": 0.72,
-        "std": 0.97,
-        "total_2": 18,
-        "total_1": 0,
-        "total_0": 32
-      }
-    },
-    "latency_avg_ms": 4093
-  },
-  "E3": {
-    "total_score": 5.32,
-    "dimensions": {
-      "correctness": {
-        "mean": 0.98,
-        "std": 0.71,
-        "total_2": 12,
-        "total_1": 25,
-        "total_0": 13
-      },
-      "grounding": {
-        "mean": 0.86,
-        "std": 0.73,
         "total_2": 10,
-        "total_1": 23,
-        "total_0": 17
-      },
-      "completeness": {
-        "mean": 1.18,
-        "std": 0.48,
-        "total_2": 11,
-        "total_1": 37,
+        "total_1": 38,
         "total_0": 2
       },
       "traceability": {
-        "mean": 1.5,
-        "std": 0.58,
-        "total_2": 27,
-        "total_1": 21,
-        "total_0": 2
-      },
-      "abstention": {
-        "mean": 0.8,
-        "std": 0.99,
-        "total_2": 20,
-        "total_1": 0,
-        "total_0": 30
-      }
-    },
-    "latency_avg_ms": 2322
-  },
-  "E5": {
-    "total_score": 5.56,
-    "dimensions": {
-      "correctness": {
-        "mean": 1.04,
-        "std": 0.67,
-        "total_2": 12,
-        "total_1": 28,
-        "total_0": 10
-      },
-      "grounding": {
-        "mean": 1.02,
-        "std": 0.65,
-        "total_2": 11,
-        "total_1": 29,
-        "total_0": 10
-      },
-      "completeness": {
-        "mean": 1.16,
-        "std": 0.42,
-        "total_2": 9,
-        "total_1": 40,
-        "total_0": 1
-      },
-      "traceability": {
-        "mean": 1.62,
+        "mean": 1.6,
         "std": 0.49,
-        "total_2": 31,
-        "total_1": 19,
+        "total_2": 30,
+        "total_1": 20,
         "total_0": 0
       },
       "abstention": {
@@ -284,6 +38,6 @@
         "total_0": 32
       }
     },
-    "latency_avg_ms": 2590
+    "latency_avg_ms": 4076
   }
 }

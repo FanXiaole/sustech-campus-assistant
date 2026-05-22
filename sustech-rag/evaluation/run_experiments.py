@@ -397,6 +397,7 @@ class ExperimentRunner:
                 question_meta=q,
                 did_abstain=did_abstain,
             )
+            score["answer"] = answer  # 保存答案供 LLM evaluation 使用
 
             # 记录延迟
             latency_stats.append({

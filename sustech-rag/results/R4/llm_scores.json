@@ -1,0 +1,1333 @@
+[
+  {
+    "q_id": "easy_factual_001",
+    "llm_total": 10,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "reason": "答案与参考答案完全一致，正确回答了工作日开放时间为8:00-22:00。"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "回答中所有论断（开放时间、一丹一楼24小时开放、多来源一致）均可在检索资料中找到依据。"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "覆盖了所有关键事实：周一至周日、8:00、22:00。"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "明确引用了多个来源（如图书馆网站、考试周通知、暑假安排）。"
+      },
+      "abstention": {
+        "score": 2,
+        "reason": "问题不应拒答，系统正确回答了问题，处理得当。"
+      },
+      "overall_assessment": "回答准确、有据、完整且可追溯，拒答处理正确，表现优秀。"
+    }
+  },
+  {
+    "q_id": "easy_factual_002",
+    "llm_total": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "reason": "答案未提供成立年份，与ground_truth（知识库无信息）一致，但未正确拒答，而是给出了不相关校友会信息"
+      },
+      "grounding": {
+        "score": 1,
+        "reason": "回答中关于校友会成立年份的论断有资料依据，但未回答核心问题"
+      },
+      "completeness": {
+        "score": 0,
+        "reason": "key_facts为空，但答案未覆盖任何关键事实，且未正确拒答"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "明确引用了校友会网站作为来源"
+      },
+      "abstention": {
+        "score": 1,
+        "reason": "期望拒答为True，但系统回答未明确拒答，而是提供了无关信息，处理不当"
+      },
+      "overall_assessment": "系统回答未正确拒答，提供了无关信息，但部分有据且可追溯"
+    }
+  },
+  {
+    "q_id": "easy_factual_003",
+    "llm_total": 9,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "reason": "答案与ground_truth一致，均表示无信息"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "回答依据检索资料，资料中无英文名称信息"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "key_facts为空，无需覆盖"
+      },
+      "traceability": {
+        "score": 1,
+        "reason": "隐式提及参考资料，未明确引用具体来源"
+      },
+      "abstention": {
+        "score": 2,
+        "reason": "正确拒答，符合期望拒答要求"
+      },
+      "overall_assessment": "系统回答准确拒答，依据充分，但可追溯性略有不足"
+    }
+  },
+  {
+    "q_id": "easy_factual_004",
+    "llm_total": 6,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "reason": "参考答案明确知识库无信息，系统回答提供了具体书院数量，与ground_truth不一致"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "回答中关于6个书院的论断在检索到的资料中有明确依据"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "key_facts为空，无需覆盖，系统回答完整陈述了书院信息"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "明确引用了参考资料1和2作为信息来源"
+      },
+      "abstention": {
+        "score": 0,
+        "reason": "期望拒答为True，但系统未拒答，反而提供了具体答案，处理错误"
+      },
+      "overall_assessment": "系统回答在依据性和可追溯性上表现良好，但未遵循知识库无信息的设定，导致正确性和拒答质量得分为0"
+    }
+  },
+  {
+    "q_id": "easy_factual_005",
+    "llm_total": 10,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "reason": "答案与参考答案完全一致，正确回答了校训内容。"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "所有论断（校训内容、确立时间、公布时间、来源）均可在检索到的资料中找到依据。"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "完整覆盖了关键事实中的'明德求是'和'日新自强'。"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "明确引用了来源（南方科技大学官方网站及具体链接）。"
+      },
+      "abstention": {
+        "score": 2,
+        "reason": "问题不应拒答，系统正确回答了问题。"
+      },
+      "overall_assessment": "回答准确、有据、完整、可追溯，且正确回答了应答问题。"
+    }
+  },
+  {
+    "q_id": "easy_factual_006",
+    "llm_total": 6,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "reason": "参考答案要求拒答，但系统回答了具体地址，与ground_truth不符"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "回答中地址信息在检索资料中有明确依据"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "key_facts为空，无需覆盖，但回答未遵循拒答要求"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "明确引用了参考资料1和2的具体内容"
+      },
+      "abstention": {
+        "score": 0,
+        "reason": "应拒答却给出了具体答案，完全错误"
+      },
+      "overall_assessment": "系统回答事实正确且有依据，但未遵循拒答指令，导致整体评分低"
+    }
+  },
+  {
+    "q_id": "easy_factual_007",
+    "llm_total": 9,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "reason": "答案与参考答案一致，正确描述了南科大是公办新型研究型大学，并提及理工医为主等核心特征。"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "所有论断均可在检索资料中找到依据，如公办创新型大学、新型研究型大学等。"
+      },
+      "completeness": {
+        "score": 1,
+        "reason": "覆盖了公办、新型研究型大学、理工医为主，但未提及商科和人文社科。"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "明确引用了参考资料1和5，可追溯性强。"
+      },
+      "abstention": {
+        "score": 2,
+        "reason": "问题不应拒答，系统正确回答了问题。"
+      },
+      "overall_assessment": "回答正确且依据充分，但完整性略有不足，未覆盖所有关键事实。"
+    }
+  },
+  {
+    "q_id": "easy_factual_008",
+    "llm_total": 10,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "reason": "回答正确解释了致仁书院的寓意，与参考答案一致"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "所有论断均可在检索到的资料中找到依据"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "覆盖了所有关键事实：格物致知、格心致仁、致仁"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "明确引用了参考资料1和2"
+      },
+      "abstention": {
+        "score": 2,
+        "reason": "问题不应拒答，系统正确回答了问题"
+      },
+      "overall_assessment": "回答准确、有据、完整、可追溯，且正确回答了应答问题"
+    }
+  },
+  {
+    "q_id": "easy_time_001",
+    "llm_total": 10,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "reason": "答案与参考答案完全一致，均为周一至周日8:00-22:00。"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "所有论断（开放时间、24小时区域）均可在检索资料中找到依据。"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "覆盖了所有关键事实：周一至周日、8:00、22:00。"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "明确引用了来源（图书馆官方网站及URL）。"
+      },
+      "abstention": {
+        "score": 2,
+        "reason": "问题不应拒答，系统正确回答了问题。"
+      },
+      "overall_assessment": "回答准确、有据、完整、可追溯，且正确回答了应答问题。"
+    }
+  },
+  {
+    "q_id": "easy_time_002",
+    "llm_total": 9,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "reason": "答案与参考答案一致，地址正确"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "所有论断在检索资料中均有依据"
+      },
+      "completeness": {
+        "score": 1,
+        "reason": "缺少关键事实中的'行政楼'，但地址主体完整"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "明确引用了参考资料1和3"
+      },
+      "abstention": {
+        "score": 2,
+        "reason": "问题不应拒答，系统正确回答"
+      },
+      "overall_assessment": "回答准确且依据充分，但未完全覆盖所有关键事实"
+    }
+  },
+  {
+    "q_id": "easy_time_003",
+    "llm_total": 3,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "reason": "系统回答称无法确定具体开学日期，但参考答案明确为2月开学，且资料中提及春季学期为2月至6月，隐含2月开学，回答未正确给出事实。"
+      },
+      "grounding": {
+        "score": 1,
+        "reason": "回答中提及资料提到春季学期为2月至6月，但未直接依据资料确认开学日期，部分有据。"
+      },
+      "completeness": {
+        "score": 0,
+        "reason": "关键事实为'2月'和'春季学期'，回答未覆盖'2月'这一开学时间点。"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "明确引用了来源global.sustech.edu.cn国际交换生项目页面。"
+      },
+      "abstention": {
+        "score": 0,
+        "reason": "期望拒答为False，即应回答，但系统回答拒答，处理错误。"
+      },
+      "overall_assessment": "系统回答错误地拒答，未给出正确开学时间，且未覆盖关键事实，但依据性和可追溯性较好。"
+    }
+  },
+  {
+    "q_id": "easy_time_004",
+    "llm_total": 10,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "reason": "答案与参考答案一致，正确指出南科大体育场即松禾体育场"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "所有论断均可在检索到的资料中找到依据，如参考资料1、2、4"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "完整覆盖关键事实'松禾体育场'"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "明确引用了参考资料1、2、4作为来源"
+      },
+      "abstention": {
+        "score": 2,
+        "reason": "问题不应拒答，系统正确回答了问题"
+      },
+      "overall_assessment": "回答准确、有据、完整、可追溯，且正确回答了应答问题"
+    }
+  },
+  {
+    "q_id": "easy_proc_001",
+    "llm_total": 10,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "reason": "答案正确指出知识库无新生办理校园卡信息，与ground_truth一致"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "回答中所有论断均基于检索资料，如国际交换生校园卡信息及建议联系部门"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "key_facts为空，无需覆盖，回答完整处理了无信息情况"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "明确引用了参考资料1和4，来源清晰"
+      },
+      "abstention": {
+        "score": 2,
+        "reason": "正确拒答，未提供虚假流程，并给出合理建议"
+      },
+      "overall_assessment": "系统回答准确、有据、完整，正确执行拒答并给出实用指引"
+    }
+  },
+  {
+    "q_id": "easy_proc_002",
+    "llm_total": 0,
+    "dimensions": {
+      "score": 2,
+      "reason": "答案正确拒答，与ground_truth一致，均表示无相关信息"
+    }
+  },
+  {
+    "q_id": "easy_proc_003",
+    "llm_total": 5,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "reason": "参考答案明确知识库无信息，系统回答却提供了不存在的链接和指南，事实错误"
+      },
+      "grounding": {
+        "score": 1,
+        "reason": "回答中提及的链接和指南在检索资料中无依据，但部分表述如'未提供具体步骤'与资料一致"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "key_facts为空，无需覆盖，系统回答未遗漏任何关键事实"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "明确引用了'南科手册'及其章节来源"
+      },
+      "abstention": {
+        "score": 0,
+        "reason": "期望拒答为True，但系统未拒答，反而提供了不存在的链接，完全错误"
+      },
+      "overall_assessment": "系统回答在应拒答时未拒答且编造信息，正确性和拒答质量严重失分"
+    }
+  },
+  {
+    "q_id": "medium_complex_001",
+    "llm_total": 6,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "reason": "答案未基于知识库，且与ground_truth要求拒答不符，事实性错误"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "所有论断均能在检索资料中找到依据"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "key_facts为空，无需覆盖"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "明确引用了参考资料1、2、3"
+      },
+      "abstention": {
+        "score": 0,
+        "reason": "期望拒答但系统未拒答，给出了错误回答"
+      },
+      "overall_assessment": "系统未按期望拒答，虽依据充分但事实错误，整体评分低"
+    }
+  },
+  {
+    "q_id": "medium_complex_002",
+    "llm_total": 6,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "reason": "参考答案明确表示知识库无信息，期望拒答，但系统回答提供了具体内容，与ground_truth不一致"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "回答中的论断均能在检索到的资料中找到依据"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "key_facts为空，无需覆盖，回答未遗漏必要信息"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "回答明确引用了参考资料编号，如参考资料5、参考资料1等"
+      },
+      "abstention": {
+        "score": 0,
+        "reason": "期望拒答为True，但系统未拒答，反而提供了详细回答，处理完全错误"
+      },
+      "overall_assessment": "系统回答在依据性和可追溯性上表现良好，但未遵循期望拒答要求，导致正确性和拒答质量得分为0"
+    }
+  },
+  {
+    "q_id": "medium_complex_003",
+    "llm_total": 6,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "reason": "参考答案明确知识库无信息，系统回答却提供了具体奖学金类型和条件，与事实不符。"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "回答中的论断均能在检索到的资料中找到依据。"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "关键事实为空，系统回答未遗漏任何必要信息。"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "回答中明确引用了参考资料编号。"
+      },
+      "abstention": {
+        "score": 0,
+        "reason": "期望拒答为True，但系统未拒答，反而提供了具体信息，处理完全错误。"
+      },
+      "overall_assessment": "系统回答在依据性和可追溯性上表现良好，但未按期望拒答，导致正确性和拒答质量得分为0。"
+    }
+  },
+  {
+    "q_id": "medium_complex_004",
+    "llm_total": 8,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "reason": "回答列举了多种途径，但未明确提及大创项目、实验室开放日、暑期科研等关键事实，与参考答案部分一致"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "所有论断均能在检索到的资料中找到依据"
+      },
+      "completeness": {
+        "score": 1,
+        "reason": "覆盖了学术导师制、科研课题组等，但未覆盖大创项目、实验室开放日、暑期科研"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "明确引用了参考资料1、2、3、5等来源"
+      },
+      "abstention": {
+        "score": 2,
+        "reason": "问题不应拒答，回答正确提供了信息"
+      },
+      "overall_assessment": "回答内容丰富且依据充分，但遗漏了部分关键事实，完整性有待提升"
+    }
+  },
+  {
+    "q_id": "medium_complex_005",
+    "llm_total": 10,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "reason": "回答正确描述了学期项目、科研项目等类型及申请流程，与参考答案一致"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "所有论断均可在检索到的资料中找到依据"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "覆盖了所有关键事实：学期项目、交流项目、交换项目、暑期项目、科研项目、创新创业项目、派出院校提名、国际合作部"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "明确引用了参考资料1、4、5等来源"
+      },
+      "abstention": {
+        "score": 2,
+        "reason": "正确回答了问题，未拒答，符合期望拒答为False"
+      },
+      "overall_assessment": "回答全面、准确、有据，符合所有评分标准"
+    }
+  },
+  {
+    "q_id": "medium_complex_006",
+    "llm_total": 6,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "reason": "参考答案明确表示知识库无信息，但系统回答提供了具体信息，与ground_truth不一致"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "回答中关于校园巴士和外部公交的论断均能在检索资料中找到依据"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "key_facts为空，无需覆盖，回答未遗漏任何关键事实"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "明确引用了参考资料1和2，并提供了具体来源描述"
+      },
+      "abstention": {
+        "score": 0,
+        "reason": "期望拒答为True，但系统未拒答，反而提供了具体信息，处理完全错误"
+      },
+      "overall_assessment": "系统回答在依据性和可追溯性上表现良好，但未按期望拒答，导致正确性和拒答质量得分为0"
+    }
+  },
+  {
+    "q_id": "medium_complex_007",
+    "llm_total": 6,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "reason": "参考答案明确知识库无信息，系统回答提供了具体数据库列表，与ground_truth矛盾"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "回答中所有论断均可在检索到的资料中找到依据"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "key_facts为空，无需覆盖，回答完整"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "明确引用了来源（图书馆网站2025年通知、数据库导航页面链接）"
+      },
+      "abstention": {
+        "score": 0,
+        "reason": "期望拒答为True，但系统未拒答，反而提供了具体信息"
+      },
+      "overall_assessment": "系统回答虽依据充分且完整，但未按期望拒答，导致正确性评分低"
+    }
+  },
+  {
+    "q_id": "medium_complex_008",
+    "llm_total": 10,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "reason": "答案正确，与ground_truth一致，覆盖了五大社团类型和加入方式。"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "所有论断均在检索资料中有明确依据。"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "覆盖了所有key_facts：思想政治、学术科技、创新创业、文化体育、志愿公益、百团大战、招新群。"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "明确引用了来源，如新生攻略之社团篇、学生工作部网站。"
+      },
+      "abstention": {
+        "score": 2,
+        "reason": "正确回答了问题，无需拒答。"
+      },
+      "overall_assessment": "回答准确、完整、有据，引用清晰，表现优秀。"
+    }
+  },
+  {
+    "q_id": "medium_dept_001",
+    "llm_total": 10,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "reason": "回答中列出的教授及其研究方向与参考答案基本一致，未发现事实错误。"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "所有论断均可在检索到的资料中找到依据，如参考资料1-5。"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "覆盖了所有关键事实，包括动力系统、遍历理论、低维拓扑、计算与应用数学、代数组合、组合数学、随机微分方程、最优化理论等。"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "明确引用了参考资料编号，如参考资料1、2、3、4、5。"
+      },
+      "abstention": {
+        "score": 2,
+        "reason": "问题不应拒答，系统正确回答了问题。"
+      },
+      "overall_assessment": "回答准确、有据、完整、可追溯，且正确回答了应答问题。"
+    }
+  },
+  {
+    "q_id": "medium_dept_002",
+    "llm_total": 10,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "reason": "答案正确拒答，与ground_truth一致"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "回答中所有论断均基于检索资料，资料未提供本科专业方向信息"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "key_facts为空，无需覆盖，拒答完整"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "明确引用了参考资料4和5"
+      },
+      "abstention": {
+        "score": 2,
+        "reason": "正确拒答，符合expected_abstain=True"
+      },
+      "overall_assessment": "系统回答准确、有据、完整、可追溯且正确拒答"
+    }
+  },
+  {
+    "q_id": "medium_dept_003",
+    "llm_total": 10,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "reason": "答案正确拒答，与ground_truth一致"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "回答基于检索资料，指出资料未提及生物系实验室"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "key_facts为空，无需覆盖"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "明确引用参考资料内容"
+      },
+      "abstention": {
+        "score": 2,
+        "reason": "正确拒答，符合expected_abstain=True"
+      },
+      "overall_assessment": "系统回答准确拒答，依据充分，符合评测要求"
+    }
+  },
+  {
+    "q_id": "medium_dept_004",
+    "llm_total": 6,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "reason": "参考答案明确知识库无信息，系统回答却提供了具体课程和培养方案内容，与ground_truth矛盾"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "回答中所有论断均能在提供的参考资料中找到依据"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "key_facts为空，无需覆盖，回答提供了额外信息但未遗漏任何关键事实"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "回答明确引用了参考资料1、2、3等来源"
+      },
+      "abstention": {
+        "score": 0,
+        "reason": "期望拒答为True，但系统未拒答，反而给出了详细回答，处理完全错误"
+      },
+      "overall_assessment": "系统回答在依据性和可追溯性上表现良好，但未按期望拒答，导致正确性得分为0"
+    }
+  },
+  {
+    "q_id": "medium_dept_005",
+    "llm_total": 10,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "reason": "回答与参考答案一致，正确描述了科研实力和代表性成果，未出现事实错误。"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "所有论断均可在提供的检索资料中找到依据，如刘玮书、任富增等成果均有明确来源。"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "覆盖了所有关键事实：材料系、科研、成果、新能源材料、电子信息材料、钠离子电池、倍率性能、热电材料、耐磨合金。"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "明确引用了参考资料编号（如参考资料2、3、4、5），来源清晰可追溯。"
+      },
+      "abstention": {
+        "score": 2,
+        "reason": "期望拒答为False，系统正确回答了问题，未错误拒答。"
+      },
+      "overall_assessment": "回答准确、有据、完整、可追溯，且正确回答了应答问题，表现优秀。"
+    }
+  },
+  {
+    "q_id": "medium_dept_006",
+    "llm_total": 10,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "reason": "答案列出的10家附属医院与参考答案完全一致，事实正确。"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "所有论断均可在检索到的资料中找到依据。"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "覆盖了所有关键事实中的10家附属医院。"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "明确引用了信息来源（医学院官网及附属医院筹建办相关页面）。"
+      },
+      "abstention": {
+        "score": 2,
+        "reason": "问题不应拒答，系统正确回答了问题。"
+      },
+      "overall_assessment": "回答准确、完整、有据，且引用来源清晰，表现优秀。"
+    }
+  },
+  {
+    "q_id": "medium_dept_007",
+    "llm_total": 6,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "reason": "参考答案明确表示知识库无信息，系统回答却提供了具体研究重点，与ground_truth不一致"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "回答中所有论断均能在检索到的资料中找到明确依据"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "key_facts为空，无需覆盖，系统回答未遗漏任何关键事实"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "回答明确引用了参考资料2、3、5等来源"
+      },
+      "abstention": {
+        "score": 0,
+        "reason": "期望拒答为True，但系统未拒答，反而给出了详细回答，处理完全错误"
+      },
+      "overall_assessment": "系统回答在依据性和可追溯性上表现良好，但未按期望拒答，导致正确性得分为0"
+    }
+  },
+  {
+    "q_id": "medium_policy_001",
+    "llm_total": 10,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "reason": "答案正确指出知识库无信息，与ground_truth一致"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "所有论断均基于参考资料，如省级科研诚信文件、MBA复试通知等"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "key_facts为空，无需覆盖，回答完整"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "明确引用了参考资料1、2等来源"
+      },
+      "abstention": {
+        "score": 2,
+        "reason": "正确拒答，指出无法确定并建议查询官方渠道"
+      },
+      "overall_assessment": "回答准确、有据、完整、可追溯，且正确拒答"
+    }
+  },
+  {
+    "q_id": "medium_policy_002",
+    "llm_total": 10,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "reason": "答案正确指出知识库无信息，与ground_truth一致"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "回答中所有论断均基于检索资料，如自由选择专业和研究生转学科信息"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "key_facts为空，无需覆盖，回答完整"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "明确引用了参考资料1、3、5"
+      },
+      "abstention": {
+        "score": 2,
+        "reason": "正确拒答，指出无法确定具体条件并建议咨询官方"
+      },
+      "overall_assessment": "系统回答准确、有据、完整、可追溯，且正确拒答"
+    }
+  },
+  {
+    "q_id": "medium_policy_003",
+    "llm_total": 6,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "reason": "参考答案明确知识库无信息，期望拒答，但系统回答提供了具体招生要求，与事实不符"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "回答中的论断均能在检索到的资料中找到依据"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "关键事实为空，系统回答未遗漏任何必要信息"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "回答明确引用了参考资料编号和来源"
+      },
+      "abstention": {
+        "score": 0,
+        "reason": "期望拒答但系统未拒答，反而提供了详细回答，处理完全错误"
+      },
+      "overall_assessment": "系统回答在依据性和可追溯性上表现良好，但未遵循知识库无信息应拒答的规则，导致正确性和拒答质量得分为0"
+    }
+  },
+  {
+    "q_id": "medium_policy_004",
+    "llm_total": 5,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "reason": "参考答案为知识库无信息，系统回答提供了具体内容，与ground_truth不一致"
+      },
+      "grounding": {
+        "score": 1,
+        "reason": "部分论断有资料依据，但访客管理部分无依据"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "key_facts为空，无需覆盖"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "明确引用了来源如学生工作部网站、新生攻略等"
+      },
+      "abstention": {
+        "score": 0,
+        "reason": "期望拒答为True，但系统回答了具体内容，未正确拒答"
+      },
+      "overall_assessment": "系统回答未遵循期望拒答，提供了无依据的答案"
+    }
+  },
+  {
+    "q_id": "medium_policy_005",
+    "llm_total": 3,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "reason": "参考答案明确表示知识库无信息，系统回答却提供了具体内容，与ground_truth不一致"
+      },
+      "grounding": {
+        "score": 1,
+        "reason": "回答中的部分论断（如休学支持案例、宿舍申请）能在资料中找到依据，但整体上资料未提供休学复学具体规定"
+      },
+      "completeness": {
+        "score": 0,
+        "reason": "key_facts为空，但系统回答未体现应拒答的要求，反而提供了不完整信息"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "回答明确引用了参考资料1、2、3，并说明了来源"
+      },
+      "abstention": {
+        "score": 0,
+        "reason": "期望拒答为True，但系统未拒答，反而给出了具体回答，处理完全错误"
+      },
+      "overall_assessment": "系统回答未正确拒答，提供了与ground_truth不一致的信息，整体表现差"
+    }
+  },
+  {
+    "q_id": "hard_comp_001",
+    "llm_total": 10,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "reason": "答案正确拒答，与ground_truth（知识库无信息）一致，未提供虚假信息"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "所有论断均基于检索到的资料，如电子系专业设置和计算机系课程难度描述"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "key_facts为空，无需覆盖，回答完整说明了无法比较的原因"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "明确引用了参考资料1、3、2、4，并标注了具体内容来源"
+      },
+      "abstention": {
+        "score": 2,
+        "reason": "正确拒答，expected_abstain为True，系统回答明确表示无法确定区别"
+      },
+      "overall_assessment": "系统回答准确拒答，依据充分，引用清晰，符合预期"
+    }
+  },
+  {
+    "q_id": "hard_comp_002",
+    "llm_total": 10,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "reason": "回答与参考答案一致，准确描述了书院制与学院制的差异，包括管理核心、学生管理方式、教育功能等。"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "所有论断均可在检索到的资料中找到依据，如参考资料1、3、5。"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "覆盖了所有关键事实：书院制、学院制、学术、生活、学生公寓、多维度成长、师生社区。"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "明确引用了参考资料1、3、5，如‘参考资料1’、‘参考资料5’。"
+      },
+      "abstention": {
+        "score": 2,
+        "reason": "期望拒答为False，系统正确回答了问题，未拒答。"
+      },
+      "overall_assessment": "回答准确、有据、完整、可追溯，且正确回答了应答问题。"
+    }
+  },
+  {
+    "q_id": "hard_comp_003",
+    "llm_total": 10,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "reason": "回答正确指出统计与数据科学系更适合AI学生，与ground_truth一致"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "所有论断（如Data+AI实验室、AI讲座、师资等）均可在检索资料中找到依据"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "覆盖了所有关键事实：数学系、统计、数据科学、AI、Data+AI、机器学习、应用统计"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "明确引用了参考资料编号（如参考资料1、2、3等）"
+      },
+      "abstention": {
+        "score": 2,
+        "reason": "正确回答了问题，未拒答，符合expected_abstain=False"
+      },
+      "overall_assessment": "回答准确、有据、完整且可追溯，高质量完成评测"
+    }
+  },
+  {
+    "q_id": "hard_comp_004",
+    "llm_total": 8,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "reason": "答案未直接回答优劣对比，但未与ground_truth冲突，部分正确"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "所有论断均可在检索资料中找到依据"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "key_facts为空，无需覆盖"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "明确引用了参考资料编号"
+      },
+      "abstention": {
+        "score": 1,
+        "reason": "期望拒答但系统未拒答，而是提供了基于资料的间接回答，处理不当"
+      },
+      "overall_assessment": "系统回答基于资料提供了间接信息，但未按期望拒答，整体质量中等"
+    }
+  },
+  {
+    "q_id": "hard_cross_001",
+    "llm_total": 6,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "reason": "参考答案明确表示知识库无信息，系统回答却提供了详细手续，与ground_truth矛盾"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "回答中所有论断均明确引用参考资料1和2，有据可查"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "key_facts为空，系统回答未遗漏任何关键事实"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "每个手续后均明确标注来源（如参考资料1、2），引用清晰"
+      },
+      "abstention": {
+        "score": 0,
+        "reason": "期望拒答为True，但系统未拒答，反而提供了详细回答，处理完全错误"
+      },
+      "overall_assessment": "系统回答在依据性和可追溯性上表现良好，但未遵循拒答要求，导致正确性和拒答质量得分为0"
+    }
+  },
+  {
+    "q_id": "hard_cross_002",
+    "llm_total": 10,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "reason": "回答与参考答案一致，正确列出了食堂和餐厅，并补充了额外信息，无事实错误"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "所有论断均可在检索到的资料中找到依据"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "覆盖了所有关键事实：食堂、荔园、欣园、新生食堂、赛百味、肯德基、南科麦香屋、夜宵、肉包"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "明确引用了来源，如‘新生攻略和学校官方介绍’"
+      },
+      "abstention": {
+        "score": 2,
+        "reason": "正确回答了问题，未拒答，符合期望"
+      },
+      "overall_assessment": "回答准确、有据、完整、可追溯，且正确回答了应答问题"
+    }
+  },
+  {
+    "q_id": "hard_cross_003",
+    "llm_total": 10,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "reason": "答案事实正确，与ground_truth一致，地铁5号线、塘朗站、20分钟、5元等信息均匹配"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "所有论断均可在检索到的资料中找到依据，如地铁、出租车、时间、费用等"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "覆盖所有key_facts：穿梭巴士、地铁5号线、塘朗站、深圳北站、20分钟、5元"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "明确引用资料编号，如参考资料1、3、5"
+      },
+      "abstention": {
+        "score": 2,
+        "reason": "正确回答，无需拒答，expected_abstain为False"
+      },
+      "overall_assessment": "回答准确、有据、完整、可追溯，且正确回答了问题"
+    }
+  },
+  {
+    "q_id": "hard_cross_004",
+    "llm_total": 2,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "reason": "参考答案明确知识库无信息，系统回答却编造了具体政策内容，与ground_truth完全矛盾。"
+      },
+      "grounding": {
+        "score": 0,
+        "reason": "系统回答中的政策内容在提供的检索资料中无依据，属于无中生有。"
+      },
+      "completeness": {
+        "score": 0,
+        "reason": "key_facts为空，但系统回答未正确拒答，反而提供了不存在的细节。"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "系统回答明确引用了多个来源URL，但来源内容与回答不匹配。"
+      },
+      "abstention": {
+        "score": 0,
+        "reason": "期望拒答为True，系统回答却给出了详细政策，完全错误地处理了拒答。"
+      },
+      "overall_assessment": "系统回答严重错误，在应拒答时编造了不存在的政策信息，所有维度均不合格。"
+    }
+  },
+  {
+    "q_id": "hard_temp_001",
+    "llm_total": 10,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "reason": "答案正确指出知识库无信息，与ground_truth一致"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "回答中所有论断均基于检索到的资料，如联合医学院招生信息"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "key_facts为空，无需覆盖，回答完整"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "明确引用了联合医学院官网和南科大招生网来源"
+      },
+      "abstention": {
+        "score": 2,
+        "reason": "正确拒答，指出无法对比往年变化，符合expected_abstain=True"
+      },
+      "overall_assessment": "回答准确拒答，依据充分，引用清晰，符合评测要求"
+    }
+  },
+  {
+    "q_id": "hard_temp_002",
+    "llm_total": 10,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "reason": "答案与ground_truth一致，均表示无法确定新增课程或专业"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "回答中所有论断均基于检索资料，如病理学课程和夏季学期项目"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "key_facts为空，无需覆盖，回答完整"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "明确引用了参考资料4、3、1、2、5"
+      },
+      "abstention": {
+        "score": 2,
+        "reason": "正确拒答，符合expected_abstain=True"
+      },
+      "overall_assessment": "系统回答准确、有据、完整且正确拒答"
+    }
+  },
+  {
+    "q_id": "oos_ext_001",
+    "llm_total": 9,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "reason": "答案正确拒答，与ground_truth一致"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "回答基于资料中仅有南科大信息的事实"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "key_facts为空，无需覆盖"
+      },
+      "traceability": {
+        "score": 1,
+        "reason": "隐式提及参考资料内容，但未明确引用"
+      },
+      "abstention": {
+        "score": 2,
+        "reason": "正确拒答，符合expected_abstain=True"
+      },
+      "overall_assessment": "系统回答准确拒答，依据充分，但可追溯性略有不足"
+    }
+  },
+  {
+    "q_id": "oos_ext_002",
+    "llm_total": 7,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "reason": "参考答案为N/A且期望拒答，系统回答未提供正确答案，但正确拒答，故正确性得0分"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "回答中所有论断均基于检索到的资料，明确指出资料仅包含南科大图书馆信息"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "关键事实为空，系统回答完整覆盖了拒答要求，无需补充"
+      },
+      "traceability": {
+        "score": 1,
+        "reason": "隐式提及参考资料内容，但未明确引用具体来源或编号"
+      },
+      "abstention": {
+        "score": 2,
+        "reason": "正确识别应拒答问题，并给出合理拒答理由"
+      },
+      "overall_assessment": "系统回答正确拒答，依据充分，但可追溯性略有不足"
+    }
+  },
+  {
+    "q_id": "oos_ext_003",
+    "llm_total": 10,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "reason": "答案正确拒答，与ground_truth（N/A）一致"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "回答中所有论断均基于检索资料，资料中无MIT截止日期"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "key_facts为空，无需覆盖，回答完整"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "明确引用资料中提到的南科大截止日期作为对比"
+      },
+      "abstention": {
+        "score": 2,
+        "reason": "正确拒答，系统回答表明无法确定MIT截止日期"
+      },
+      "overall_assessment": "系统回答准确拒答，依据充分，符合预期"
+    }
+  },
+  {
+    "q_id": "oos_hall_001",
+    "llm_total": 10,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "reason": "答案正确拒答，与ground_truth一致"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "回答中所有论断均基于检索资料"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "key_facts为空，无需覆盖"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "明确引用了资料中的具体联系方式"
+      },
+      "abstention": {
+        "score": 2,
+        "reason": "正确拒答，符合expected_abstain"
+      },
+      "overall_assessment": "系统回答准确、有据、完整且正确拒答"
+    }
+  },
+  {
+    "q_id": "oos_hall_002",
+    "llm_total": 10,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "reason": "答案正确拒答，与ground_truth一致，均指出不存在该事实"
+      },
+      "grounding": {
+        "score": 2,
+        "reason": "回答基于检索资料，明确指出资料未提及米其林三星大厨"
+      },
+      "completeness": {
+        "score": 2,
+        "reason": "key_facts为空，无需覆盖，回答完整处理了拒答要求"
+      },
+      "traceability": {
+        "score": 2,
+        "reason": "明确引用参考资料，说明资料中未找到相关信息"
+      },
+      "abstention": {
+        "score": 2,
+        "reason": "正确拒答，符合expected_abstain=True的要求"
+      },
+      "overall_assessment": "系统回答准确拒答，依据充分，符合评测标准"
+    }
+  }
+]

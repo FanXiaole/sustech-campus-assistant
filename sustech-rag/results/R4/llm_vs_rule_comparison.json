@@ -1,0 +1,312 @@
+{
+  "experiment": "R4",
+  "num_questions": 50,
+  "avg_rule_score": 5.5,
+  "avg_llm_score": 7.94,
+  "avg_delta": 2.44,
+  "per_question": [
+    {
+      "q_id": "easy_factual_001",
+      "rule_total": 9,
+      "llm_total": 10,
+      "delta": 1
+    },
+    {
+      "q_id": "easy_factual_002",
+      "rule_total": 4,
+      "llm_total": 4,
+      "delta": 0
+    },
+    {
+      "q_id": "easy_factual_003",
+      "rule_total": 3,
+      "llm_total": 9,
+      "delta": 6
+    },
+    {
+      "q_id": "easy_factual_004",
+      "rule_total": 6,
+      "llm_total": 6,
+      "delta": 0
+    },
+    {
+      "q_id": "easy_factual_005",
+      "rule_total": 10,
+      "llm_total": 10,
+      "delta": 0
+    },
+    {
+      "q_id": "easy_factual_006",
+      "rule_total": 4,
+      "llm_total": 6,
+      "delta": 2
+    },
+    {
+      "q_id": "easy_factual_007",
+      "rule_total": 5,
+      "llm_total": 9,
+      "delta": 4
+    },
+    {
+      "q_id": "easy_factual_008",
+      "rule_total": 10,
+      "llm_total": 10,
+      "delta": 0
+    },
+    {
+      "q_id": "easy_time_001",
+      "rule_total": 9,
+      "llm_total": 10,
+      "delta": 1
+    },
+    {
+      "q_id": "easy_time_002",
+      "rule_total": 6,
+      "llm_total": 9,
+      "delta": 3
+    },
+    {
+      "q_id": "easy_time_003",
+      "rule_total": 8,
+      "llm_total": 3,
+      "delta": -5
+    },
+    {
+      "q_id": "easy_time_004",
+      "rule_total": 8,
+      "llm_total": 10,
+      "delta": 2
+    },
+    {
+      "q_id": "easy_proc_001",
+      "rule_total": 5,
+      "llm_total": 10,
+      "delta": 5
+    },
+    {
+      "q_id": "easy_proc_002",
+      "rule_total": 3,
+      "llm_total": 0,
+      "delta": -3
+    },
+    {
+      "q_id": "easy_proc_003",
+      "rule_total": 4,
+      "llm_total": 5,
+      "delta": 1
+    },
+    {
+      "q_id": "medium_complex_001",
+      "rule_total": 5,
+      "llm_total": 6,
+      "delta": 1
+    },
+    {
+      "q_id": "medium_complex_002",
+      "rule_total": 4,
+      "llm_total": 6,
+      "delta": 2
+    },
+    {
+      "q_id": "medium_complex_003",
+      "rule_total": 5,
+      "llm_total": 6,
+      "delta": 1
+    },
+    {
+      "q_id": "medium_complex_004",
+      "rule_total": 6,
+      "llm_total": 8,
+      "delta": 2
+    },
+    {
+      "q_id": "medium_complex_005",
+      "rule_total": 8,
+      "llm_total": 10,
+      "delta": 2
+    },
+    {
+      "q_id": "medium_complex_006",
+      "rule_total": 5,
+      "llm_total": 6,
+      "delta": 1
+    },
+    {
+      "q_id": "medium_complex_007",
+      "rule_total": 4,
+      "llm_total": 6,
+      "delta": 2
+    },
+    {
+      "q_id": "medium_complex_008",
+      "rule_total": 9,
+      "llm_total": 10,
+      "delta": 1
+    },
+    {
+      "q_id": "medium_dept_001",
+      "rule_total": 9,
+      "llm_total": 10,
+      "delta": 1
+    },
+    {
+      "q_id": "medium_dept_002",
+      "rule_total": 4,
+      "llm_total": 10,
+      "delta": 6
+    },
+    {
+      "q_id": "medium_dept_003",
+      "rule_total": 4,
+      "llm_total": 10,
+      "delta": 6
+    },
+    {
+      "q_id": "medium_dept_004",
+      "rule_total": 4,
+      "llm_total": 6,
+      "delta": 2
+    },
+    {
+      "q_id": "medium_dept_005",
+      "rule_total": 7,
+      "llm_total": 10,
+      "delta": 3
+    },
+    {
+      "q_id": "medium_dept_006",
+      "rule_total": 10,
+      "llm_total": 10,
+      "delta": 0
+    },
+    {
+      "q_id": "medium_dept_007",
+      "rule_total": 5,
+      "llm_total": 6,
+      "delta": 1
+    },
+    {
+      "q_id": "medium_policy_001",
+      "rule_total": 3,
+      "llm_total": 10,
+      "delta": 7
+    },
+    {
+      "q_id": "medium_policy_002",
+      "rule_total": 5,
+      "llm_total": 10,
+      "delta": 5
+    },
+    {
+      "q_id": "medium_policy_003",
+      "rule_total": 6,
+      "llm_total": 6,
+      "delta": 0
+    },
+    {
+      "q_id": "medium_policy_004",
+      "rule_total": 5,
+      "llm_total": 5,
+      "delta": 0
+    },
+    {
+      "q_id": "medium_policy_005",
+      "rule_total": 4,
+      "llm_total": 3,
+      "delta": -1
+    },
+    {
+      "q_id": "hard_comp_001",
+      "rule_total": 5,
+      "llm_total": 10,
+      "delta": 5
+    },
+    {
+      "q_id": "hard_comp_002",
+      "rule_total": 8,
+      "llm_total": 10,
+      "delta": 2
+    },
+    {
+      "q_id": "hard_comp_003",
+      "rule_total": 7,
+      "llm_total": 10,
+      "delta": 3
+    },
+    {
+      "q_id": "hard_comp_004",
+      "rule_total": 4,
+      "llm_total": 8,
+      "delta": 4
+    },
+    {
+      "q_id": "hard_cross_001",
+      "rule_total": 5,
+      "llm_total": 6,
+      "delta": 1
+    },
+    {
+      "q_id": "hard_cross_002",
+      "rule_total": 7,
+      "llm_total": 10,
+      "delta": 3
+    },
+    {
+      "q_id": "hard_cross_003",
+      "rule_total": 7,
+      "llm_total": 10,
+      "delta": 3
+    },
+    {
+      "q_id": "hard_cross_004",
+      "rule_total": 5,
+      "llm_total": 2,
+      "delta": -3
+    },
+    {
+      "q_id": "hard_temp_001",
+      "rule_total": 6,
+      "llm_total": 10,
+      "delta": 4
+    },
+    {
+      "q_id": "hard_temp_002",
+      "rule_total": 3,
+      "llm_total": 10,
+      "delta": 7
+    },
+    {
+      "q_id": "oos_ext_001",
+      "rule_total": 2,
+      "llm_total": 9,
+      "delta": 7
+    },
+    {
+      "q_id": "oos_ext_002",
+      "rule_total": 2,
+      "llm_total": 7,
+      "delta": 5
+    },
+    {
+      "q_id": "oos_ext_003",
+      "rule_total": 3,
+      "llm_total": 10,
+      "delta": 7
+    },
+    {
+      "q_id": "oos_hall_001",
+      "rule_total": 3,
+      "llm_total": 10,
+      "delta": 7
+    },
+    {
+      "q_id": "oos_hall_002",
+      "rule_total": 2,
+      "llm_total": 10,
+      "delta": 8
+    }
+  ],
+  "llm_higher": 39,
+  "llm_lower": 4,
+  "same": 7
+}

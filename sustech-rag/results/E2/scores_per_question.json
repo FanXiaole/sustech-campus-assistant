@@ -1,7 +1,7 @@
 [
   {
     "q_id": "easy_factual_001",
-    "total_score": 10,
+    "total_score": 9,
     "dimensions": {
       "correctness": {
         "score": 2,
@@ -9,11 +9,135 @@
       },
       "grounding": {
         "score": 2,
-        "explanation": "答案高度有据 (17/28 项可追溯)"
+        "explanation": "答案高度有据 (23/34 项可追溯)"
       },
       "completeness": {
         "score": 2,
         "explanation": "完整覆盖 (3/3 关键事实)"
+      },
+      "traceability": {
+        "score": 1,
+        "explanation": "有一处来源引用，但不够详细"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正常回答，无不当拒答"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 1.0,
+      "answer_length": 136,
+      "num_chunks_used": 5
+    }
+  },
+  {
+    "q_id": "easy_factual_002",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "explanation": "不正确 (key_facts=50%, overlap=0%)"
+      },
+      "grounding": {
+        "score": 1,
+        "explanation": "答案部分有据 (13/27 项可追溯)"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 2,
+        "explanation": "明确引用来源 (3 处)"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "应拒答但未拒答（可能产生幻觉）"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 117,
+      "num_chunks_used": 5
+    }
+  },
+  {
+    "q_id": "easy_factual_003",
+    "total_score": 2,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "explanation": "不正确 (key_facts=50%, overlap=0%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "答案缺乏依据 (1/9 项可追溯)"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 1,
+        "explanation": "有一处来源引用，但不够详细"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "应拒答但未拒答（可能产生幻觉）"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 40,
+      "num_chunks_used": 5
+    }
+  },
+  {
+    "q_id": "easy_factual_004",
+    "total_score": 6,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 2,
+        "explanation": "答案高度有据 (29/48 项可追溯)"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 2,
+        "explanation": "明确引用来源 (3 处)"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "应拒答但未拒答（可能产生幻觉）"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 241,
+      "num_chunks_used": 5
+    }
+  },
+  {
+    "q_id": "easy_factual_005",
+    "total_score": 9,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "explanation": "正确 (key_facts=100%, overlap=100%)"
+      },
+      "grounding": {
+        "score": 1,
+        "explanation": "答案部分有据 (27/48 项可追溯)"
+      },
+      "completeness": {
+        "score": 2,
+        "explanation": "完整覆盖 (2/2 关键事实)"
       },
       "traceability": {
         "score": 2,
@@ -26,29 +150,60 @@
     },
     "metrics": {
       "keyword_hit_rate": 1.0,
-      "answer_length": 119,
+      "answer_length": 238,
       "num_chunks_used": 5
     }
   },
   {
-    "q_id": "easy_factual_002",
-    "total_score": 6,
+    "q_id": "easy_factual_006",
+    "total_score": 4,
     "dimensions": {
       "correctness": {
         "score": 0,
         "explanation": "不正确 (key_facts=50%, overlap=0%)"
       },
       "grounding": {
-        "score": 1,
-        "explanation": "答案部分有据 (17/30 项可追溯)"
+        "score": 2,
+        "explanation": "答案高度有据 (4/6 项可追溯)"
       },
       "completeness": {
         "score": 1,
-        "explanation": "部分覆盖 (1/2 关键事实)"
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 1,
+        "explanation": "有一处来源引用，但不够详细"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "应拒答但未拒答（可能产生幻觉）"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 25,
+      "num_chunks_used": 5
+    }
+  },
+  {
+    "q_id": "easy_factual_007",
+    "total_score": 10,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "explanation": "正确 (key_facts=100%, overlap=100%)"
+      },
+      "grounding": {
+        "score": 2,
+        "explanation": "答案高度有据 (74/101 项可追溯)"
+      },
+      "completeness": {
+        "score": 2,
+        "explanation": "完整覆盖 (5/5 关键事实)"
       },
       "traceability": {
         "score": 2,
-        "explanation": "明确引用来源 (3 处)"
+        "explanation": "明确引用来源 (2 处)"
       },
       "abstention": {
         "score": 2,
@@ -56,26 +211,57 @@
       }
     },
     "metrics": {
-      "keyword_hit_rate": 0.5,
-      "answer_length": 129,
+      "keyword_hit_rate": 1.0,
+      "answer_length": 438,
       "num_chunks_used": 5
     }
   },
   {
-    "q_id": "easy_factual_003",
-    "total_score": 3,
+    "q_id": "easy_factual_008",
+    "total_score": 6,
     "dimensions": {
       "correctness": {
         "score": 0,
-        "explanation": "不正确 (key_facts=0%, overlap=0%)"
+        "explanation": "不正确 (key_facts=33%, overlap=15%)"
       },
       "grounding": {
-        "score": 0,
-        "explanation": "答案缺乏依据 (1/9 项可追溯)"
+        "score": 2,
+        "explanation": "答案高度有据 (10/16 项可追溯)"
       },
       "completeness": {
         "score": 0,
-        "explanation": "覆盖不足 (0/2 关键事实)"
+        "explanation": "覆盖不足 (1/3 关键事实)"
+      },
+      "traceability": {
+        "score": 2,
+        "explanation": "明确引用来源 (2 处)"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正常回答，无不当拒答"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.333,
+      "answer_length": 63,
+      "num_chunks_used": 5
+    }
+  },
+  {
+    "q_id": "easy_time_001",
+    "total_score": 8,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "explanation": "正确 (key_facts=100%, overlap=100%)"
+      },
+      "grounding": {
+        "score": 1,
+        "explanation": "答案部分有据 (16/31 项可追溯)"
+      },
+      "completeness": {
+        "score": 2,
+        "explanation": "完整覆盖 (3/3 关键事实)"
       },
       "traceability": {
         "score": 1,
@@ -87,22 +273,859 @@
       }
     },
     "metrics": {
-      "keyword_hit_rate": 0.0,
-      "answer_length": 40,
+      "keyword_hit_rate": 1.0,
+      "answer_length": 127,
       "num_chunks_used": 5
     }
   },
   {
-    "q_id": "easy_factual_004",
+    "q_id": "easy_time_002",
+    "total_score": 6,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=80%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 1,
+        "explanation": "答案部分有据 (8/21 项可追溯)"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "部分覆盖 (4/5 关键事实)"
+      },
+      "traceability": {
+        "score": 1,
+        "explanation": "有一处来源引用，但不够详细"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正常回答，无不当拒答"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.8,
+      "answer_length": 99,
+      "num_chunks_used": 5
+    }
+  },
+  {
+    "q_id": "easy_time_003",
+    "total_score": 8,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "explanation": "正确 (key_facts=100%, overlap=33%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "答案缺乏依据 (6/26 项可追溯)"
+      },
+      "completeness": {
+        "score": 2,
+        "explanation": "完整覆盖 (2/2 关键事实)"
+      },
+      "traceability": {
+        "score": 2,
+        "explanation": "明确引用来源 (2 处)"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正常回答，无不当拒答"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 1.0,
+      "answer_length": 109,
+      "num_chunks_used": 5
+    }
+  },
+  {
+    "q_id": "easy_time_004",
+    "total_score": 7,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "explanation": "正确 (key_facts=100%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "答案缺乏依据 (8/29 项可追溯)"
+      },
+      "completeness": {
+        "score": 2,
+        "explanation": "完整覆盖 (1/1 关键事实)"
+      },
+      "traceability": {
+        "score": 1,
+        "explanation": "有一处来源引用，但不够详细"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正常回答，无不当拒答"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 1.0,
+      "answer_length": 129,
+      "num_chunks_used": 5
+    }
+  },
+  {
+    "q_id": "easy_proc_001",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 1,
+        "explanation": "答案部分有据 (35/94 项可追溯)"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 1,
+        "explanation": "有一处来源引用，但不够详细"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "应拒答但未拒答（可能产生幻觉）"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 438,
+      "num_chunks_used": 5
+    }
+  },
+  {
+    "q_id": "easy_proc_002",
+    "total_score": 3,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "答案缺乏依据 (8/30 项可追溯)"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 1,
+        "explanation": "有一处来源引用，但不够详细"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "应拒答但未拒答（可能产生幻觉）"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 152,
+      "num_chunks_used": 5
+    }
+  },
+  {
+    "q_id": "easy_proc_003",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "explanation": "不正确 (key_facts=50%, overlap=0%)"
+      },
+      "grounding": {
+        "score": 1,
+        "explanation": "答案部分有据 (10/31 项可追溯)"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 2,
+        "explanation": "明确引用来源 (2 处)"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "应拒答但未拒答（可能产生幻觉）"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 162,
+      "num_chunks_used": 5
+    }
+  },
+  {
+    "q_id": "medium_complex_001",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 1,
+        "explanation": "答案部分有据 (10/30 项可追溯)"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 1,
+        "explanation": "有一处来源引用，但不够详细"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "应拒答但未拒答（可能产生幻觉）"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 226,
+      "num_chunks_used": 5
+    }
+  },
+  {
+    "q_id": "medium_complex_002",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "答案缺乏依据 (5/32 项可追溯)"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 2,
+        "explanation": "明确引用来源 (2 处)"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "应拒答但未拒答（可能产生幻觉）"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 133,
+      "num_chunks_used": 5
+    }
+  },
+  {
+    "q_id": "medium_complex_003",
+    "total_score": 6,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 2,
+        "explanation": "答案高度有据 (84/140 项可追溯)"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 2,
+        "explanation": "明确引用来源 (2 处)"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "应拒答但未拒答（可能产生幻觉）"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 794,
+      "num_chunks_used": 5
+    }
+  },
+  {
+    "q_id": "medium_complex_004",
+    "total_score": 5,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "explanation": "不正确 (key_facts=40%, overlap=25%)"
+      },
+      "grounding": {
+        "score": 1,
+        "explanation": "答案部分有据 (76/127 项可追溯)"
+      },
+      "completeness": {
+        "score": 0,
+        "explanation": "覆盖不足 (2/5 关键事实)"
+      },
+      "traceability": {
+        "score": 2,
+        "explanation": "明确引用来源 (2 处)"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正常回答，无不当拒答"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.4,
+      "answer_length": 577,
+      "num_chunks_used": 5
+    }
+  },
+  {
+    "q_id": "medium_complex_005",
     "total_score": 9,
     "dimensions": {
       "correctness": {
         "score": 2,
-        "explanation": "正确 (key_facts=100%, overlap=100%)"
+        "explanation": "正确 (key_facts=100%, overlap=62%)"
       },
       "grounding": {
         "score": 1,
-        "explanation": "答案部分有据 (20/42 项可追溯)"
+        "explanation": "答案部分有据 (124/219 项可追溯)"
+      },
+      "completeness": {
+        "score": 2,
+        "explanation": "完整覆盖 (8/8 关键事实)"
+      },
+      "traceability": {
+        "score": 2,
+        "explanation": "明确引用来源 (2 处)"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正常回答，无不当拒答"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 1.0,
+      "answer_length": 1193,
+      "num_chunks_used": 5
+    }
+  },
+  {
+    "q_id": "medium_complex_006",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "答案缺乏依据 (29/100 项可追溯)"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 2,
+        "explanation": "明确引用来源 (3 处)"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "应拒答但未拒答（可能产生幻觉）"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 477,
+      "num_chunks_used": 5
+    }
+  },
+  {
+    "q_id": "medium_complex_007",
+    "total_score": 5,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 1,
+        "explanation": "答案部分有据 (19/53 项可追溯)"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 2,
+        "explanation": "明确引用来源 (2 处)"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "应拒答但未拒答（可能产生幻觉）"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 342,
+      "num_chunks_used": 5
+    }
+  },
+  {
+    "q_id": "medium_complex_008",
+    "total_score": 9,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "explanation": "正确 (key_facts=100%, overlap=55%)"
+      },
+      "grounding": {
+        "score": 1,
+        "explanation": "答案部分有据 (47/99 项可追溯)"
+      },
+      "completeness": {
+        "score": 2,
+        "explanation": "完整覆盖 (7/7 关键事实)"
+      },
+      "traceability": {
+        "score": 2,
+        "explanation": "明确引用来源 (2 处)"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正常回答，无不当拒答"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 1.0,
+      "answer_length": 450,
+      "num_chunks_used": 5
+    }
+  },
+  {
+    "q_id": "medium_dept_001",
+    "total_score": 9,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "explanation": "正确 (key_facts=90%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 1,
+        "explanation": "答案部分有据 (89/150 项可追溯)"
+      },
+      "completeness": {
+        "score": 2,
+        "explanation": "完整覆盖 (9/10 关键事实)"
+      },
+      "traceability": {
+        "score": 2,
+        "explanation": "明确引用来源 (2 处)"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正常回答，无不当拒答"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.9,
+      "answer_length": 896,
+      "num_chunks_used": 5
+    }
+  },
+  {
+    "q_id": "medium_dept_002",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 1,
+        "explanation": "答案部分有据 (16/36 项可追溯)"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 1,
+        "explanation": "有一处来源引用，但不够详细"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "应拒答但未拒答（可能产生幻觉）"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 205,
+      "num_chunks_used": 5
+    }
+  },
+  {
+    "q_id": "medium_dept_003",
+    "total_score": 3,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "答案缺乏依据 (6/25 项可追溯)"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 1,
+        "explanation": "有一处来源引用，但不够详细"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "应拒答但未拒答（可能产生幻觉）"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 109,
+      "num_chunks_used": 5
+    }
+  },
+  {
+    "q_id": "medium_dept_004",
+    "total_score": 5,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 1,
+        "explanation": "答案部分有据 (40/109 项可追溯)"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 2,
+        "explanation": "明确引用来源 (2 处)"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "应拒答但未拒答（可能产生幻觉）"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 510,
+      "num_chunks_used": 5
+    }
+  },
+  {
+    "q_id": "medium_dept_005",
+    "total_score": 5,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "explanation": "不正确 (key_facts=44%, overlap=9%)"
+      },
+      "grounding": {
+        "score": 1,
+        "explanation": "答案部分有据 (39/107 项可追溯)"
+      },
+      "completeness": {
+        "score": 0,
+        "explanation": "覆盖不足 (4/9 关键事实)"
+      },
+      "traceability": {
+        "score": 2,
+        "explanation": "明确引用来源 (2 处)"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正常回答，无不当拒答"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.444,
+      "answer_length": 586,
+      "num_chunks_used": 5
+    }
+  },
+  {
+    "q_id": "medium_dept_006",
+    "total_score": 9,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "explanation": "正确 (key_facts=100%, overlap=93%)"
+      },
+      "grounding": {
+        "score": 2,
+        "explanation": "答案高度有据 (83/121 项可追溯)"
+      },
+      "completeness": {
+        "score": 2,
+        "explanation": "完整覆盖 (10/10 关键事实)"
+      },
+      "traceability": {
+        "score": 1,
+        "explanation": "有一处来源引用，但不够详细"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正常回答，无不当拒答"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 1.0,
+      "answer_length": 658,
+      "num_chunks_used": 5
+    }
+  },
+  {
+    "q_id": "medium_dept_007",
+    "total_score": 5,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 1,
+        "explanation": "答案部分有据 (56/126 项可追溯)"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 2,
+        "explanation": "明确引用来源 (3 处)"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "应拒答但未拒答（可能产生幻觉）"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 574,
+      "num_chunks_used": 5
+    }
+  },
+  {
+    "q_id": "medium_policy_001",
+    "total_score": 5,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 1,
+        "explanation": "答案部分有据 (38/86 项可追溯)"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 2,
+        "explanation": "明确引用来源 (3 处)"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "应拒答但未拒答（可能产生幻觉）"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 366,
+      "num_chunks_used": 5
+    }
+  },
+  {
+    "q_id": "medium_policy_002",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "答案缺乏依据 (22/82 项可追溯)"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 2,
+        "explanation": "明确引用来源 (3 处)"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "应拒答但未拒答（可能产生幻觉）"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 354,
+      "num_chunks_used": 5
+    }
+  },
+  {
+    "q_id": "medium_policy_003",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 1,
+        "explanation": "答案部分有据 (74/133 项可追溯)"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 1,
+        "explanation": "有一处来源引用，但不够详细"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "应拒答但未拒答（可能产生幻觉）"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 703,
+      "num_chunks_used": 5
+    }
+  },
+  {
+    "q_id": "medium_policy_004",
+    "total_score": 5,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 1,
+        "explanation": "答案部分有据 (43/103 项可追溯)"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 2,
+        "explanation": "明确引用来源 (2 处)"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "应拒答但未拒答（可能产生幻觉）"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 519,
+      "num_chunks_used": 5
+    }
+  },
+  {
+    "q_id": "medium_policy_005",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 1,
+        "explanation": "答案部分有据 (40/110 项可追溯)"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 1,
+        "explanation": "有一处来源引用，但不够详细"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "应拒答但未拒答（可能产生幻觉）"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 506,
+      "num_chunks_used": 5
+    }
+  },
+  {
+    "q_id": "hard_comp_001",
+    "total_score": 5,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 1,
+        "explanation": "答案部分有据 (70/145 项可追溯)"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 2,
+        "explanation": "明确引用来源 (2 处)"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "应拒答但未拒答（可能产生幻觉）"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 810,
+      "num_chunks_used": 5
+    }
+  },
+  {
+    "q_id": "hard_comp_002",
+    "total_score": 9,
+    "dimensions": {
+      "correctness": {
+        "score": 2,
+        "explanation": "正确 (key_facts=100%, overlap=59%)"
+      },
+      "grounding": {
+        "score": 1,
+        "explanation": "答案部分有据 (65/193 项可追溯)"
       },
       "completeness": {
         "score": 2,
@@ -119,1052 +1142,29 @@
     },
     "metrics": {
       "keyword_hit_rate": 1.0,
-      "answer_length": 208,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "easy_factual_005",
-    "total_score": 9,
-    "dimensions": {
-      "correctness": {
-        "score": 2,
-        "explanation": "正确 (key_facts=100%, overlap=100%)"
-      },
-      "grounding": {
-        "score": 1,
-        "explanation": "答案部分有据 (25/46 项可追溯)"
-      },
-      "completeness": {
-        "score": 2,
-        "explanation": "完整覆盖 (2/2 关键事实)"
-      },
-      "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (2 处)"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 1.0,
-      "answer_length": 227,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "easy_factual_006",
-    "total_score": 9,
-    "dimensions": {
-      "correctness": {
-        "score": 2,
-        "explanation": "正确 (key_facts=100%, overlap=100%)"
-      },
-      "grounding": {
-        "score": 1,
-        "explanation": "答案部分有据 (9/18 项可追溯)"
-      },
-      "completeness": {
-        "score": 2,
-        "explanation": "完整覆盖 (2/2 关键事实)"
-      },
-      "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (2 处)"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 1.0,
-      "answer_length": 82,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "easy_factual_007",
-    "total_score": 10,
-    "dimensions": {
-      "correctness": {
-        "score": 2,
-        "explanation": "正确 (key_facts=100%, overlap=100%)"
-      },
-      "grounding": {
-        "score": 2,
-        "explanation": "答案高度有据 (66/98 项可追溯)"
-      },
-      "completeness": {
-        "score": 2,
-        "explanation": "完整覆盖 (3/3 关键事实)"
-      },
-      "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (2 处)"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 1.0,
-      "answer_length": 432,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "easy_factual_008",
-    "total_score": 7,
-    "dimensions": {
-      "correctness": {
-        "score": 0,
-        "explanation": "不正确 (key_facts=50%, overlap=17%)"
-      },
-      "grounding": {
-        "score": 2,
-        "explanation": "答案高度有据 (10/16 项可追溯)"
-      },
-      "completeness": {
-        "score": 1,
-        "explanation": "部分覆盖 (1/2 关键事实)"
-      },
-      "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (2 处)"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 0.5,
-      "answer_length": 63,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "easy_time_001",
-    "total_score": 5,
-    "dimensions": {
-      "correctness": {
-        "score": 1,
-        "explanation": "部分正确 (key_facts=33%, overlap=75%)"
-      },
-      "grounding": {
-        "score": 1,
-        "explanation": "答案部分有据 (20/35 项可追溯)"
-      },
-      "completeness": {
-        "score": 0,
-        "explanation": "覆盖不足 (1/3 关键事实)"
-      },
-      "traceability": {
-        "score": 1,
-        "explanation": "有一处来源引用，但不够详细"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 0.333,
-      "answer_length": 153,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "easy_time_002",
-    "total_score": 8,
-    "dimensions": {
-      "correctness": {
-        "score": 2,
-        "explanation": "正确 (key_facts=100%, overlap=100%)"
-      },
-      "grounding": {
-        "score": 1,
-        "explanation": "答案部分有据 (7/20 项可追溯)"
-      },
-      "completeness": {
-        "score": 2,
-        "explanation": "完整覆盖 (4/4 关键事实)"
-      },
-      "traceability": {
-        "score": 1,
-        "explanation": "有一处来源引用，但不够详细"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 1.0,
-      "answer_length": 96,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "easy_time_003",
-    "total_score": 6,
-    "dimensions": {
-      "correctness": {
-        "score": 1,
-        "explanation": "部分正确 (key_facts=100%, overlap=0%)"
-      },
-      "grounding": {
-        "score": 0,
-        "explanation": "答案缺乏依据 (6/22 项可追溯)"
-      },
-      "completeness": {
-        "score": 2,
-        "explanation": "完整覆盖 (2/2 关键事实)"
-      },
-      "traceability": {
-        "score": 1,
-        "explanation": "有一处来源引用，但不够详细"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 1.0,
-      "answer_length": 97,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "easy_time_004",
-    "total_score": 7,
-    "dimensions": {
-      "correctness": {
-        "score": 2,
-        "explanation": "正确 (key_facts=100%, overlap=25%)"
-      },
-      "grounding": {
-        "score": 0,
-        "explanation": "答案缺乏依据 (4/26 项可追溯)"
-      },
-      "completeness": {
-        "score": 2,
-        "explanation": "完整覆盖 (2/2 关键事实)"
-      },
-      "traceability": {
-        "score": 1,
-        "explanation": "有一处来源引用，但不够详细"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 1.0,
-      "answer_length": 120,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "easy_proc_001",
-    "total_score": 6,
-    "dimensions": {
-      "correctness": {
-        "score": 0,
-        "explanation": "不正确 (key_facts=50%, overlap=17%)"
-      },
-      "grounding": {
-        "score": 1,
-        "explanation": "答案部分有据 (38/96 项可追溯)"
-      },
-      "completeness": {
-        "score": 1,
-        "explanation": "部分覆盖 (2/4 关键事实)"
-      },
-      "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (2 处)"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 0.5,
-      "answer_length": 469,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "easy_proc_002",
-    "total_score": 5,
-    "dimensions": {
-      "correctness": {
-        "score": 0,
-        "explanation": "不正确 (key_facts=50%, overlap=0%)"
-      },
-      "grounding": {
-        "score": 1,
-        "explanation": "答案部分有据 (19/42 项可追溯)"
-      },
-      "completeness": {
-        "score": 1,
-        "explanation": "部分覆盖 (2/4 关键事实)"
-      },
-      "traceability": {
-        "score": 1,
-        "explanation": "有一处来源引用，但不够详细"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 0.5,
-      "answer_length": 205,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "easy_proc_003",
-    "total_score": 4,
-    "dimensions": {
-      "correctness": {
-        "score": 0,
-        "explanation": "不正确 (key_facts=0%, overlap=67%)"
-      },
-      "grounding": {
-        "score": 0,
-        "explanation": "答案缺乏依据 (11/40 项可追溯)"
-      },
-      "completeness": {
-        "score": 0,
-        "explanation": "覆盖不足 (0/4 关键事实)"
-      },
-      "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (2 处)"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 0.0,
-      "answer_length": 188,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "medium_complex_001",
-    "total_score": 6,
-    "dimensions": {
-      "correctness": {
-        "score": 1,
-        "explanation": "部分正确 (key_facts=67%, overlap=43%)"
-      },
-      "grounding": {
-        "score": 1,
-        "explanation": "答案部分有据 (12/27 项可追溯)"
-      },
-      "completeness": {
-        "score": 1,
-        "explanation": "部分覆盖 (2/3 关键事实)"
-      },
-      "traceability": {
-        "score": 1,
-        "explanation": "有一处来源引用，但不够详细"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 0.667,
-      "answer_length": 117,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "medium_complex_002",
-    "total_score": 7,
-    "dimensions": {
-      "correctness": {
-        "score": 2,
-        "explanation": "正确 (key_facts=67%, overlap=75%)"
-      },
-      "grounding": {
-        "score": 0,
-        "explanation": "答案缺乏依据 (23/78 项可追溯)"
-      },
-      "completeness": {
-        "score": 1,
-        "explanation": "部分覆盖 (2/3 关键事实)"
-      },
-      "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (3 处)"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 0.667,
-      "answer_length": 345,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "medium_complex_003",
-    "total_score": 9,
-    "dimensions": {
-      "correctness": {
-        "score": 1,
-        "explanation": "部分正确 (key_facts=100%, overlap=0%)"
-      },
-      "grounding": {
-        "score": 2,
-        "explanation": "答案高度有据 (87/143 项可追溯)"
-      },
-      "completeness": {
-        "score": 2,
-        "explanation": "完整覆盖 (3/3 关键事实)"
-      },
-      "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (2 处)"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 1.0,
-      "answer_length": 794,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "medium_complex_004",
-    "total_score": 5,
-    "dimensions": {
-      "correctness": {
-        "score": 0,
-        "explanation": "不正确 (key_facts=33%, overlap=17%)"
-      },
-      "grounding": {
-        "score": 1,
-        "explanation": "答案部分有据 (88/153 项可追溯)"
-      },
-      "completeness": {
-        "score": 0,
-        "explanation": "覆盖不足 (1/3 关键事实)"
-      },
-      "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (3 处)"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 0.333,
-      "answer_length": 690,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "medium_complex_005",
-    "total_score": 7,
-    "dimensions": {
-      "correctness": {
-        "score": 1,
-        "explanation": "部分正确 (key_facts=67%, overlap=40%)"
-      },
-      "grounding": {
-        "score": 1,
-        "explanation": "答案部分有据 (122/214 项可追溯)"
-      },
-      "completeness": {
-        "score": 1,
-        "explanation": "部分覆盖 (2/3 关键事实)"
-      },
-      "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (3 处)"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 0.667,
-      "answer_length": 1093,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "medium_complex_006",
-    "total_score": 5,
-    "dimensions": {
-      "correctness": {
-        "score": 0,
-        "explanation": "不正确 (key_facts=67%, overlap=0%)"
-      },
-      "grounding": {
-        "score": 0,
-        "explanation": "答案缺乏依据 (13/47 项可追溯)"
-      },
-      "completeness": {
-        "score": 1,
-        "explanation": "部分覆盖 (2/3 关键事实)"
-      },
-      "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (2 处)"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 0.667,
-      "answer_length": 233,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "medium_complex_007",
-    "total_score": 6,
-    "dimensions": {
-      "correctness": {
-        "score": 1,
-        "explanation": "部分正确 (key_facts=33%, overlap=100%)"
-      },
-      "grounding": {
-        "score": 1,
-        "explanation": "答案部分有据 (20/59 项可追溯)"
-      },
-      "completeness": {
-        "score": 0,
-        "explanation": "覆盖不足 (1/3 关键事实)"
-      },
-      "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (4 处)"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 0.333,
-      "answer_length": 395,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "medium_complex_008",
-    "total_score": 7,
-    "dimensions": {
-      "correctness": {
-        "score": 1,
-        "explanation": "部分正确 (key_facts=80%, overlap=17%)"
-      },
-      "grounding": {
-        "score": 1,
-        "explanation": "答案部分有据 (37/73 项可追溯)"
-      },
-      "completeness": {
-        "score": 1,
-        "explanation": "部分覆盖 (4/5 关键事实)"
-      },
-      "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (2 处)"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 0.8,
-      "answer_length": 388,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "medium_dept_001",
-    "total_score": 8,
-    "dimensions": {
-      "correctness": {
-        "score": 1,
-        "explanation": "部分正确 (key_facts=100%, overlap=20%)"
-      },
-      "grounding": {
-        "score": 2,
-        "explanation": "答案高度有据 (105/155 项可追溯)"
-      },
-      "completeness": {
-        "score": 2,
-        "explanation": "完整覆盖 (3/3 关键事实)"
-      },
-      "traceability": {
-        "score": 1,
-        "explanation": "有一处来源引用，但不够详细"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 1.0,
-      "answer_length": 978,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "medium_dept_002",
-    "total_score": 9,
-    "dimensions": {
-      "correctness": {
-        "score": 2,
-        "explanation": "正确 (key_facts=100%, overlap=67%)"
-      },
-      "grounding": {
-        "score": 1,
-        "explanation": "答案部分有据 (5/15 项可追溯)"
-      },
-      "completeness": {
-        "score": 2,
-        "explanation": "完整覆盖 (3/3 关键事实)"
-      },
-      "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (2 处)"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 1.0,
-      "answer_length": 96,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "medium_dept_003",
-    "total_score": 6,
-    "dimensions": {
-      "correctness": {
-        "score": 1,
-        "explanation": "部分正确 (key_facts=100%, overlap=0%)"
-      },
-      "grounding": {
-        "score": 0,
-        "explanation": "答案缺乏依据 (6/25 项可追溯)"
-      },
-      "completeness": {
-        "score": 2,
-        "explanation": "完整覆盖 (3/3 关键事实)"
-      },
-      "traceability": {
-        "score": 1,
-        "explanation": "有一处来源引用，但不够详细"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 1.0,
-      "answer_length": 103,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "medium_dept_004",
-    "total_score": 8,
-    "dimensions": {
-      "correctness": {
-        "score": 1,
-        "explanation": "部分正确 (key_facts=100%, overlap=0%)"
-      },
-      "grounding": {
-        "score": 1,
-        "explanation": "答案部分有据 (37/86 项可追溯)"
-      },
-      "completeness": {
-        "score": 2,
-        "explanation": "完整覆盖 (3/3 关键事实)"
-      },
-      "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (3 处)"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 1.0,
-      "answer_length": 466,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "medium_dept_005",
-    "total_score": 9,
-    "dimensions": {
-      "correctness": {
-        "score": 2,
-        "explanation": "正确 (key_facts=100%, overlap=33%)"
-      },
-      "grounding": {
-        "score": 1,
-        "explanation": "答案部分有据 (34/87 项可追溯)"
-      },
-      "completeness": {
-        "score": 2,
-        "explanation": "完整覆盖 (3/3 关键事实)"
-      },
-      "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (3 处)"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 1.0,
-      "answer_length": 503,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "medium_dept_006",
-    "total_score": 9,
-    "dimensions": {
-      "correctness": {
-        "score": 2,
-        "explanation": "正确 (key_facts=100%, overlap=40%)"
-      },
-      "grounding": {
-        "score": 2,
-        "explanation": "答案高度有据 (91/146 项可追溯)"
-      },
-      "completeness": {
-        "score": 2,
-        "explanation": "完整覆盖 (2/2 关键事实)"
-      },
-      "traceability": {
-        "score": 1,
-        "explanation": "有一处来源引用，但不够详细"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 1.0,
-      "answer_length": 754,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "medium_dept_007",
-    "total_score": 6,
-    "dimensions": {
-      "correctness": {
-        "score": 0,
-        "explanation": "不正确 (key_facts=50%, overlap=0%)"
-      },
-      "grounding": {
-        "score": 1,
-        "explanation": "答案部分有据 (62/120 项可追溯)"
-      },
-      "completeness": {
-        "score": 1,
-        "explanation": "部分覆盖 (2/4 关键事实)"
-      },
-      "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (3 处)"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 0.5,
-      "answer_length": 541,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "medium_policy_001",
-    "total_score": 6,
-    "dimensions": {
-      "correctness": {
-        "score": 0,
-        "explanation": "不正确 (key_facts=67%, overlap=0%)"
-      },
-      "grounding": {
-        "score": 1,
-        "explanation": "答案部分有据 (33/81 项可追溯)"
-      },
-      "completeness": {
-        "score": 1,
-        "explanation": "部分覆盖 (2/3 关键事实)"
-      },
-      "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (2 处)"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 0.667,
-      "answer_length": 377,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "medium_policy_002",
-    "total_score": 5,
-    "dimensions": {
-      "correctness": {
-        "score": 1,
-        "explanation": "部分正确 (key_facts=67%, overlap=20%)"
-      },
-      "grounding": {
-        "score": 0,
-        "explanation": "答案缺乏依据 (25/99 项可追溯)"
-      },
-      "completeness": {
-        "score": 1,
-        "explanation": "部分覆盖 (2/3 关键事实)"
-      },
-      "traceability": {
-        "score": 1,
-        "explanation": "有一处来源引用，但不够详细"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 0.667,
-      "answer_length": 473,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "medium_policy_003",
-    "total_score": 8,
-    "dimensions": {
-      "correctness": {
-        "score": 1,
-        "explanation": "部分正确 (key_facts=100%, overlap=20%)"
-      },
-      "grounding": {
-        "score": 2,
-        "explanation": "答案高度有据 (146/220 项可追溯)"
-      },
-      "completeness": {
-        "score": 2,
-        "explanation": "完整覆盖 (3/3 关键事实)"
-      },
-      "traceability": {
-        "score": 1,
-        "explanation": "有一处来源引用，但不够详细"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 1.0,
-      "answer_length": 1166,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "medium_policy_004",
-    "total_score": 7,
-    "dimensions": {
-      "correctness": {
-        "score": 1,
-        "explanation": "部分正确 (key_facts=75%, overlap=0%)"
-      },
-      "grounding": {
-        "score": 1,
-        "explanation": "答案部分有据 (75/146 项可追溯)"
-      },
-      "completeness": {
-        "score": 1,
-        "explanation": "部分覆盖 (3/4 关键事实)"
-      },
-      "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (2 处)"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 0.75,
-      "answer_length": 665,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "medium_policy_005",
-    "total_score": 7,
-    "dimensions": {
-      "correctness": {
-        "score": 1,
-        "explanation": "部分正确 (key_facts=75%, overlap=17%)"
-      },
-      "grounding": {
-        "score": 1,
-        "explanation": "答案部分有据 (44/117 项可追溯)"
-      },
-      "completeness": {
-        "score": 1,
-        "explanation": "部分覆盖 (3/4 关键事实)"
-      },
-      "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (2 处)"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 0.75,
-      "answer_length": 526,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "hard_comp_001",
-    "total_score": 6,
-    "dimensions": {
-      "correctness": {
-        "score": 1,
-        "explanation": "部分正确 (key_facts=60%, overlap=29%)"
-      },
-      "grounding": {
-        "score": 1,
-        "explanation": "答案部分有据 (51/100 项可追溯)"
-      },
-      "completeness": {
-        "score": 1,
-        "explanation": "部分覆盖 (3/5 关键事实)"
-      },
-      "traceability": {
-        "score": 1,
-        "explanation": "有一处来源引用，但不够详细"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 0.6,
-      "answer_length": 497,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "hard_comp_002",
-    "total_score": 9,
-    "dimensions": {
-      "correctness": {
-        "score": 2,
-        "explanation": "正确 (key_facts=100%, overlap=29%)"
-      },
-      "grounding": {
-        "score": 1,
-        "explanation": "答案部分有据 (80/191 项可追溯)"
-      },
-      "completeness": {
-        "score": 2,
-        "explanation": "完整覆盖 (5/5 关键事实)"
-      },
-      "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (3 处)"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 1.0,
-      "answer_length": 838,
+      "answer_length": 845,
       "num_chunks_used": 5
     }
   },
   {
     "q_id": "hard_comp_003",
-    "total_score": 9,
+    "total_score": 7,
     "dimensions": {
       "correctness": {
-        "score": 2,
-        "explanation": "正确 (key_facts=100%, overlap=25%)"
+        "score": 1,
+        "explanation": "部分正确 (key_facts=71%, overlap=40%)"
       },
       "grounding": {
         "score": 1,
-        "explanation": "答案部分有据 (31/85 项可追溯)"
+        "explanation": "答案部分有据 (43/109 项可追溯)"
       },
       "completeness": {
-        "score": 2,
-        "explanation": "完整覆盖 (4/4 关键事实)"
+        "score": 1,
+        "explanation": "部分覆盖 (5/7 关键事实)"
       },
       "traceability": {
         "score": 2,
-        "explanation": "明确引用来源 (3 处)"
+        "explanation": "明确引用来源 (2 处)"
       },
       "abstention": {
         "score": 2,
@@ -1172,39 +1172,39 @@
       }
     },
     "metrics": {
-      "keyword_hit_rate": 1.0,
-      "answer_length": 401,
+      "keyword_hit_rate": 0.714,
+      "answer_length": 551,
       "num_chunks_used": 5
     }
   },
   {
     "q_id": "hard_comp_004",
-    "total_score": 6,
+    "total_score": 4,
     "dimensions": {
       "correctness": {
         "score": 1,
-        "explanation": "部分正确 (key_facts=75%, overlap=14%)"
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
       },
       "grounding": {
         "score": 1,
-        "explanation": "答案部分有据 (30/100 项可追溯)"
+        "explanation": "答案部分有据 (31/93 项可追溯)"
       },
       "completeness": {
         "score": 1,
-        "explanation": "部分覆盖 (3/4 关键事实)"
+        "explanation": "未定义 key_facts，默认给 1 分"
       },
       "traceability": {
         "score": 1,
         "explanation": "有一处来源引用，但不够详细"
       },
       "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
+        "score": 0,
+        "explanation": "应拒答但未拒答（可能产生幻觉）"
       }
     },
     "metrics": {
-      "keyword_hit_rate": 0.75,
-      "answer_length": 590,
+      "keyword_hit_rate": 0.0,
+      "answer_length": 559,
       "num_chunks_used": 5
     }
   },
@@ -1213,78 +1213,47 @@
     "total_score": 4,
     "dimensions": {
       "correctness": {
-        "score": 0,
-        "explanation": "不正确 (key_facts=0%, overlap=0%)"
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
       },
       "grounding": {
         "score": 1,
-        "explanation": "答案部分有据 (65/128 项可追溯)"
+        "explanation": "答案部分有据 (62/131 项可追溯)"
       },
       "completeness": {
-        "score": 0,
-        "explanation": "覆盖不足 (0/5 关键事实)"
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
       },
       "traceability": {
         "score": 1,
         "explanation": "有一处来源引用，但不够详细"
       },
       "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
+        "score": 0,
+        "explanation": "应拒答但未拒答（可能产生幻觉）"
       }
     },
     "metrics": {
       "keyword_hit_rate": 0.0,
-      "answer_length": 654,
+      "answer_length": 669,
       "num_chunks_used": 5
     }
   },
   {
     "q_id": "hard_cross_002",
-    "total_score": 9,
-    "dimensions": {
-      "correctness": {
-        "score": 2,
-        "explanation": "正确 (key_facts=100%, overlap=29%)"
-      },
-      "grounding": {
-        "score": 1,
-        "explanation": "答案部分有据 (90/181 项可追溯)"
-      },
-      "completeness": {
-        "score": 2,
-        "explanation": "完整覆盖 (4/4 关键事实)"
-      },
-      "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (2 处)"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 1.0,
-      "answer_length": 887,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "hard_cross_003",
-    "total_score": 7,
+    "total_score": 6,
     "dimensions": {
       "correctness": {
         "score": 1,
-        "explanation": "部分正确 (key_facts=100%, overlap=0%)"
+        "explanation": "部分正确 (key_facts=78%, overlap=57%)"
       },
       "grounding": {
         "score": 1,
-        "explanation": "答案部分有据 (53/134 项可追溯)"
+        "explanation": "答案部分有据 (69/139 项可追溯)"
       },
       "completeness": {
-        "score": 2,
-        "explanation": "完整覆盖 (4/4 关键事实)"
+        "score": 1,
+        "explanation": "部分覆盖 (7/9 关键事实)"
       },
       "traceability": {
         "score": 1,
@@ -1296,8 +1265,39 @@
       }
     },
     "metrics": {
-      "keyword_hit_rate": 1.0,
-      "answer_length": 639,
+      "keyword_hit_rate": 0.778,
+      "answer_length": 716,
+      "num_chunks_used": 5
+    }
+  },
+  {
+    "q_id": "hard_cross_003",
+    "total_score": 6,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=83%, overlap=47%)"
+      },
+      "grounding": {
+        "score": 1,
+        "explanation": "答案部分有据 (44/107 项可追溯)"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "部分覆盖 (5/6 关键事实)"
+      },
+      "traceability": {
+        "score": 1,
+        "explanation": "有一处来源引用，但不够详细"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正常回答，无不当拒答"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.833,
+      "answer_length": 512,
       "num_chunks_used": 5
     }
   },
@@ -1306,91 +1306,91 @@
     "total_score": 5,
     "dimensions": {
       "correctness": {
-        "score": 0,
-        "explanation": "不正确 (key_facts=25%, overlap=0%)"
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
       },
       "grounding": {
         "score": 1,
         "explanation": "答案部分有据 (14/46 项可追溯)"
       },
       "completeness": {
-        "score": 0,
-        "explanation": "覆盖不足 (1/4 关键事实)"
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
       },
       "traceability": {
         "score": 2,
         "explanation": "明确引用来源 (3 处)"
       },
       "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
+        "score": 0,
+        "explanation": "应拒答但未拒答（可能产生幻觉）"
       }
     },
     "metrics": {
-      "keyword_hit_rate": 0.25,
+      "keyword_hit_rate": 0.0,
       "answer_length": 232,
       "num_chunks_used": 5
     }
   },
   {
     "q_id": "hard_temp_001",
-    "total_score": 8,
+    "total_score": 3,
     "dimensions": {
       "correctness": {
         "score": 1,
-        "explanation": "部分正确 (key_facts=100%, overlap=20%)"
-      },
-      "grounding": {
-        "score": 1,
-        "explanation": "答案部分有据 (25/48 项可追溯)"
-      },
-      "completeness": {
-        "score": 2,
-        "explanation": "完整覆盖 (3/3 关键事实)"
-      },
-      "traceability": {
-        "score": 2,
-        "explanation": "明确引用来源 (2 处)"
-      },
-      "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
-      }
-    },
-    "metrics": {
-      "keyword_hit_rate": 1.0,
-      "answer_length": 257,
-      "num_chunks_used": 5
-    }
-  },
-  {
-    "q_id": "hard_temp_002",
-    "total_score": 6,
-    "dimensions": {
-      "correctness": {
-        "score": 1,
-        "explanation": "部分正确 (key_facts=100%, overlap=0%)"
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
       },
       "grounding": {
         "score": 0,
-        "explanation": "答案缺乏依据 (16/57 项可追溯)"
+        "explanation": "答案缺乏依据 (11/39 项可追溯)"
       },
       "completeness": {
-        "score": 2,
-        "explanation": "完整覆盖 (4/4 关键事实)"
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
       },
       "traceability": {
         "score": 1,
         "explanation": "有一处来源引用，但不够详细"
       },
       "abstention": {
-        "score": 2,
-        "explanation": "正常回答，无不当拒答"
+        "score": 0,
+        "explanation": "应拒答但未拒答（可能产生幻觉）"
       }
     },
     "metrics": {
-      "keyword_hit_rate": 1.0,
-      "answer_length": 235,
+      "keyword_hit_rate": 0.0,
+      "answer_length": 204,
+      "num_chunks_used": 5
+    }
+  },
+  {
+    "q_id": "hard_temp_002",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "答案缺乏依据 (9/40 项可追溯)"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 2,
+        "explanation": "明确引用来源 (2 处)"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "应拒答但未拒答（可能产生幻觉）"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 170,
       "num_chunks_used": 5
     }
   },
@@ -1403,16 +1403,16 @@
         "explanation": "不正确 (key_facts=50%, overlap=0%)"
       },
       "grounding": {
-        "score": 1,
-        "explanation": "答案部分有据 (5/15 项可追溯)"
+        "score": 0,
+        "explanation": "答案缺乏依据 (7/28 项可追溯)"
       },
       "completeness": {
         "score": 1,
         "explanation": "未定义 key_facts，默认给 1 分"
       },
       "traceability": {
-        "score": 1,
-        "explanation": "有一处来源引用，但不够详细"
+        "score": 2,
+        "explanation": "明确引用来源 (2 处)"
       },
       "abstention": {
         "score": 0,
@@ -1421,21 +1421,21 @@
     },
     "metrics": {
       "keyword_hit_rate": 0.0,
-      "answer_length": 59,
+      "answer_length": 121,
       "num_chunks_used": 5
     }
   },
   {
     "q_id": "oos_ext_002",
-    "total_score": 5,
+    "total_score": 4,
     "dimensions": {
       "correctness": {
         "score": 0,
         "explanation": "不正确 (key_facts=50%, overlap=0%)"
       },
       "grounding": {
-        "score": 2,
-        "explanation": "答案高度有据 (13/21 项可追溯)"
+        "score": 1,
+        "explanation": "答案部分有据 (18/31 项可追溯)"
       },
       "completeness": {
         "score": 1,
@@ -1452,7 +1452,7 @@
     },
     "metrics": {
       "keyword_hit_rate": 0.0,
-      "answer_length": 89,
+      "answer_length": 125,
       "num_chunks_used": 5
     }
   },
@@ -1466,7 +1466,7 @@
       },
       "grounding": {
         "score": 1,
-        "explanation": "答案部分有据 (10/24 项可追溯)"
+        "explanation": "答案部分有据 (10/23 项可追溯)"
       },
       "completeness": {
         "score": 1,
@@ -1483,7 +1483,7 @@
     },
     "metrics": {
       "keyword_hit_rate": 0.0,
-      "answer_length": 99,
+      "answer_length": 93,
       "num_chunks_used": 5
     }
   },
@@ -1497,7 +1497,7 @@
       },
       "grounding": {
         "score": 0,
-        "explanation": "答案缺乏依据 (7/32 项可追溯)"
+        "explanation": "答案缺乏依据 (7/25 项可追溯)"
       },
       "completeness": {
         "score": 1,
@@ -1514,7 +1514,7 @@
     },
     "metrics": {
       "keyword_hit_rate": 0.0,
-      "answer_length": 139,
+      "answer_length": 108,
       "num_chunks_used": 5
     }
   },
