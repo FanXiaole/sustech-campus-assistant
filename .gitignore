@@ -1,0 +1,12 @@
+# Large data files (exceed GitHub 100MB limit)
+sustech-rag/data/raw/raw_pages.jsonl
+sustech-rag/index_store/bm25_index.pkl
+sustech-rag/index_store/chroma_db/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# OS files
+.DS_Store
