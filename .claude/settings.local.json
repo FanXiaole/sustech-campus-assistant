@@ -18,7 +18,9 @@
       "Bash(python3 indexing/bm25_builder.py)",
       "Bash(python3 evaluation/test_set_builder.py)",
       "Bash(python3 -m py_compile indexing/scraper.py indexing/cleaner.py indexing/chunker.py indexing/bm25_builder.py)",
-      "Bash(ssh -p 46097 -o StrictHostKeyChecking=no -o ConnectTimeout=10 root@connect.bjb1.seetacloud.com \"nvidia-smi && echo '---' && ls /root/ && echo '---' && which conda && echo '---' && df -h /root/ | tail -1\")"
+      "Bash(ssh -p 46097 -o StrictHostKeyChecking=no -o ConnectTimeout=10 root@connect.bjb1.seetacloud.com \"nvidia-smi && echo '---' && ls /root/ && echo '---' && which conda && echo '---' && df -h /root/ | tail -1\")",
+      "Bash(sshpass -p '8RbjTojdHIeK' ssh -p 46097 -o StrictHostKeyChecking=no root@connect.bjb1.seetacloud.com \"nvidia-smi && echo '---DISK---' && df -h /root && echo '---CONDA---' && which conda && conda --version\")",
+      "Bash(sshpass -p '8RbjTojdHIeK' ssh -p 46097 -o StrictHostKeyChecking=no root@connect.bjb1.seetacloud.com \"ls /root/miniconda3/bin/conda 2>/dev/null || ls /opt/conda/bin/conda 2>/dev/null || which conda 2>/dev/null || echo 'conda not in PATH'; echo '---'; cat /etc/os-release 2>/dev/null | head -3; echo '---'; python3 --version 2>/dev/null\")"
     ]
   }
 }
