@@ -117,7 +117,21 @@ python evaluation/run_bootstrap.py
 python evaluation/llm_evaluator.py --experiment R4
 ```
 
-### Step 7: 启动 Demo
+### Step 7: 运行测试
+
+```bash
+# 单元测试（无需 GPU，28 项）
+python tests/test_smoke.py
+
+# 集成测试（分层自动检测 GPU/API，10 项）
+python tests/test_integration.py
+
+# GPU 服务器完整测试
+DEEPSEEK_API_KEY=sk-xxx python tests/test_integration.py  # 启用 API 测试
+# (GPU 测试在 torch.cuda.is_available() 时自动启用)
+```
+
+### Step 8: 启动 Demo
 
 ```bash
 # 本地启动
@@ -185,8 +199,9 @@ sustech-rag/
 │   ├── app.py                   # 3 Tab Demo (Q&A / Experiments / Pipeline)
 │   └── cache/                   # 缓存查询结果
 │
-├── tests/                       # 测试
-│   └── test_smoke.py            # 端到端 Smoke Test
+├── tests/                       # 测试 (38 项)
+│   ├── test_smoke.py            # 28 单元测试（无需 GPU）
+│   └── test_integration.py      # 10 集成测试（Tier 1/2/3 分层）
 │
 ├── index_store/                 # 索引文件 (需 GPU 构建)
 │   ├── chroma_db/               # ChromaDB 向量索引 (539 MB)
