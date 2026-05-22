@@ -1,0 +1,302 @@
+[
+  {
+    "q_id": "easy_factual_001",
+    "retrieval_ms": 67,
+    "generation_ms": 1018,
+    "total_ms": 1085
+  },
+  {
+    "q_id": "easy_factual_002",
+    "retrieval_ms": 81,
+    "generation_ms": 800,
+    "total_ms": 881
+  },
+  {
+    "q_id": "easy_factual_003",
+    "retrieval_ms": 56,
+    "generation_ms": 1061,
+    "total_ms": 1117
+  },
+  {
+    "q_id": "easy_factual_004",
+    "retrieval_ms": 61,
+    "generation_ms": 1748,
+    "total_ms": 1810
+  },
+  {
+    "q_id": "easy_factual_005",
+    "retrieval_ms": 35,
+    "generation_ms": 1769,
+    "total_ms": 1804
+  },
+  {
+    "q_id": "easy_factual_006",
+    "retrieval_ms": 47,
+    "generation_ms": 1555,
+    "total_ms": 1602
+  },
+  {
+    "q_id": "easy_factual_007",
+    "retrieval_ms": 44,
+    "generation_ms": 2512,
+    "total_ms": 2556
+  },
+  {
+    "q_id": "easy_factual_008",
+    "retrieval_ms": 56,
+    "generation_ms": 1353,
+    "total_ms": 1410
+  },
+  {
+    "q_id": "easy_time_001",
+    "retrieval_ms": 63,
+    "generation_ms": 1122,
+    "total_ms": 1185
+  },
+  {
+    "q_id": "easy_time_002",
+    "retrieval_ms": 59,
+    "generation_ms": 805,
+    "total_ms": 864
+  },
+  {
+    "q_id": "easy_time_003",
+    "retrieval_ms": 64,
+    "generation_ms": 954,
+    "total_ms": 1017
+  },
+  {
+    "q_id": "easy_time_004",
+    "retrieval_ms": 93,
+    "generation_ms": 1236,
+    "total_ms": 1329
+  },
+  {
+    "q_id": "easy_proc_001",
+    "retrieval_ms": 109,
+    "generation_ms": 1155,
+    "total_ms": 1263
+  },
+  {
+    "q_id": "easy_proc_002",
+    "retrieval_ms": 47,
+    "generation_ms": 2633,
+    "total_ms": 2680
+  },
+  {
+    "q_id": "easy_proc_003",
+    "retrieval_ms": 41,
+    "generation_ms": 1674,
+    "total_ms": 1716
+  },
+  {
+    "q_id": "medium_complex_001",
+    "retrieval_ms": 78,
+    "generation_ms": 3012,
+    "total_ms": 3090
+  },
+  {
+    "q_id": "medium_complex_002",
+    "retrieval_ms": 76,
+    "generation_ms": 1494,
+    "total_ms": 1570
+  },
+  {
+    "q_id": "medium_complex_003",
+    "retrieval_ms": 60,
+    "generation_ms": 3212,
+    "total_ms": 3272
+  },
+  {
+    "q_id": "medium_complex_004",
+    "retrieval_ms": 56,
+    "generation_ms": 2476,
+    "total_ms": 2532
+  },
+  {
+    "q_id": "medium_complex_005",
+    "retrieval_ms": 57,
+    "generation_ms": 3877,
+    "total_ms": 3934
+  },
+  {
+    "q_id": "medium_complex_006",
+    "retrieval_ms": 55,
+    "generation_ms": 2745,
+    "total_ms": 2800
+  },
+  {
+    "q_id": "medium_complex_007",
+    "retrieval_ms": 53,
+    "generation_ms": 2706,
+    "total_ms": 2759
+  },
+  {
+    "q_id": "medium_complex_008",
+    "retrieval_ms": 45,
+    "generation_ms": 2054,
+    "total_ms": 2099
+  },
+  {
+    "q_id": "medium_dept_001",
+    "retrieval_ms": 52,
+    "generation_ms": 3710,
+    "total_ms": 3762
+  },
+  {
+    "q_id": "medium_dept_002",
+    "retrieval_ms": 58,
+    "generation_ms": 1838,
+    "total_ms": 1896
+  },
+  {
+    "q_id": "medium_dept_003",
+    "retrieval_ms": 64,
+    "generation_ms": 1560,
+    "total_ms": 1624
+  },
+  {
+    "q_id": "medium_dept_004",
+    "retrieval_ms": 82,
+    "generation_ms": 2964,
+    "total_ms": 3046
+  },
+  {
+    "q_id": "medium_dept_005",
+    "retrieval_ms": 89,
+    "generation_ms": 3104,
+    "total_ms": 3192
+  },
+  {
+    "q_id": "medium_dept_006",
+    "retrieval_ms": 76,
+    "generation_ms": 3359,
+    "total_ms": 3435
+  },
+  {
+    "q_id": "medium_dept_007",
+    "retrieval_ms": 84,
+    "generation_ms": 2627,
+    "total_ms": 2711
+  },
+  {
+    "q_id": "medium_policy_001",
+    "retrieval_ms": 87,
+    "generation_ms": 1400,
+    "total_ms": 1487
+  },
+  {
+    "q_id": "medium_policy_002",
+    "retrieval_ms": 78,
+    "generation_ms": 2982,
+    "total_ms": 3060
+  },
+  {
+    "q_id": "medium_policy_003",
+    "retrieval_ms": 51,
+    "generation_ms": 4154,
+    "total_ms": 4205
+  },
+  {
+    "q_id": "medium_policy_004",
+    "retrieval_ms": 90,
+    "generation_ms": 1902,
+    "total_ms": 1992
+  },
+  {
+    "q_id": "medium_policy_005",
+    "retrieval_ms": 49,
+    "generation_ms": 3082,
+    "total_ms": 3131
+  },
+  {
+    "q_id": "hard_comp_001",
+    "retrieval_ms": 101,
+    "generation_ms": 3133,
+    "total_ms": 3235
+  },
+  {
+    "q_id": "hard_comp_002",
+    "retrieval_ms": 79,
+    "generation_ms": 5383,
+    "total_ms": 5462
+  },
+  {
+    "q_id": "hard_comp_003",
+    "retrieval_ms": 77,
+    "generation_ms": 3859,
+    "total_ms": 3936
+  },
+  {
+    "q_id": "hard_comp_004",
+    "retrieval_ms": 109,
+    "generation_ms": 2224,
+    "total_ms": 2333
+  },
+  {
+    "q_id": "hard_cross_001",
+    "retrieval_ms": 91,
+    "generation_ms": 4387,
+    "total_ms": 4479
+  },
+  {
+    "q_id": "hard_cross_002",
+    "retrieval_ms": 64,
+    "generation_ms": 3987,
+    "total_ms": 4050
+  },
+  {
+    "q_id": "hard_cross_003",
+    "retrieval_ms": 96,
+    "generation_ms": 3334,
+    "total_ms": 3430
+  },
+  {
+    "q_id": "hard_cross_004",
+    "retrieval_ms": 85,
+    "generation_ms": 4481,
+    "total_ms": 4566
+  },
+  {
+    "q_id": "hard_temp_001",
+    "retrieval_ms": 82,
+    "generation_ms": 1422,
+    "total_ms": 1505
+  },
+  {
+    "q_id": "hard_temp_002",
+    "retrieval_ms": 73,
+    "generation_ms": 2264,
+    "total_ms": 2337
+  },
+  {
+    "q_id": "oos_ext_001",
+    "retrieval_ms": 0,
+    "generation_ms": 0,
+    "total_ms": 0
+  },
+  {
+    "q_id": "oos_ext_002",
+    "retrieval_ms": 50,
+    "generation_ms": 813,
+    "total_ms": 863
+  },
+  {
+    "q_id": "oos_ext_003",
+    "retrieval_ms": 0,
+    "generation_ms": 0,
+    "total_ms": 0
+  },
+  {
+    "q_id": "oos_hall_001",
+    "retrieval_ms": 55,
+    "generation_ms": 852,
+    "total_ms": 907
+  },
+  {
+    "q_id": "oos_hall_002",
+    "retrieval_ms": 83,
+    "generation_ms": 1021,
+    "total_ms": 1105
+  }
+]

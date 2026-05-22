@@ -1,0 +1,324 @@
+{
+  "total_questions": 50,
+  "total_failures": 36,
+  "pass_rate": 0.28,
+  "by_category": {
+    "retrieval_failure": {
+      "name": "检索失败",
+      "count": 16,
+      "percentage": 0.32,
+      "description": "正确答案存在于知识库中，但检索系统没有将其排在 top-K",
+      "indicator": "grounding_score=0 且 关键词在其他 chunk 中存在",
+      "fix": "调整 chunk 大小、改进 RRF 权重、增加 top-K、优化 HyDE prompt",
+      "examples": [
+        {
+          "q_id": "easy_factual_002",
+          "total_score": 3,
+          "dimensions": {
+            "correctness": {
+              "score": 1,
+              "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+            },
+            "grounding": {
+              "score": 0,
+              "explanation": "答案缺乏依据 (3/12 项可追溯)"
+            },
+            "completeness": {
+              "score": 1,
+              "explanation": "未定义 key_facts，默认给 1 分"
+            },
+            "traceability": {
+              "score": 1,
+              "explanation": "有一处来源引用，但不够详细"
+            },
+            "abstention": {
+              "score": 0,
+              "explanation": "应拒答但未拒答（可能产生幻觉）"
+            }
+          }
+        },
+        {
+          "q_id": "easy_factual_003",
+          "total_score": 3,
+          "dimensions": {
+            "correctness": {
+              "score": 1,
+              "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+            },
+            "grounding": {
+              "score": 0,
+              "explanation": "答案缺乏依据 (1/20 项可追溯)"
+            },
+            "completeness": {
+              "score": 1,
+              "explanation": "未定义 key_facts，默认给 1 分"
+            },
+            "traceability": {
+              "score": 1,
+              "explanation": "有一处来源引用，但不够详细"
+            },
+            "abstention": {
+              "score": 0,
+              "explanation": "应拒答但未拒答（可能产生幻觉）"
+            }
+          }
+        },
+        {
+          "q_id": "easy_factual_006",
+          "total_score": 3,
+          "dimensions": {
+            "correctness": {
+              "score": 1,
+              "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+            },
+            "grounding": {
+              "score": 0,
+              "explanation": "答案缺乏依据 (1/11 项可追溯)"
+            },
+            "completeness": {
+              "score": 1,
+              "explanation": "未定义 key_facts，默认给 1 分"
+            },
+            "traceability": {
+              "score": 1,
+              "explanation": "有一处来源引用，但不够详细"
+            },
+            "abstention": {
+              "score": 0,
+              "explanation": "应拒答但未拒答（可能产生幻觉）"
+            }
+          }
+        }
+      ]
+    },
+    "context_overflow": {
+      "name": "上下文稀释",
+      "count": 0,
+      "percentage": 0.0,
+      "description": "检索了太多不相关的 chunk，噪声淹没了有用信息",
+      "indicator": "有部分正确信息但被噪声干扰，completeness < 1",
+      "fix": "减小 top-K、提高 reranker 阈值、优化 chunk 质量",
+      "examples": []
+    },
+    "missing_knowledge": {
+      "name": "知识缺失",
+      "count": 0,
+      "percentage": 0.0,
+      "description": "问题涉及的知识不在当前知识库中",
+      "indicator": "所有 chunk 的 RRF 分数都 < 0.35",
+      "fix": "扩展数据源、增加新的爬取目标、添加人工整理的 FAQ",
+      "examples": []
+    },
+    "hallucination": {
+      "name": "幻觉编造",
+      "count": 1,
+      "percentage": 0.02,
+      "description": "LLM 忽略检索上下文，编造不存在的信息",
+      "indicator": "correctness=0 且 grounding=0 但答案很长",
+      "fix": "加强 prompt 约束、降低 temperature、增加 abstention 阈值",
+      "examples": [
+        {
+          "q_id": "medium_complex_004",
+          "total_score": 4,
+          "dimensions": {
+            "correctness": {
+              "score": 0,
+              "explanation": "不正确 (key_facts=40%, overlap=31%)"
+            },
+            "grounding": {
+              "score": 0,
+              "explanation": "答案缺乏依据 (36/127 项可追溯)"
+            },
+            "completeness": {
+              "score": 0,
+              "explanation": "覆盖不足 (2/5 关键事实)"
+            },
+            "traceability": {
+              "score": 2,
+              "explanation": "明确引用来源 (4 处)"
+            },
+            "abstention": {
+              "score": 2,
+              "explanation": "正常回答，无不当拒答"
+            }
+          }
+        }
+      ]
+    },
+    "over_refusal": {
+      "name": "过度拒答",
+      "count": 8,
+      "percentage": 0.16,
+      "description": "系统对本应回答的问题执行了拒答",
+      "indicator": "abstention=0 且 expected_abstain=False 且 did_abstain=True",
+      "fix": "调低 abstention 阈值、改进 query classifier 避免误判 OUT_OF_SCOPE",
+      "examples": [
+        {
+          "q_id": "easy_proc_001",
+          "total_score": 3,
+          "dimensions": {
+            "correctness": {
+              "score": 0,
+              "explanation": "不正确 (key_facts=50%, overlap=0%)"
+            },
+            "grounding": {
+              "score": 1,
+              "explanation": "答案部分有据 (38/99 项可追溯)"
+            },
+            "completeness": {
+              "score": 1,
+              "explanation": "未定义 key_facts，默认给 1 分"
+            },
+            "traceability": {
+              "score": 1,
+              "explanation": "有一处来源引用，但不够详细"
+            },
+            "abstention": {
+              "score": 0,
+              "explanation": "应拒答但未拒答（可能产生幻觉）"
+            }
+          }
+        },
+        {
+          "q_id": "easy_proc_002",
+          "total_score": 3,
+          "dimensions": {
+            "correctness": {
+              "score": 0,
+              "explanation": "不正确 (key_facts=50%, overlap=0%)"
+            },
+            "grounding": {
+              "score": 1,
+              "explanation": "答案部分有据 (17/47 项可追溯)"
+            },
+            "completeness": {
+              "score": 1,
+              "explanation": "未定义 key_facts，默认给 1 分"
+            },
+            "traceability": {
+              "score": 1,
+              "explanation": "有一处来源引用，但不够详细"
+            },
+            "abstention": {
+              "score": 0,
+              "explanation": "应拒答但未拒答（可能产生幻觉）"
+            }
+          }
+        },
+        {
+          "q_id": "medium_complex_007",
+          "total_score": 3,
+          "dimensions": {
+            "correctness": {
+              "score": 0,
+              "explanation": "不正确 (key_facts=50%, overlap=0%)"
+            },
+            "grounding": {
+              "score": 0,
+              "explanation": "答案缺乏依据 (9/36 项可追溯)"
+            },
+            "completeness": {
+              "score": 1,
+              "explanation": "未定义 key_facts，默认给 1 分"
+            },
+            "traceability": {
+              "score": 2,
+              "explanation": "明确引用来源 (2 处)"
+            },
+            "abstention": {
+              "score": 0,
+              "explanation": "应拒答但未拒答（可能产生幻觉）"
+            }
+          }
+        }
+      ]
+    },
+    "partial": {
+      "name": "部分缺陷",
+      "count": 11,
+      "percentage": 0.22,
+      "description": "总分偏低但有部分正确信息",
+      "fix": "综合优化：改进检索质量 + prompt 工程",
+      "examples": [
+        {
+          "q_id": "easy_factual_004",
+          "total_score": 5,
+          "dimensions": {
+            "correctness": {
+              "score": 1,
+              "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+            },
+            "grounding": {
+              "score": 1,
+              "explanation": "答案部分有据 (18/33 项可追溯)"
+            },
+            "completeness": {
+              "score": 1,
+              "explanation": "未定义 key_facts，默认给 1 分"
+            },
+            "traceability": {
+              "score": 2,
+              "explanation": "明确引用来源 (3 处)"
+            },
+            "abstention": {
+              "score": 0,
+              "explanation": "应拒答但未拒答（可能产生幻觉）"
+            }
+          }
+        },
+        {
+          "q_id": "easy_factual_008",
+          "total_score": 6,
+          "dimensions": {
+            "correctness": {
+              "score": 0,
+              "explanation": "不正确 (key_facts=33%, overlap=23%)"
+            },
+            "grounding": {
+              "score": 2,
+              "explanation": "答案高度有据 (14/20 项可追溯)"
+            },
+            "completeness": {
+              "score": 0,
+              "explanation": "覆盖不足 (1/3 关键事实)"
+            },
+            "traceability": {
+              "score": 2,
+              "explanation": "明确引用来源 (3 处)"
+            },
+            "abstention": {
+              "score": 2,
+              "explanation": "正常回答，无不当拒答"
+            }
+          }
+        },
+        {
+          "q_id": "medium_complex_003",
+          "total_score": 6,
+          "dimensions": {
+            "correctness": {
+              "score": 1,
+              "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+            },
+            "grounding": {
+              "score": 2,
+              "explanation": "答案高度有据 (79/113 项可追溯)"
+            },
+            "completeness": {
+              "score": 1,
+              "explanation": "未定义 key_facts，默认给 1 分"
+            },
+            "traceability": {
+              "score": 2,
+              "explanation": "明确引用来源 (2 处)"
+            },
+            "abstention": {
+              "score": 0,
+              "explanation": "应拒答但未拒答（可能产生幻觉）"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

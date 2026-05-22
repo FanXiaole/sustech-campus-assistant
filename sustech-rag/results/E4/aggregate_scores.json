@@ -1,0 +1,46 @@
+{
+  "num_questions": 50,
+  "dimensions": {
+    "correctness": {
+      "mean": 0.94,
+      "std": 0.79,
+      "total_2": 14,
+      "total_1": 19,
+      "total_0": 17
+    },
+    "grounding": {
+      "mean": 0.94,
+      "std": 0.62,
+      "total_2": 8,
+      "total_1": 31,
+      "total_0": 11
+    },
+    "completeness": {
+      "mean": 1.34,
+      "std": 0.72,
+      "total_2": 24,
+      "total_1": 19,
+      "total_0": 7
+    },
+    "traceability": {
+      "mean": 1.52,
+      "std": 0.58,
+      "total_2": 28,
+      "total_1": 20,
+      "total_0": 2
+    },
+    "abstention": {
+      "mean": 1.88,
+      "std": 0.48,
+      "total_2": 47,
+      "total_1": 0,
+      "total_0": 3
+    }
+  },
+  "total_score": {
+    "mean": 6.62,
+    "std": 2.14,
+    "max_possible": 10
+  },
+  "avg_keyword_hit_rate": 0.69
+}

@@ -1,0 +1,1552 @@
+[
+  {
+    "q_id": "easy_factual_001",
+    "total_score": 0,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "explanation": "不正确 (key_facts=0%, overlap=0%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 0,
+        "explanation": "覆盖不足 (0/3 关键事实)"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "错误拒绝了一个本应回答的问题"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "easy_factual_002",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正确拒答并解释原因"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "easy_factual_003",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正确拒答并解释原因"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "easy_factual_004",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正确拒答并解释原因"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "easy_factual_005",
+    "total_score": 0,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "explanation": "不正确 (key_facts=0%, overlap=0%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 0,
+        "explanation": "覆盖不足 (0/2 关键事实)"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "错误拒绝了一个本应回答的问题"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "easy_factual_006",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正确拒答并解释原因"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "easy_factual_007",
+    "total_score": 0,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "explanation": "不正确 (key_facts=0%, overlap=0%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 0,
+        "explanation": "覆盖不足 (0/5 关键事实)"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "错误拒绝了一个本应回答的问题"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "easy_factual_008",
+    "total_score": 0,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "explanation": "不正确 (key_facts=0%, overlap=0%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 0,
+        "explanation": "覆盖不足 (0/3 关键事实)"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "错误拒绝了一个本应回答的问题"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "easy_time_001",
+    "total_score": 0,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "explanation": "不正确 (key_facts=0%, overlap=0%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 0,
+        "explanation": "覆盖不足 (0/3 关键事实)"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "错误拒绝了一个本应回答的问题"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "easy_time_002",
+    "total_score": 0,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "explanation": "不正确 (key_facts=0%, overlap=0%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 0,
+        "explanation": "覆盖不足 (0/5 关键事实)"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "错误拒绝了一个本应回答的问题"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "easy_time_003",
+    "total_score": 0,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "explanation": "不正确 (key_facts=0%, overlap=0%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 0,
+        "explanation": "覆盖不足 (0/2 关键事实)"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "错误拒绝了一个本应回答的问题"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "easy_time_004",
+    "total_score": 0,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "explanation": "不正确 (key_facts=0%, overlap=0%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 0,
+        "explanation": "覆盖不足 (0/1 关键事实)"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "错误拒绝了一个本应回答的问题"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "easy_proc_001",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正确拒答并解释原因"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "easy_proc_002",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正确拒答并解释原因"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "easy_proc_003",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正确拒答并解释原因"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "medium_complex_001",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正确拒答并解释原因"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "medium_complex_002",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正确拒答并解释原因"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "medium_complex_003",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正确拒答并解释原因"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "medium_complex_004",
+    "total_score": 0,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "explanation": "不正确 (key_facts=0%, overlap=0%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 0,
+        "explanation": "覆盖不足 (0/5 关键事实)"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "错误拒绝了一个本应回答的问题"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "medium_complex_005",
+    "total_score": 0,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "explanation": "不正确 (key_facts=0%, overlap=0%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 0,
+        "explanation": "覆盖不足 (0/8 关键事实)"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "错误拒绝了一个本应回答的问题"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "medium_complex_006",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正确拒答并解释原因"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "medium_complex_007",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正确拒答并解释原因"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "medium_complex_008",
+    "total_score": 0,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "explanation": "不正确 (key_facts=0%, overlap=0%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 0,
+        "explanation": "覆盖不足 (0/7 关键事实)"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "错误拒绝了一个本应回答的问题"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "medium_dept_001",
+    "total_score": 0,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "explanation": "不正确 (key_facts=0%, overlap=0%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 0,
+        "explanation": "覆盖不足 (0/10 关键事实)"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "错误拒绝了一个本应回答的问题"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "medium_dept_002",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正确拒答并解释原因"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "medium_dept_003",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正确拒答并解释原因"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "medium_dept_004",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正确拒答并解释原因"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "medium_dept_005",
+    "total_score": 0,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "explanation": "不正确 (key_facts=0%, overlap=0%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 0,
+        "explanation": "覆盖不足 (0/9 关键事实)"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "错误拒绝了一个本应回答的问题"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "medium_dept_006",
+    "total_score": 0,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "explanation": "不正确 (key_facts=0%, overlap=0%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 0,
+        "explanation": "覆盖不足 (0/10 关键事实)"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "错误拒绝了一个本应回答的问题"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "medium_dept_007",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正确拒答并解释原因"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "medium_policy_001",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正确拒答并解释原因"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "medium_policy_002",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正确拒答并解释原因"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "medium_policy_003",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正确拒答并解释原因"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "medium_policy_004",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正确拒答并解释原因"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "medium_policy_005",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正确拒答并解释原因"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "hard_comp_001",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正确拒答并解释原因"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "hard_comp_002",
+    "total_score": 0,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "explanation": "不正确 (key_facts=0%, overlap=0%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 0,
+        "explanation": "覆盖不足 (0/7 关键事实)"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "错误拒绝了一个本应回答的问题"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "hard_comp_003",
+    "total_score": 0,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "explanation": "不正确 (key_facts=0%, overlap=0%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 0,
+        "explanation": "覆盖不足 (0/7 关键事实)"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "错误拒绝了一个本应回答的问题"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "hard_comp_004",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正确拒答并解释原因"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "hard_cross_001",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正确拒答并解释原因"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "hard_cross_002",
+    "total_score": 0,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "explanation": "不正确 (key_facts=0%, overlap=0%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 0,
+        "explanation": "覆盖不足 (0/9 关键事实)"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "错误拒绝了一个本应回答的问题"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "hard_cross_003",
+    "total_score": 0,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "explanation": "不正确 (key_facts=0%, overlap=0%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 0,
+        "explanation": "覆盖不足 (0/6 关键事实)"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 0,
+        "explanation": "错误拒绝了一个本应回答的问题"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "hard_cross_004",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正确拒答并解释原因"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "hard_temp_001",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正确拒答并解释原因"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "hard_temp_002",
+    "total_score": 4,
+    "dimensions": {
+      "correctness": {
+        "score": 1,
+        "explanation": "部分正确 (key_facts=50%, overlap=50%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正确拒答并解释原因"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "oos_ext_001",
+    "total_score": 3,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "explanation": "不正确 (key_facts=50%, overlap=0%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正确拒答并解释原因"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "oos_ext_002",
+    "total_score": 3,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "explanation": "不正确 (key_facts=50%, overlap=0%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正确拒答并解释原因"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "oos_ext_003",
+    "total_score": 3,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "explanation": "不正确 (key_facts=50%, overlap=0%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正确拒答并解释原因"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "oos_hall_001",
+    "total_score": 3,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "explanation": "不正确 (key_facts=50%, overlap=0%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正确拒答并解释原因"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  },
+  {
+    "q_id": "oos_hall_002",
+    "total_score": 3,
+    "dimensions": {
+      "correctness": {
+        "score": 0,
+        "explanation": "不正确 (key_facts=50%, overlap=0%)"
+      },
+      "grounding": {
+        "score": 0,
+        "explanation": "无检索结果，答案无依据"
+      },
+      "completeness": {
+        "score": 1,
+        "explanation": "未定义 key_facts，默认给 1 分"
+      },
+      "traceability": {
+        "score": 0,
+        "explanation": "未引用任何来源"
+      },
+      "abstention": {
+        "score": 2,
+        "explanation": "正确拒答并解释原因"
+      }
+    },
+    "metrics": {
+      "keyword_hit_rate": 0.0,
+      "answer_length": 52,
+      "num_chunks_used": 0
+    }
+  }
+]
