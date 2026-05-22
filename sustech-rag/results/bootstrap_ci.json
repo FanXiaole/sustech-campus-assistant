@@ -1,0 +1,102 @@
+{
+  "R1_vs_R0": {
+    "label": "Dense vs No RAG",
+    "observed_diff": 6.14,
+    "ci_95": [
+      5.34,
+      6.92
+    ],
+    "p_value": 0.0,
+    "significant": true
+  },
+  "R3_vs_R1": {
+    "label": "Hybrid RRF vs Dense",
+    "observed_diff": 0.04,
+    "ci_95": [
+      -0.36,
+      0.48
+    ],
+    "p_value": 0.855,
+    "significant": false
+  },
+  "R4_vs_R3": {
+    "label": "Reranker vs Hybrid RRF",
+    "observed_diff": 0.12,
+    "ci_95": [
+      -0.2,
+      0.46
+    ],
+    "p_value": 0.478,
+    "significant": false
+  },
+  "R4_vs_R1": {
+    "label": "Reranker vs Dense",
+    "observed_diff": 0.16,
+    "ci_95": [
+      -0.26,
+      0.62
+    ],
+    "p_value": 0.476,
+    "significant": false
+  },
+  "E1_vs_R3": {
+    "label": "HyDE vs Hybrid RRF",
+    "observed_diff": 0.08,
+    "ci_95": [
+      -0.16,
+      0.34
+    ],
+    "p_value": 0.533,
+    "significant": false
+  },
+  "E2_vs_R3": {
+    "label": "Enrichment vs Hybrid RRF",
+    "observed_diff": 0.06,
+    "ci_95": [
+      -0.28,
+      0.4
+    ],
+    "p_value": 0.732,
+    "significant": false
+  },
+  "E3_vs_R3": {
+    "label": "Classifier vs Hybrid RRF",
+    "observed_diff": -0.06,
+    "ci_95": [
+      -0.4,
+      0.24
+    ],
+    "p_value": 0.714,
+    "significant": false
+  },
+  "E4_vs_R4": {
+    "label": "Full Innovation vs Best",
+    "observed_diff": 0.0,
+    "ci_95": [
+      -0.36,
+      0.36
+    ],
+    "p_value": 1.0,
+    "significant": false
+  },
+  "A1_vs_R4": {
+    "label": "Small Chunks vs Default",
+    "observed_diff": -0.04,
+    "ci_95": [
+      -0.38,
+      0.3
+    ],
+    "p_value": 0.815,
+    "significant": false
+  },
+  "A2_vs_R4": {
+    "label": "Large Chunks vs Default",
+    "observed_diff": -0.1,
+    "ci_95": [
+      -0.34,
+      0.14
+    ],
+    "p_value": 0.434,
+    "significant": false
+  }
+}

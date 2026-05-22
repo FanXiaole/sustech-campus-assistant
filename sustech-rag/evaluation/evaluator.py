@@ -413,6 +413,7 @@ class RAGEvaluator:
         """
         Bootstrap 检验两组实验分数的差异是否显著。
 
+        使用配对 bootstrap + 零假设平移（H0: mean_diff = 0）。
         返回 p-value 和 95% CI。p < 0.05 表示差异显著。
         """
         import random
@@ -421,15 +422,22 @@ class RAGEvaluator:
         diff = [a - b for a, b in zip(scores_a, scores_b)]
         obs_mean = sum(diff) / len(diff)
 
-        bootstrap_means = []
+        # 95% percentile CI (from observed differences, unshifted)
+        bootstrap_means_obs = []
         for _ in range(n_bootstrap):
             sample = [random.choice(diff) for _ in range(len(diff))]
-            bootstrap_means.append(sum(sample) / len(sample))
+            bootstrap_means_obs.append(sum(sample) / len(sample))
+        bootstrap_means_obs.sort()
+        ci_low = bootstrap_means_obs[int(n_bootstrap * 0.025)]
+        ci_high = bootstrap_means_obs[int(n_bootstrap * 0.975)]
 
-        bootstrap_means.sort()
-        ci_low = bootstrap_means[int(n_bootstrap * 0.025)]
-        ci_high = bootstrap_means[int(n_bootstrap * 0.975)]
-        p_value = sum(1 for m in bootstrap_means if abs(m) >= abs(obs_mean)) / n_bootstrap
+        # p-value: bootstrap under null hypothesis (shift to mean 0)
+        diff_null = [d - obs_mean for d in diff]
+        null_means = []
+        for _ in range(n_bootstrap):
+            sample = [random.choice(diff_null) for _ in range(len(diff))]
+            null_means.append(sum(sample) / len(sample))
+        p_value = sum(1 for m in null_means if abs(m) >= abs(obs_mean)) / n_bootstrap
 
         return {
             "observed_diff": round(obs_mean, 3),
