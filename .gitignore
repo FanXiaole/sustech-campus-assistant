@@ -10,3 +10,6 @@ __pycache__/
 
 # OS files
 .DS_Store
+
+# Claude Code local config (may contain credentials)
+.claude/
